@@ -24,7 +24,7 @@ data_export <- function(df, r , path = '', format = 'rds') {
 
   } else {
 
-    messages(glue('Files will be saved to {path}'))
+    message(glue('Files will be saved to {path}'))
 
   }
 

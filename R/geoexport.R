@@ -24,7 +24,7 @@ geoexport <- function(df, r, path = '') {
 
   } else {
 
-    messages(glue('Files will be saved to {path}'))
+    message(glue('Files will be saved to {path}'))
 
   }
 
