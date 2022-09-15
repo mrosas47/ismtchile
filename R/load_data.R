@@ -6,6 +6,7 @@
 #'
 #' @import glue
 #' @import tidyverse
+#' @import magrittr
 #' @import Randomuseragent
 #' @import iptools
 #'
