@@ -8,6 +8,8 @@
 #' @return message
 #' @export data_export
 #'
+#' @import tidyverse
+#'
 #' @examples 'void for now'
 
 data_export <- function(df, r , path = '', format = 'rds') {
