@@ -22,7 +22,7 @@ get_criteria <- function(year = 2017, path = '') {
 
   } else {
 
-    messages(glue('Files will be saved to {path}'))
+    message(glue('Files will be saved to {path}'))
 
   }
 

@@ -1,7 +1,7 @@
 Package: ismtchile
 Type: Package
 Title: Calculating Índice SocioMaterial Territorial
-Version: 1.0.1
+Version: 1.0.2
 Author: Martín Rosas
 Maintainer: Martín Rosas Araya <mrosas1690@gmail.com>
 Description: Package intended to facilitate the calculation and distribution of Índice SocioMaterial Territorial.
