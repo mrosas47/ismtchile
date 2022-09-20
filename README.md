@@ -62,3 +62,8 @@ c17geomerge <- geomerge(c17, c17geo)
 
 c17geomerge %>% geoexport(13, loc_dir)
 ```
+
+### Autoría y crédito
+
+Autor del paquete: </br> <ul><li>Martín Rosas Araya, Observatorio de Ciudades UC -- mrosas1690@gmail.com</li></ul>
+Autores del Indicador: </br> <ul><li>Dr. Ricardo Truffello, Observatorio de ciudades UC -- rtruffel@uc.cl</li><li>Mónica Flores</li></ul>
