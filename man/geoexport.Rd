@@ -20,5 +20,5 @@ Retorna el archivo en la carpeta especificada. \cr \cr Returns file in specified
 Exporta la data espacial derivada del cálculo del ISMT y posterior ejecución de \code{geomerge()} para espacializar. \cr \cr Exports spatial data derived from the calculation of ISMT and the execution of \code{geomerge()}.
 }
 \examples{
-'void for now'
+c17geomerge \%>\% geoexport(13, loc_dir)
 }

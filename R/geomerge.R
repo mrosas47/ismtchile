@@ -14,7 +14,7 @@
 #' @import tidyverse
 #' @import sf
 #'
-#' @examples 'void for now'
+#' @examples c17geomerge <- geomerge(c17, c17geo)
 
 geomerge <- function(df, shp, grouping.df = 'zona', grouping.shp = 'GEOCODIGO') {
 

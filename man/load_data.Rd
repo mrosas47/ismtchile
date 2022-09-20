@@ -20,5 +20,5 @@ data.frame object
 Descarga la base de datos original del Censo 2017 de Chile a \code{path} y la carga a RStudio, quedando lista para su uso. \cr \cr Downloads the original 2017 Chilean Census database to \code{path} and loads it to RStudio, making it immediately available for use.
 }
 \examples{
-'void for now'
+c17 <- load_data(13, path = loc_dir)
 }

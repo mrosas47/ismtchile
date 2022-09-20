@@ -22,5 +22,5 @@ objeto \code{data.frame} con la información espacializada, lista para exportar.
 Espacializa la data obtenida del cálculo del ISMT mediante la unión con un shapefile de la unidad espacial correspondiente. \cr \cr Spacializes the data obtained from ISMT caclulation through merging with a shapefile of the corresponding spatial unit.
 }
 \examples{
-'void for now'
+c17geomerge <- geomerge(c17, c17geo)
 }

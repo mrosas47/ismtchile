@@ -15,7 +15,7 @@
 #' @return objeto \code{data.frame} agrupado por la unidad espacial especificada con información de ISMT. \cr \cr \code{data.frame} object grouped by the specified spatial unit with ISMT information.
 #' @export ismt_scores
 #'
-#' @examples 'void for now'
+#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>% cleanup() %>% precalc() %>% get_pca() %>% ismt_scores(crit_AIM, 13)
 
 ismt_scores <- function(df, criteria, r, ismt_score = 'ismt_pn', grouping = 'geocode', n = 'n') {
 

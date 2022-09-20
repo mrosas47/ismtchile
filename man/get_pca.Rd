@@ -30,5 +30,5 @@ objeto \code{data.frame} con el cálculo de componentes principales. \cr \cr \co
 Cálculo de análisis de componentes principales en base a las 4 vatriables principales del ISMT. La función asume que la base de datos ha pasado por \code{precalc()}, ya que requiere los puntajes normalizados por variable. \cr \cr Calculation of principal components analysis based on the 4 main variables of ISMT. Assumes the database has been through \code{precalc()}, as it rqeuires the normalized scores by variable.
 }
 \examples{
-'void for now'
+c17 <- load_data(13, path = loc_dir) \%>\% region_filter(13, 1) \%>\% cleanup() \%>\% precalc() \%>\% get_pca()
 }

@@ -22,5 +22,5 @@ Retorna el archivo en la carpeta. \cr \cr Returns the file in directory.
 Exporta datos resultantes de la ejecución del cálculo del ISMT a la carpeta especificada. \cr \cr Exports data resulting from the calculation of ISMT to the specified directory.
 }
 \examples{
-'void for now'
+c17 \%>\% data_export(13, loc_dir)
 }

@@ -12,7 +12,7 @@
 #'
 #' @import tidyverse
 #'
-#' @examples 'void for now'
+#' @examples c17 %>% data_export(13, loc_dir)
 
 data_export <- function(df, r , path = '', format = 'rds') {
 

@@ -19,7 +19,7 @@
 #' @return objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. \cr \cr \code{data.frame} object containing only the variables that are necessary for the following calculations.
 #' @export cleanup
 #'
-#' @examples 'void for now'
+#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>% cleanup()
 
 cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p04', parent = 'p07', muro = 'p03a', techo = 'p03b', suelo = 'p03c') {
 

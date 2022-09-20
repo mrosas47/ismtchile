@@ -24,5 +24,5 @@ objeto \code{data.frame} con la información censal filtrada para la región de 
 Filtra la base de datos original de forma de incluir sólo la región y el área (urbana o rural) deseadas. La función asume que la data corresponde a la base de dato original del Censo 2017, obtenible a través de \code{load_data()}. \cr \cr Filters the original data so as to include only the desired region and area (urban or rural). The function assumes the data corresponds to the original Censo 2017 database, as can be obtained from \code{load_data()}.
 }
 \examples{
-'void for now'
+c17 <- load_data(13, path = loc_dir) \%>\% region_filter(13, 1)
 }

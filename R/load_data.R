@@ -15,7 +15,7 @@
 #' @return data.frame object
 #' @export load_data
 #'
-#' @examples 'void for now'
+#' @examples c17 <- load_data(13, path = loc_dir)
 
 load_data <- function (r, year = 2017, path = '') {
 

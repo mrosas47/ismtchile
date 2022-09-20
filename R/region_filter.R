@@ -17,7 +17,7 @@
 #'
 #' @export region_filter
 #'
-#' @examples 'void for now'
+#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1)
 
 region_filter <- function(df, r, ur, rfield = 'region', urfield = 'area') {
 

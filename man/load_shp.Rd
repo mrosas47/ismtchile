@@ -20,5 +20,5 @@ objeto \code{single feature}. ESRI shapefile de la región especificada. \cr \cr
 Descarga ESRI shapefile de la región especificada a \code{path} y lo carga a RStudio. \cr \cr Downloads ESRI shapefile of the specified region to \code{path} and loads it to RStudio.
 }
 \examples{
-'void for now'
+c17geo <- load_shp(13, 1, loc_dir)
 }

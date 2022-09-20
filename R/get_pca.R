@@ -14,7 +14,7 @@
 #' @return objeto \code{data.frame} con el cálculo de componentes principales. \cr \cr \code{data.frame} object with the principal components analysis calculation.
 #' @export get_pca
 #'
-#' @examples 'void for now'
+#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>% cleanup() %>% precalc() %>% get_pca()
 
 get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mater', alleg = 'ptje_alleg') {
 

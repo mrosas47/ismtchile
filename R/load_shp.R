@@ -13,7 +13,7 @@
 #' @return objeto \code{single feature}. ESRI shapefile de la región especificada. \cr \cr \code{single feature} object. ESRI shapefile of the specified region.
 #' @export load_shp
 #'
-#' @examples 'void for now'
+#' @examples c17geo <- load_shp(13, 1, loc_dir)
 
 load_shp <- function(r, ur, path = '') {
 

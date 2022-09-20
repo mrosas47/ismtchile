@@ -11,7 +11,7 @@
 #' @import tidyverse
 #' @import glue
 #'
-#' @examples 'void for now'
+#' @examples crit_AIM <- get_criteria(13, path = loc_dir)
 
 get_criteria <- function(year = 2017, path = '') {
 

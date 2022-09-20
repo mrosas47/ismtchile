@@ -42,5 +42,5 @@ objeto \code{data.frame} conteniendo solo las variables necesarias para los cál
 Limpia la base de datos de forma de normalizar los nombres de los campos y reducir la cantidad de variables, facilitando así la ejecución de las funciones que siguen en el flujo de cálculo. \cr \cr Cleans the database, normalizing the field names and reducing the number of variables, facilitiating the execution of the following functions down the workflow.
 }
 \examples{
-'void for now'
+c17 <- load_data(13, path = loc_dir) \%>\% region_filter(13, 1) \%>\% cleanup()
 }

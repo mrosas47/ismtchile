@@ -18,5 +18,5 @@ objeto \code{data.frame} con los valores del criterio AIM para APC. \cr \cr \cod
 Carga el criterio de corte estadístico AIM para el análisis de componentes principales. Descarga el archivo con la tabla de referencia a \code{path} para futuro uso. \cr \cr Loads AIM criteria for statistical cuts for principal components analysis. Downloads file with reference table to \code{path} for future use.
 }
 \examples{
-'void for now'
+crit_AIM <- get_criteria(13, path = loc_dir)
 }

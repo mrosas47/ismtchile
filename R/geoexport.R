@@ -13,7 +13,7 @@
 #' @import sf
 #' @import glue
 #'
-#' @examples 'void for now'
+#' @examples c17geomerge %>% geoexport(13, loc_dir)
 
 geoexport <- function(df, r, path = '') {
 

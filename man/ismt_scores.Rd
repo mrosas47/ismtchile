@@ -33,5 +33,5 @@ objeto \code{data.frame} agrupado por la unidad espacial especificada con inform
 Ejecuta los cálculos finales de ISMT. Define los grupos socioeconómicos por unidad territorial y los cuantifica en varias categorías. \cr \cr Executes the final ISMT calculations. Defines the socio-economic groups and quantifies them in several categories.
 }
 \examples{
-'void for now'
+c17 <- load_data(13, path = loc_dir) \%>\% region_filter(13, 1) \%>\% cleanup() \%>\% precalc() \%>\% get_pca() \%>\% ismt_scores(crit_AIM, 13)
 }

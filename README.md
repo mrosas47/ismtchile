@@ -32,14 +32,33 @@ El cálculo del allegamiento se establece de manera simple y directa considerand
 
 El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores pasos a seguir en el cálculo del indicador, en el siguiente orden:  </br> <ol><li>```load_data()```descargar la data censal a la carpeta especificada y cargar a RStudio</li><li>```region_filter()``` filtrar la data por región y tipo de área</li><li>```cleanup()``` normaliza los nombres de los campos y elimina variables redundantes</li><li>```precalc()``` precálculos necesarios para el proceso</li><li>```get_pca()``` análisis de componentes principales</li><li>```ismt_scores()``` cálculo del índice</li></ol> </br> Adicionalmente, existe la posibilidad de espacializar la información a través de ```load_shp()``` (descarga la data espacial y la carga a RStudio) y ```geomerge()``` (une los resultados del ISMT con el shapefile), y de exportarla a través de ```data_export()``` (```.csv```, ```.rds```) y ```geoexport()``` (```.shp```).
 
-### Instalación
+### Instalación y uso
 
 ```
 # install.packages('remotes')
 
-remotes::install_github('mrosas47/ismtchile')
+# remotes::install_github('mrosas47/ismtchile')
+
 library(ismtchile)
 library(tidyverse)
+library(here)
 
-c17 <- load_data()
+loc_dir <- here()
+
+crit_AIM <- get_criteria(13, path = loc_dir)
+
+c17 <- load_data(13, path = loc_dir) %>% 
+  region_filter(13, 1) %>% 
+  cleanup() %>% 
+  precalc() %>% 
+  get_pca() %>% 
+  ismt_scores(crit_AIM, 13)
+  
+c17 %>% data_export(13, loc_dir)
+
+c17geo <- load_shp(13, 1, loc_dir)
+
+c17geomerge <- geomerge(c17, c17geo)
+
+c17geomerge %>% geoexport(13, loc_dir)
 ```
