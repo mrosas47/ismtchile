@@ -2,26 +2,26 @@
 % Please edit documentation in R/region_filter.R
 \name{region_filter}
 \alias{region_filter}
-\title{'Get only working region data'}
+\title{Filtro de datos por región y área -- Filter data by region and area type}
 \usage{
 region_filter(df, r, ur, rfield = "region", urfield = "area")
 }
 \arguments{
-\item{df}{'data.frame object. As for package version 0.0.1 (alpha), only the 2017 Chilean census is accepted. Pre-formatted data is available through data(c17_chile_clean). Full data is available through data(c17_chile_full).'}
+\item{df}{objeto \code{data.frame}. Hasta la versión 1.x.x, sólo se acepta el Censo 2017. \cr \code{data.frame} object. As for package version 1.x.x, only the 2017 Chilean census is accepted.}
 
-\item{r}{'integer. Values between 1 and 16 are acceptable for Chile 2017. If r == 99, no region will be defined and work will continue with national level values.'}
+\item{r}{integer. Values between 1 and 16 are acceptable for Chile 2017. If r == 99, no region will be defined and work will continue with national level values.}
 
-\item{ur}{'integer. Accepted values are 1 and 2. Defines whether urban or rural data is requested.'}
+\item{ur}{integer. Accepted values are ´1´ and ´2´. Defines whether urban or rural data is requested.}
 
-\item{rfield}{string. Name of the field corresponding to the region number. Default is 'region'}
+\item{rfield}{string. Name of the field corresponding to the region number. Default is ´region´}
 
-\item{urfield}{string. Name of the field corresponding to the desired area (urban or rural). Default is 'area'}
+\item{urfield}{string. Name of the field corresponding to the desired area (urban or rural). Default is ´area´}
 }
 \value{
 data.frame object
 }
 \description{
-'Get only working region data'
+Filtra la base de datos original de forma de incluir sólo la región y el área (urbana o rural) deseadas. La función asume que la data corresponde a la base de dato original del Censo 2017, obtenible a través de \code{load_data()}. \cr Filters the original data so as to include only the desired region and area (urban or rural). The function assumes the data corresponds to the original Censo 2017 database, as can be obtained from \code{load_data()}.
 }
 \examples{
 'void for now'
