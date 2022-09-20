@@ -2,22 +2,22 @@
 % Please edit documentation in R/load_data.R
 \name{load_data}
 \alias{load_data}
-\title{Downloading Census data}
+\title{Descargar data censal -- Downloading census data}
 \usage{
 load_data(r, year = 2017, path = "")
 }
 \arguments{
-\item{r}{integer. Defines the desired region. Accepted values range from 1 to 16, and 99. If r == 99, the program will download each region separately and bind them together, so it could take a minute.}
+\item{r}{integer. Número de la región de trabajo. Acepta valores entre 1 y 16. Si \code{r = 99}, descarga la data censal completa. \code{r = 99} y \code{r = 13} aumentan considerablemente el tiempo de ejecución debido a la gran cantidad de datos. \cr \cr integer. Number of the working region. Accepts values between 1 and 16. If \code{r = 99}, will download the entire database. \code{r = 99} and \code{r = 13} considerably increase execution time due to the volume of data.}
 
-\item{year}{integer. Defines the year of the desired data. Default is 2017, which is the only valid one as for revision 0.x.x}
+\item{year}{integer. Define el año de los datos a descargar. Para la versión \code{1.x.x}, solo se acepta {2017}. \cr \cr integer. Defines the year of the data to download. As for version \code{1.x.x}, only \code{2017} is accepted.}
 
-\item{path}{string. Defines the path of the directory where files will be stored. Default is '' (empty), which will create a new directory 'C:/ISMT_Files' and store data there.}
+\item{path}{string. Ubicación de la carpeta donde se deberían guardar los archivos. En caso de no proveer una ubicación, se creará un carpeta \code{C:/ISMT_Files/data}, que se usará como \code{path}. \cr \cr string. Location of the directory where files should be saved. If empty, will create a \code{C:/ISMT_Files/data} folder, which will be used as \code{path}.}
 }
 \value{
 data.frame object
 }
 \description{
-Downloading Census data
+Descarga la base de datos original del Censo 2017 de Chile a \code{path} y la carga a RStudio, quedando lista para su uso. \cr \cr Downloads the original 2017 Chilean Census database to \code{path} and loads it to RStudio, making it immediately available for use.
 }
 \examples{
 'void for now'

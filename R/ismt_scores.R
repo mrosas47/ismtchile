@@ -1,22 +1,23 @@
-#' ISMT Scores: final calculations
+#' Cálculos finales de ISMT -- ISMT final calculations
 #'
-#' @param df data.frame object. Assumes database has been through the previous cleanup and calculation steps (cleanup, precalc, get_pca)
-#' @param criteria data.frame object. Criteria for statistical cuts. As for alpha version, only 2017 AIM cuts are accepted.
-#' @param r integer. Defines working region in order to filter criteria. Accepted values are between 1:16, and 99 (for country-wide values)
-#' @param ismt_score string. Defines the ISMT scores field as obtained from get_pca(). Default is 'ismt_pn'
-#' @param grouping string. Defines grouping variable. Default is 'geocode', as defined in the original Censo 2017 database. As for alpha version this is the only accepted value; future revisions will accept the 'manzent' field for 2012, 2002 and 1992 databases.
-#' @param n string. Name of the field, expected to be derived from running cleanup(), that has a value = 1 for every home in the database. Used for counting total number of homes by grouping unit. Default is 'n'
-#' @param get_criteria boolean. Default is FALSE. If TRUE, will temporarily download the file with the AIM criteria to C:/temp and will disappear after the execution of the function.
+#' @description Ejecuta los cálculos finales de ISMT. Define los grupos socioeconómicos por unidad territorial y los cuantifica en varias categorías. \cr \cr Executes the final ISMT calculations. Defines the socio-economic groups and quantifies them in several categories.
+#'
+#' @param df objeto \code{data.frame}. Asume que la base de datos ha pasado por \code{cleanup()}, \code{precalc()}, y \code{get_pca()}. \cr \cr \code{data.frame} object. Assumes the database has been through \code{cleanup()}, \code{precalc()}, and \code{get_pca()}.
+#' @param criteria objeto \code{data.frame} que contenga los criterios estadísticos AIM para el análisis de componentes principales. \cr \cr \code{data.frame} object that contains the AIM statistical criteria for principal components analysis.
+#' @param r integer. Número de la región de trabajo. Acepta valores entre 1 y 16; si \code{r = 99}, se utilizan valores a nivel nacional. \cr \cr integer. Number of the working region. Accepts values between 1 and 16; if \code{r = 99}, national-level values will be used.
+#' @param ismt_score string. Nombre del campo del puntaje ISMT, calculado desde \code{get_pca()}. Default es \code{ismt_pn}. \cr \cr string. Name of the ISMT sscore field, as calculated from \code{get_pca()]}. Default is \code{ismt_pn}.
+#' @param grouping string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es \code{geocode}. \cr \cr string. Name of the field with the spacial grouping unit variable. Default is \code{geocode}.
+#' @param n string. Nombre del campo derivado de \code{cleanup()} que tiene valor \code{n = 1} para cada jefe de hogar. Usado para conteo de totales. Default es \code{n}. \cr \cr string. Name of the field, derived from \code{cleanup()}, that  has value \code{n = 1} for each home head. Default es \code{n}.
 #'
 #' @import tidyverse
 #' @import glue
 #'
-#' @return data.frame object
+#' @return objeto \code{data.frame} agrupado por la unidad espacial especificada con información de ISMT. \cr \cr \code{data.frame} object grouped by the specified spatial unit with ISMT information.
 #' @export ismt_scores
 #'
 #' @examples 'void for now'
 
-ismt_scores <- function(df, criteria, r, ismt_score = 'ismt_pn', grouping = 'geocode', n = 'n', get_criteria = F) {
+ismt_scores <- function(df, criteria, r, ismt_score = 'ismt_pn', grouping = 'geocode', n = 'n') {
 
   names(df)[names(df) == glue('{ismt_score}')] <- 'ismt_pn'
   names(df)[names(df) == glue('{grouping}')] <- 'geocode'

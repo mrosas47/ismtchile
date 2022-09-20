@@ -2,7 +2,7 @@
 % Please edit documentation in R/precalc.R
 \name{precalc}
 \alias{precalc}
-\title{Precalculations: normalized indicator scores}
+\title{Precálculos ISMT -- ISMT Precalculations}
 \usage{
 precalc(
   df,
@@ -13,21 +13,21 @@ precalc(
 )
 }
 \arguments{
-\item{df}{data.frame object. As for alpha version, assumes database has been through cleanup() function.}
+\item{df}{objecto \code{data.frame}. Asume que la base de datos ha pasado por \code{cleanup()}. \cr \cr \code{data.frame} object. Assumes the database has been through \code{cleanup()}.}
 
-\item{hacin}{string. Hacinamiento indicator field. Default is 'ind_hacinam'}
+\item{hacin}{string. Nombre del campo del indicador de hacinamiento. Default es \code{ind_hacinam}. \cr \cr string. Name of the field with the overcrowding score. Default is \code{ind_hacinam}.}
 
-\item{alleg}{string. Allegamiento indicator field. Default is 'ind_alleg'}
+\item{alleg}{string. Nombre del campo del indicador de allegamiento. Default es \code{n_hog_alleg}. \cr \cr string. Name of the field with the relative crowding score. Default is \code{n_hog_alleg}.}
 
-\item{esc}{string. Escolaridad indicator field. Default is 'ind_esc'}
+\item{esc}{string. Nombre del campo del indicador de escolaridad del jefe de hogar. Default es \code{a_esc_cont}. \cr \cr string. Name of the field with the scholarship of the home head score. Default is \code{a_esc_cont}.}
 
-\item{mat}{string. Hacinamiento indicator field. Default is 'ind_mater'}
+\item{mat}{string. Nombre del campo del indicador de materialidad de la vivienda. Default es \code{ind_mater}. \cr \cr string. Name of the field with the dwelling material score. Default is \code{ind_mater}.}
 }
 \value{
-data.frame object
+objeto \code{data.frame} con los precálculos necesarios para calcular el ISMT. \cr \cr \code{data.frame} object with the necessary precalculations to calculate ISMT.
 }
 \description{
-Precalculations: normalized indicator scores
+Ejecuta precálculos necesarios para el resto del proceso del ISMT. \cr \cr Executes precalculations necessary for the rest of the ISMT process.
 }
 \examples{
 'void for now'
