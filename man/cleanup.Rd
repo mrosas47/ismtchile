@@ -2,7 +2,7 @@
 % Please edit documentation in R/cleanup.R
 \name{cleanup}
 \alias{cleanup}
-\title{Census database cleanup}
+\title{Limpieza de la base de datos censal -- Census database cleanup}
 \usage{
 cleanup(
   df,
@@ -17,29 +17,29 @@ cleanup(
 )
 }
 \arguments{
-\item{df}{data.frame object; recommendation is to use the default 'Censo 2017 Chile' database}
+\item{df}{objeto \code{data.frame}. Se recomienda usar la base original del Censo 2017, disponible a través de \code{load_data()}. \cr \cr \code{data.frame} object; recommendation is to use the original 2017 census database, available through \code{load_data()}.}
 
-\item{year}{integer, self-explanatory. Supported value is 2017 (alpha version), with 2012, 2002 and 1992 coming in later revisions}
+\item{year}{integer. Default es \code{2017}, que es la única disponible para la versión \code{1.x.x}. \cr \cr integer. Default is \code{2017}, which is the only supported for version \code{1.x.x}.}
 
-\item{tiphog}{string: tipo de hogar field. Default is 'p01'}
+\item{tiphog}{string. Nombre del campo de tipo de hogar. Default es \code{p01}. \cr \cr string. Name of the home type field. Default is \code{p01}.}
 
-\item{ocupac}{string: tipo de ocupacion field. Default is 'p02'}
+\item{ocupac}{string. Nombre del campo de ocupación de la vivienda. Default es \code{p02}. \cr \cr string. Name of the home occupation field. Default is \code{p02}.}
 
-\item{ndorms}{string: n de dormitorios field. Default is 'p04'}
+\item{ndorms}{string. Nombre del campo con el número de dormitorios del hogar. Default es \code{p04}. \cr \cr string. Name of the number of bedrooms field. Default is \code{p04}.}
 
-\item{parent}{string: parentesco field. Default is 'p07'}
+\item{parent}{string. Nombre del campo de parentesco. Default es \code{p07}. \cr \cr string. Name of the familial relationship field. Default is \code{p07}.}
 
-\item{muro}{string: condicion del muro field. Default is 'p03a'}
+\item{muro}{string. Nombre del campo de condición del muro. Default es \code{p03a}. \cr \cr string. Name of the wall condition field. Default is \code{p03a}.}
 
-\item{techo}{string: condicion del techo field. Default is 'p03b'}
+\item{techo}{string. Nombre del campo de condición del techo. Default es \code{p03b}. \cr \cr string. Name of the ceiling condition field. Default is \code{p03b}.}
 
-\item{suelo}{string: condicion del suelo field. Default is 'p03c'}
+\item{suelo}{string. Nombre del campo de condición del suelo. Default es \code{p03c}. \cr \cr string. Name of the floor condition field. Default is \code{p03c}.}
 }
 \value{
-data.frame object
+objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. \cr \cr \code{data.frame} object containing only the variables that are necessary for the following calculations.
 }
 \description{
-Census database cleanup
+Limpia la base de datos de forma de normalizar los nombres de los campos y reducir la cantidad de variables, facilitando así la ejecución de las funciones que siguen en el flujo de cálculo. \cr \cr Cleans the database, normalizing the field names and reducing the number of variables, facilitiating the execution of the following functions down the workflow.
 }
 \examples{
 'void for now'

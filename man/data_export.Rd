@@ -2,24 +2,24 @@
 % Please edit documentation in R/data_export.R
 \name{data_export}
 \alias{data_export}
-\title{Export ISMT data}
+\title{Exportar datos del ISMT -- Export ISMT data}
 \usage{
 data_export(df, r, path = "", format = "rds")
 }
 \arguments{
-\item{df}{data.frame}
+\item{df}{objeto \code{data.frame}, que corresponde a la data a exportar. \cr \code{data.frame} object, corresponding to the data to be exported.}
 
-\item{r}{integer}
+\item{r}{integer. Número de la región trabajada. Se especifica para dar nombre al archivo. \cr \cr integer. Number of the working region. Specified to name the file.}
 
-\item{path}{string}
+\item{path}{string. Ubicación de la carpeta donde se deberían guardar los archivos. En caso de no proveer una ubicación, se creará un carpeta \code{C:/ISMT_Files/data}, que se usará como \code{path}. \cr \cr string. Location of the directory where files should be saved. If empty, will create a \code{C:/ISMT_Files/data} folder, which will be used as \code{path}.}
 
-\item{format}{string}
+\item{format}{string. Formato para guardar el archivo. Default es \code{rds}, y también se acepta \code{csv}. \cr \cr string. Format for the saved file. Default is \code{rds}, but \code{csv} is also accepted.}
 }
 \value{
-message
+Retorna el archivo en la carpeta. \cr \cr Returns the file in directory.
 }
 \description{
-Export ISMT data
+Exporta datos resultantes de la ejecución del cálculo del ISMT a la carpeta especificada. \cr \cr Exports data resulting from the calculation of ISMT to the specified directory.
 }
 \examples{
 'void for now'

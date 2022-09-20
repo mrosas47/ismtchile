@@ -7,21 +7,21 @@
 region_filter(df, r, ur, rfield = "region", urfield = "area")
 }
 \arguments{
-\item{df}{objeto \code{data.frame}. Hasta la versión 1.x.x, sólo se acepta el Censo 2017. \cr \code{data.frame} object. As for package version 1.x.x, only the 2017 Chilean census is accepted.}
+\item{df}{objeto \code{data.frame}. Hasta la versión \code{1.x.x}, sólo se acepta el Censo 2017. \cr \cr \code{data.frame} object. As for package version \code{1.x.x}, only the 2017 Chilean census is accepted.}
 
-\item{r}{integer. Values between 1 and 16 are acceptable for Chile 2017. If r == 99, no region will be defined and work will continue with national level values.}
+\item{r}{integer. Se aceptan valores entre 1 y 16 para Chile 2017. Si \code{r == 99}, no se define una región en particular y se trabaja con valores a nivel nacional. \cr \cr integer. Values between 1 and 16 are acceptable for Chile 2017. If \code{r == 99}, no region will be defined and work will continue with national level values.}
 
-\item{ur}{integer. Accepted values are ´1´ and ´2´. Defines whether urban or rural data is requested.}
+\item{ur}{integer. Valores aceptables son \code{1} y \code{2}. Define si se requiere zona urbana \code{ur = 1} o rural \code{ur = 2}. \cr \cr integer. Accepted values are \code{1} and \code{2}. Defines whether urban \code{ur = 1} or rural \code{ur = 2} data is requested.}
 
-\item{rfield}{string. Name of the field corresponding to the region number. Default is ´region´}
+\item{rfield}{string. Nombre del campo que corresponde al número de la región. Default es \code{region}. \cr \cr string. Name of the field corresponding to the region number. Default is \code{region}.}
 
-\item{urfield}{string. Name of the field corresponding to the desired area (urban or rural). Default is ´area´}
+\item{urfield}{string. Nombre del campo que define el tipo de área (urbana o rural). Default es \code{area}. \cr \cr string Name of the field corresponding to the desired area (urban or rural). Default is \code{area}.}
 }
 \value{
-data.frame object
+objeto \code{data.frame} con la información censal filtrada para la región de trabajo. \cr \cr \code{data.frame} object with the census information filtered for the working region.
 }
 \description{
-Filtra la base de datos original de forma de incluir sólo la región y el área (urbana o rural) deseadas. La función asume que la data corresponde a la base de dato original del Censo 2017, obtenible a través de \code{load_data()}. \cr Filters the original data so as to include only the desired region and area (urban or rural). The function assumes the data corresponds to the original Censo 2017 database, as can be obtained from \code{load_data()}.
+Filtra la base de datos original de forma de incluir sólo la región y el área (urbana o rural) deseadas. La función asume que la data corresponde a la base de dato original del Censo 2017, obtenible a través de \code{load_data()}. \cr \cr Filters the original data so as to include only the desired region and area (urban or rural). The function assumes the data corresponds to the original Censo 2017 database, as can be obtained from \code{load_data()}.
 }
 \examples{
 'void for now'

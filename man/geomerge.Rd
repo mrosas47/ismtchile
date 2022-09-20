@@ -2,24 +2,24 @@
 % Please edit documentation in R/geomerge.R
 \name{geomerge}
 \alias{geomerge}
-\title{Adding ISMT data to shapefile}
+\title{Espacializando data del ISMT -- Spacializing ISMT data}
 \usage{
 geomerge(df, shp, grouping.df = "zona", grouping.shp = "GEOCODIGO")
 }
 \arguments{
-\item{df}{data.frame object, corresponding to the data obtained from the previous steps. Assumes 'df' will be grouped by the appropriate geographic unit; in case of Censo2017, the grouping variable is 'geocode', which through the ismt_scores() function has been renamed 'zona'.}
+\item{df}{objeto \code{data.frame}. Asume que los datos estarán agrupados a la unidad espacial correspondiente al shapefile especificado, tras la ejecución de \code{ismt_scores()}.}
 
-\item{shp}{simple feature object (ESRI shapefile). Usage is intended for the shapefile downloaded through load_shp(), or, alternatively, the official shapefile obtained directly from INE. If downloaded directly from INE, make sure the geographic unit matches the grouping used in the calculation process.}
+\item{shp}{objeto \code{simple feature} (ESRI shapefile). El uso esperado incluye el shapefile censal, disponible en la página oficial del Censo o a través de \code{load_shp()} para zonas urbanas y localidades rurales.}
 
-\item{grouping.df}{string. Name of the field containing the grouping variable in the data table.}
+\item{grouping.df}{string. Nombre del campo con la variable agrupadora en la tabla de datos \cr \cr string. Name of the field containing the grouping variable in the data table.}
 
-\item{grouping.shp}{string. Name of the field containing the grouping variable in the shapefile.}
+\item{grouping.shp}{string. Nombre del campo con la variable agrupadora en el shapefile. \cr \cr string. Name of the field containing the grouping variable in the shapefile.}
 }
 \value{
-data.frame object.
+objeto \code{data.frame} con la información espacializada, lista para exportar. \cr \cr \code{data.frame} object containing the spacialized information, ready for export.
 }
 \description{
-Adding ISMT data to shapefile
+Espacializa la data obtenida del cálculo del ISMT mediante la unión con un shapefile de la unidad espacial correspondiente. \cr \cr Spacializes the data obtained from ISMT caclulation through merging with a shapefile of the corresponding spatial unit.
 }
 \examples{
 'void for now'
