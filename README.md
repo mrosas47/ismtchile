@@ -1,14 +1,10 @@
-<style>
-  html {text-align: justify;}  
-</style>
-
 # Índice Socio Material Territorial
 
 #### ESP
 
 ### General
 
-El paquete ```ismtchile ``` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. La metodología completa está disponible en <a href='https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about'>este link</a>. </br> La construcción social del territorio y su materialidad resultan de una dialéctica socio-espacial donde se reconoce que el componente social estructura los territorios, al mismo tiempo que los territorios dan forma a la sociedad. En el presente estudio, esta dialéctica es fundamental para comprender la dimensión de materialidad territorial, la cual es observada a través de variables sociales y la calidad de la vivienda en la ciudad de Santiago. </br> </br> El Índice está basado en 4 variables derivadas del Censo de Población: <ul><li>Escolaridad del jefe de hogar</li><li>Materialidad de la vivienda</li><li>Hacinamiento</li><li>Allegamiento</li></ul>
+El paquete ```ismtchile``` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. La metodología completa está disponible en <a href='https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about'>este link</a>. </br> La construcción social del territorio y su materialidad resultan de una dialéctica socio-espacial donde se reconoce que el componente social estructura los territorios, al mismo tiempo que los territorios dan forma a la sociedad. En el presente estudio, esta dialéctica es fundamental para comprender la dimensión de materialidad territorial, la cual es observada a través de variables sociales y la calidad de la vivienda en la ciudad de Santiago. </br> </br> El Índice está basado en 4 variables derivadas del Censo de Población: <ul><li>Escolaridad del jefe de hogar</li><li>Materialidad de la vivienda</li><li>Hacinamiento</li><li>Allegamiento</li></ul>
 
 ### Variables 
 
@@ -67,3 +63,8 @@ c17geomerge %>% geoexport(13, loc_dir)
 
 Autor del paquete: </br> <ul><li>Martín Rosas Araya, Observatorio de Ciudades UC -- mrosas1690@gmail.com</li></ul>
 Autores del Indicador: </br> <ul><li>Dr. Ricardo Truffello, Observatorio de ciudades UC -- rtruffel@uc.cl</li><li>Mónica Flores</li></ul>
+
+<style>
+  html {text-align: justify;}
+  h1, h3 {text-align: center;}
+</style>
