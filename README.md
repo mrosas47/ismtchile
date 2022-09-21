@@ -1,7 +1,3 @@
----
----
----
-
 # Índice Socio Material Territorial
 
 #### ESP
@@ -130,32 +126,34 @@ El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores
 
 ### Instalación y uso
 
-    # install.packages('remotes')
+```
+# install.packages('remotes')
 
-    # remotes::install_github('mrosas47/ismtchile')
+# remotes::install_github('mrosas47/ismtchile')
 
-    library(ismtchile)
-    library(tidyverse)
-    library(here)
+library(ismtchile)
+library(tidyverse)
+library(here)
 
-    loc_dir <- here()
+loc_dir <- here()
 
-    crit_AIM <- get_criteria(13, path = loc_dir)
+crit_AIM <- get_criteria(13, path = loc_dir)
 
-    c17 <- load_data(13, path = loc_dir) %>% 
-      region_filter(13, 1) %>% 
-      cleanup() %>% 
-      precalc() %>% 
-      get_pca() %>% 
-      ismt_scores(crit_AIM, 13)
+c17 <- load_data(13, path = loc_dir) %>% 
+  region_filter(13, 1) %>% 
+  cleanup() %>% 
+  precalc() %>% 
+  get_pca() %>% 
+  ismt_scores(crit_AIM, 13)
       
-    c17 %>% data_export(13, loc_dir)
+c17 %>% data_export(13, loc_dir)
 
-    c17geo <- load_shp(13, 1, loc_dir)
+c17geo <- load_shp(13, 1, loc_dir)
 
-    c17geomerge <- geomerge(c17, c17geo)
+c17geomerge <- geomerge(c17, c17geo)
 
-    c17geomerge %>% geoexport(13, loc_dir)
+c17geomerge %>% geoexport(13, loc_dir)
+```
 
 ### Autoría y crédito
 
@@ -176,11 +174,3 @@ Autores del Indicador: </br>
 <li>Mónica Flores</li>
 
 </ul>
-
-```{=html}
-<style>
-  html {text-align: justify;}
-  h1, h3 {text-align: center;}
-</style>
-```
-
