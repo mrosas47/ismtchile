@@ -42,7 +42,7 @@ Se calculó tomando en cuenta 7 niveles de escolaridad alcanzado por el jefe de 
 
 </ul>
 
-Estos niveles de escolaridad fueron complementados con información del censo que hace referencia a si se completó o no el nivel educacional previamente declarado. (Variables p14 y p15).
+Estos niveles de escolaridad fueron complementados con información del censo que hace referencia a si se completó o no el nivel educacional previamente declarado. (Variables ```p14``` y ```p15```).
 
 ##### <b>Calidad de la vivienda</b>
 
@@ -169,8 +169,33 @@ Autores del Indicador: </br>
 
 <ul>
 
-<li>Dr. Ricardo Truffello, Observatorio de ciudades UC -- [rtruffel\@uc.cl](mailto:rtruffel@uc.cl){.email}</li>
+<li>Ricardo Truffello</li>
 
 <li>Mónica Flores</li>
 
+<li>Gabriela Ulloa</li>
+
+<li>Isidro Puig</li>
+
+<li>Natalia Ramírez</li>
+
+<li>Francisca Balbontin</li>
+
+<li>Martín Rosas</li>
+
+<li>[hola\@observatoriodeciudades.com](mailto:hola@observatoriodeciudades.com)</li>
+
 </ul>
+
+# Socio-Material Territorial Index
+
+#### ENG
+
+### General
+
+The `ismtchile` package was created to facilitate the calculation and distribution of the Socio-Material Territorial Index, made by <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. The complete methodology is available at <a href='https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about'>this link</a>. </br> 
+
+<style>
+  html {text-align: justify}
+  h1, h3 {text-align: center}
+</style>
