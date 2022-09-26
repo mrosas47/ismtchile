@@ -29,7 +29,7 @@ region_filter <- function(df, r, ur, rfield = 'region', urfield = 'area') {
     filtered_data <- df %>%
       filter(
 
-        region == str_pad(as.character(r), pad = '0', width = 2, side = 'left'),
+        region == r,
         area == ur
 
       )
