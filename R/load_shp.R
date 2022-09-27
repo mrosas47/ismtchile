@@ -117,7 +117,7 @@ load_shp <- function(r, ur, path = '') {
 
   }
 
-  unzip(glue('{path}/R{r}.zip'), exdir = glue('{path}'))
+  unzip(glue('{path}/R{region}.zip'), exdir = glue('{path}'))
 
   unlink(glue('{path}/R{region}.zip'))
 
