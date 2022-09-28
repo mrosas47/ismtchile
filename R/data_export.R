@@ -16,7 +16,7 @@
 
 data_export <- function(df, r , path = '', format = 'rds') {
 
-  region <- str_pad(as.charatcer(r), pad = '0', side = 'left', width = 2)
+  region <- str_pad(as.character(r), pad = '0', side = 'left', width = 2)
 
   if (path == '') {
 

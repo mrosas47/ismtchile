@@ -17,7 +17,7 @@
 
 geoexport <- function(df, r, path = '') {
 
-  region <- str_pad(as.charatcer(r), pad = '0', side = 'left', width = 2)
+  region <- str_pad(as.character(r), pad = '0', side = 'left', width = 2)
 
   if (path == '') {
 
