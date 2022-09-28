@@ -16,6 +16,8 @@
 
 data_export <- function(df, r , path = '', format = 'rds') {
 
+  region <- str_pad(as.charatcer(r), pad = '0', side = 'left', width = 2)
+
   if (path == '') {
 
     message('"path is void"; files will be saved to C:/ISMT_Files/data')
@@ -32,7 +34,7 @@ data_export <- function(df, r , path = '', format = 'rds') {
 
   if (format == 'rds') {
 
-    df %>% saveRDS(glue('{path}/ISMT_R{r}_data.rds'))
+    df %>% saveRDS(glue('{path}/ISMT_R{region}_data.rds'))
 
   } else if (format == 'csv') {
 

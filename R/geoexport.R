@@ -17,6 +17,8 @@
 
 geoexport <- function(df, r, path = '') {
 
+  region <- str_pad(as.charatcer(r), pad = '0', side = 'left', width = 2)
+
   if (path == '') {
 
     message('"path is void"; files will be saved to C:/ISMT_Files/geodata')
@@ -31,7 +33,7 @@ geoexport <- function(df, r, path = '') {
 
   }
 
-  df %>% write_sf(glue('{path}/ISMT_R{r}_geodata.shp'))
+  df %>% write_sf(glue('{path}/ISMT_R{region}_geodata.shp'))
 
   message('Geodata successfully exported!')
 
