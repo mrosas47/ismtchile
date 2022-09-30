@@ -136,7 +136,7 @@ ismt_scores <- function(df, criteria, r, ismt_score = 'ismt_pn', grouping = 'geo
     ) %>%
     select(
 
-      'zona', 'ismtpn', 'gse_prom', 'gse_dom', 'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Alto', 'Medio', 'Bajo', 'AB', 'C1', 'C2', 'C3', 'D', 'E', 'ind_hac', 'hacin_cri', 'hacin_med', 'hacin_no', 'alleg', 'escolar', 'mat_acept', 'mat_recup', 'mat_irrec', 'ind_mat'
+      'zona', 'total_hogs', 'ismtpn', 'gse_prom', 'gse_dom', 'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Alto', 'Medio', 'Bajo', 'AB', 'C1', 'C2', 'C3', 'D', 'E', 'ind_hac', 'hacin_cri', 'hacin_med', 'hacin_no', 'alleg', 'escolar', 'mat_acept', 'mat_recup', 'mat_irrec', 'ind_mat'
 
     )
 
