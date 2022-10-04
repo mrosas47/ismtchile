@@ -80,3 +80,4 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
   return(calculations)
 
 }
+

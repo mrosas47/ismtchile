@@ -19,7 +19,7 @@
 #' @return objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. \cr \cr \code{data.frame} object containing only the variables that are necessary for the following calculations.
 #' @export cleanup
 #'
-#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>% cleanup()
+#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>%  cleanup()
 
 cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p04', parent = 'p07', muro = 'p03a', techo = 'p03b', suelo = 'p03c') {
 
@@ -77,7 +77,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
           TRUE ~ NA_integer_
 
         ),
-        cond_cubierta = case_when(
+        cond_techo = case_when(
 
           p03b >= 1 & p03b <= 3  ~ 3L,
           p03b >3 & p03b <= 5    ~ 2L,
@@ -93,10 +93,10 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
           TRUE ~ NA_integer_
 
         ),
-        mat_aceptable   = if_else(cond_muro == 3 & cond_cubierta == 3 & cond_suelo == 3, 1L, 0L),
-        mat_irrecup     = if_else(cond_muro == 1 | cond_cubierta == 1 | cond_suelo == 1, 1L, 0L),
+        mat_aceptable   = if_else(cond_muro == 3 & cond_techo == 3 & cond_suelo == 3, 1L, 0L),
+        mat_irrecup     = if_else(cond_muro == 1 | cond_techo == 1 | cond_suelo == 1, 1L, 0L),
         mat_recuperable = if_else(mat_aceptable == 0 & mat_irrecup == 0, 1L, 0L),
-        ind_mater = cond_muro + cond_cubierta + cond_suelo,
+        ind_mater = cond_muro + cond_techo + cond_suelo,
 
         ind_hacinam = case_when(
 
@@ -122,7 +122,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
       ) %>%
       select(
 
-        'geocode', 'esc_recode', 'esc_cat1', 'esc_cat2', 'esc_cat3', 'esc_cat4', 'esc_cat5', 'esc_cat6', 'esc_cat7', 'cond_muro', 'cond_cubierta', 'cond_suelo', 'mat_aceptable', 'mat_irrecup', 'mat_recuperable', 'sin_hacin', 'hacin_medio', 'hacin_critico', 'a_esc_cont', 'ind_mater', 'ind_hacinam', 'n_hog_alleg', 'escolaridad', 'n'
+        'geocode', 'esc_recode', 'esc_cat1', 'esc_cat2', 'esc_cat3', 'esc_cat4', 'esc_cat5', 'esc_cat6', 'esc_cat7', 'cond_muro', 'cond_techo', 'cond_suelo', 'mat_aceptable', 'mat_irrecup', 'mat_recuperable', 'sin_hacin', 'hacin_medio', 'hacin_critico', 'a_esc_cont', 'ind_mater', 'ind_hacinam', 'n_hog_alleg', 'escolaridad', 'n'
 
       )
 

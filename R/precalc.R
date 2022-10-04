@@ -27,7 +27,7 @@ precalc <- function(df, hacin = 'ind_hacinam', alleg = 'n_hog_alleg', esc = 'a_e
     mutate(
 
       ind_hacinam = -1 * ind_hacinam,
-      ind_alleg = -1 * ind_mater,
+      ind_alleg = -1 * ind_alleg,
 
       ptje_esc = ismtchile::normvar(a_esc_cont) * 1000,
       ptje_hacin = ismtchile::normvar(ind_hacinam) * 1000,
