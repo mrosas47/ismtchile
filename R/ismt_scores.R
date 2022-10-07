@@ -38,7 +38,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
 
   e <- c(8.3, 5, 7.6, 14.7, 11.1, 16.5, 21.5, 16.7, 22.5, 15.6, 7.1, 3.9, 7.8, 17.9, 9.7, 23.7, 14)
 
-  aim <- data.frame(
+  cuts <- data.frame(
 
     region, ab, c1a, c1b, c2, c3, d, e
 
