@@ -20,10 +20,10 @@
 #' @import stringr
 #' @import glue
 #'
-#' @return
-#' @export
+#' @return data.frame with ISMT
+#' @export full_ismt
 #'
-#' @examples
+#' @examples 'void for now'
 full_ismt <- function (df, r, ur, rfield = 'region', urfield = 'area', year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p04', parent = 'p07', muro = 'p03a', techo = p03b, suelo = 'p03c', grouping = 'geocode') {
 
   df0 <- df %>%

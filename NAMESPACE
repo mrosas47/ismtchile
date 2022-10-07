@@ -2,6 +2,7 @@
 
 export(cleanup)
 export(data_export)
+export(full_ismt)
 export(geoexport)
 export(geomerge)
 export(get_criteria)

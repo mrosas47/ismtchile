@@ -4,25 +4,18 @@
 \alias{ismt_scores}
 \title{Cálculos finales de ISMT -- ISMT final calculations}
 \usage{
-ismt_scores(
-  df,
-  criteria,
-  r,
-  ismt_score = "ismt_pn",
-  grouping = "geocode",
-  n = "n"
-)
+ismt_scores(df, r, ismt_score = "ismt_pn", grouping = "geocode")
 }
 \arguments{
 \item{df}{objeto \code{data.frame}. Asume que la base de datos ha pasado por \code{cleanup()}, \code{precalc()}, y \code{get_pca()}. \cr \cr \code{data.frame} object. Assumes the database has been through \code{cleanup()}, \code{precalc()}, and \code{get_pca()}.}
-
-\item{criteria}{objeto \code{data.frame} que contenga los criterios estadísticos AIM para el análisis de componentes principales. \cr \cr \code{data.frame} object that contains the AIM statistical criteria for principal components analysis.}
 
 \item{r}{integer. Número de la región de trabajo. Acepta valores entre 1 y 16; si \code{r = 99}, se utilizan valores a nivel nacional. \cr \cr integer. Number of the working region. Accepts values between 1 and 16; if \code{r = 99}, national-level values will be used.}
 
 \item{ismt_score}{string. Nombre del campo del puntaje ISMT, calculado desde \code{get_pca()}. Default es \code{ismt_pn}. \cr \cr string. Name of the ISMT sscore field, as calculated from \code{get_pca()]}. Default is \code{ismt_pn}.}
 
 \item{grouping}{string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es \code{geocode}. \cr \cr string. Name of the field with the spacial grouping unit variable. Default is \code{geocode}.}
+
+\item{criteria}{objeto \code{data.frame} que contenga los criterios estadísticos AIM para el análisis de componentes principales. \cr \cr \code{data.frame} object that contains the AIM statistical criteria for principal components analysis.}
 
 \item{n}{string. Nombre del campo derivado de \code{cleanup()} que tiene valor \code{n = 1} para cada jefe de hogar. Usado para conteo de totales. Default es \code{n}. \cr \cr string. Name of the field, derived from \code{cleanup()}, that  has value \code{n = 1} for each home head. Default es \code{n}.}
 }
