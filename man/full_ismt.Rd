@@ -57,5 +57,5 @@ data.frame with ISMT
 Cálculo de ISMT completo a partir del Censo 2017 -- Full ISMT calculation from 2017 Census.
 }
 \examples{
-'void for now'
+ismt <- full_ismt(c17, 13, 1)
 }
