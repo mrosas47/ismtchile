@@ -20,7 +20,7 @@ full_ismt <- function (df, r, ur, rfield = 'region', urfield = 'area', year = 20
     ismtchile::cleanup() %>%
     ismtchile::precalc() %>%
     ismtchile::get_pca() %>%
-    ismtchile::ismt_scores(criteria = criteria, r = r)
+    ismtchile::ismt_scores(r = r)
 
   return(df0)
 
