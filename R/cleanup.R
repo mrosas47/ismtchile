@@ -157,7 +157,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
           p03a %in% c(1 : 3) ~ 3,
           p03a %in% c(4, 5) ~ 2,
           p03a == 6 ~ 1,
-          TRUE ~ NA_integer_
+          TRUE ~ NA_real_
 
         ),
         cond_techo = case_when(
@@ -165,7 +165,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
           p03b %in% c(1 : 3) ~ 3,
           p03b %in% c(4, 5) ~ 2,
           p03b %in% c(6, 7) ~ 1,
-          TRUE ~ NA_integer_
+          TRUE ~ NA_real_
 
         ),
         cond_suelo = case_when(
@@ -173,7 +173,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
           p03c %in% c(1 : 3) ~ 3,
           p03c %in% c(4 : 6) ~ 2,
           p03c == 7 ~ 1,
-          TRUE ~ NA_integer_
+          TRUE ~ NA_real_
 
         ),
         mat_aceptable   = if_else(cond_muro == 3 & cond_techo == 3 & cond_suelo == 3, 1, 0),
