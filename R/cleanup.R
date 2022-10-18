@@ -112,7 +112,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
 
     nhogares2012 <- df %>%
 
-      filter(dpar == 1) %>%
+      filter(p07 == 1) %>%
       group_by(folio, nviv) %>%
       summarise(
         cant_hog = as.integer(n())
