@@ -16,5 +16,5 @@ double
 normvar: variable normalization
 }
 \examples{
-'void for now'
+x =
 }

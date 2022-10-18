@@ -89,6 +89,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
       Bajo = if_else(ismt_pn <= c3q, 1L, 0L),
 
       ind_hacinam = -1 * ind_hacinam,
+      ind_alleg = -1 * ind_alleg,
 
       zona = geocode
 
@@ -155,7 +156,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
     ) %>%
     select(
 
-      'zona', 'total_hogs', 'ismtpn', 'gse_prom', 'gse_dom', 'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Alto', 'Medio', 'Bajo', 'AB', 'C1', 'C2', 'C3', 'D', 'E', 'ind_hac', 'hacin_cri', 'hacin_med', 'hacin_no', 'alleg', 'escolar', 'mat_acept', 'mat_recup', 'mat_irrec', 'ind_mat'
+      zona, total_hogs, ismtpn, gse_prom, gse_dom, Q1, Q2, Q3, Q4, Q5, Alto, Medio, Bajo, AB, C1, C2, C3, D, E, ind_hac, hacin_cri, hacin_med, hacin_no, alleg, escolar, mat_acept, mat_recup, mat_irrec, ind_mat
 
     )
 

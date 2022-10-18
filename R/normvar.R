@@ -5,7 +5,7 @@
 #' @return double
 #' @export normvar
 #'
-#' @examples 'void for now'
+#' @examples x =
 
 normvar <- function(x) {
 

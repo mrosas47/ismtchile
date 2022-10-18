@@ -41,34 +41,6 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
       ) %>%
       mutate(
 
-        esc_recode = case_when(
-
-          p15 >= 1 & p15 <= 3   ~ 1L,
-          p15 == 4              ~ 2L,
-          p15 > 4 & p15 <= 6    ~ 3L,
-          p15 > 6 & p15<=  10   ~ 4L,
-          p15 == 11             ~ 5L,
-          p15 == 12             ~ 6L,
-          p15 >= 13 & p15 <= 14 ~ 7L,
-          TRUE ~ NA_integer_
-
-        ),
-        esc_cat1 = if_else(esc_recode == 1, 1L, 0L),
-        esc_cat2 = if_else(esc_recode == 2, 1L, 0L),
-        esc_cat3 = if_else(esc_recode == 3, 1L, 0L),
-        esc_cat4 = if_else(esc_recode == 4, 1L, 0L),
-        esc_cat5 = if_else(esc_recode == 5, 1L, 0L),
-        esc_cat6 = if_else(esc_recode == 6, 1L, 0L),
-        esc_cat7 = if_else(esc_recode == 7, 1L, 0L),
-        a_esc_cont = case_when(
-
-          escolaridad == NA ~ NA_integer_,
-          escolaridad == 99 ~ NA_integer_,
-          escolaridad == 27 ~ NA_integer_,
-          TRUE ~ escolaridad
-
-        ),
-
         cond_muro = case_when(
 
           p03a >= 1 & p03a <= 3 ~ 3L,
@@ -106,8 +78,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
         ),
         sin_hacin = if_else(ind_hacinam <= 2.4, 1L, 0L),
         hacin_medio = if_else(ind_hacinam > 2.4 & ind_hacinam <= 4.9, 1L, 0L),
-        hacin_critico = if_else(ind_hacinam > 4.9, 1L, 0L),
-        n = 1
+        hacin_critico = if_else(ind_hacinam > 4.9, 1L, 0L)
 
       ) %>%
       filter(
@@ -122,7 +93,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
       ) %>%
       select(
 
-        'geocode', 'esc_recode', 'esc_cat1', 'esc_cat2', 'esc_cat3', 'esc_cat4', 'esc_cat5', 'esc_cat6', 'esc_cat7', 'cond_muro', 'cond_techo', 'cond_suelo', 'mat_aceptable', 'mat_irrecup', 'mat_recuperable', 'sin_hacin', 'hacin_medio', 'hacin_critico', 'a_esc_cont', 'ind_mater', 'ind_hacinam', 'n_hog_alleg', 'escolaridad', 'n'
+        geocode, cond_muro, cond_techo, cond_suelo, mat_aceptable, mat_irrecup, mat_recuperable, sin_hacin, hacin_medio, hacin_critico, a_esc_cont, ind_mater, ind_hacinam, n_hog_alleg, escolaridad
 
       )
 

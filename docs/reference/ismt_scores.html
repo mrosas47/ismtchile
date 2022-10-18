@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ismtchile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.1</span>
       </span>
     </div>
 
@@ -44,24 +44,13 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ismt_scores</span><span class="op">(</span></span>
-<span>  <span class="va">df</span>,</span>
-<span>  <span class="va">criteria</span>,</span>
-<span>  <span class="va">r</span>,</span>
-<span>  ismt_score <span class="op">=</span> <span class="st">"ismt_pn"</span>,</span>
-<span>  grouping <span class="op">=</span> <span class="st">"geocode"</span>,</span>
-<span>  n <span class="op">=</span> <span class="st">"n"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ismt_scores</span><span class="op">(</span><span class="va">df</span>, <span class="va">r</span>, ismt_score <span class="op">=</span> <span class="st">"ismt_pn"</span>, grouping <span class="op">=</span> <span class="st">"geocode"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>df</dt>
 <dd><p>objeto <code>data.frame</code>. Asume que la base de datos ha pasado por <code><a href="cleanup.html">cleanup()</a></code>, <code><a href="precalc.html">precalc()</a></code>, y <code><a href="get_pca.html">get_pca()</a></code>. <br><br><code>data.frame</code> object. Assumes the database has been through <code><a href="cleanup.html">cleanup()</a></code>, <code><a href="precalc.html">precalc()</a></code>, and <code><a href="get_pca.html">get_pca()</a></code>.</p></dd>
-
-
-<dt>criteria</dt>
-<dd><p>objeto <code>data.frame</code> que contenga los criterios estadísticos AIM para el análisis de componentes principales. <br><br><code>data.frame</code> object that contains the AIM statistical criteria for principal components analysis.</p></dd>
 
 
 <dt>r</dt>
@@ -74,6 +63,10 @@
 
 <dt>grouping</dt>
 <dd><p>string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es <code>geocode</code>. <br><br> string. Name of the field with the spacial grouping unit variable. Default is <code>geocode</code>.</p></dd>
+
+
+<dt>criteria</dt>
+<dd><p>objeto <code>data.frame</code> que contenga los criterios estadísticos AIM para el análisis de componentes principales. <br><br><code>data.frame</code> object that contains the AIM statistical criteria for principal components analysis.</p></dd>
 
 
 <dt>n</dt>
