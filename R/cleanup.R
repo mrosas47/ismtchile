@@ -78,7 +78,16 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
         ),
         sin_hacin = if_else(ind_hacinam <= 2.4, 1L, 0L),
         hacin_medio = if_else(ind_hacinam > 2.4 & ind_hacinam <= 4.9, 1L, 0L),
-        hacin_critico = if_else(ind_hacinam > 4.9, 1L, 0L)
+        hacin_critico = if_else(ind_hacinam > 4.9, 1L, 0L),
+
+        a_esc_cont = case_when(
+
+          escolaridad == NA ~ NA_integer_,
+          escolaridad == 99 ~ NA_integer_,
+          escolaridad == 27 ~ NA_integer_,
+          T ~ escolaridad
+
+        )
 
       ) %>%
       filter(
