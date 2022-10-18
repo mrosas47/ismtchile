@@ -43,31 +43,31 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
 
         cond_muro = case_when(
 
-          p03a >= 1 & p03a <= 3 ~ 3L,
-          p03a >3 & p03a   <= 5 ~ 2L,
-          p03a >5 & p03a   <= 7 ~ 1L,
+          p03a >= 1 & p03a <= 3 ~ 3,
+          p03a > 3 & p03a <= 5 ~ 2,
+          p03a > 5 & p03a <= 7 ~ 1,
           TRUE ~ NA_integer_
 
         ),
         cond_techo = case_when(
 
-          p03b >= 1 & p03b <= 3  ~ 3L,
-          p03b >3 & p03b <= 5    ~ 2L,
-          p03b >5 & p03b <= 7    ~ 1L,
+          p03b >= 1 & p03b <= 3 ~ 3,
+          p03b > 3 & p03b <= 5 ~ 2,
+          p03b > 5 & p03b <= 7 ~ 1,
           TRUE ~ NA_integer_
 
         ),
         cond_suelo = case_when(
 
-          p03c == 1             ~ 3L,
-          p03c >1 & p03c <= 4   ~ 2L,
-          p03c == 5             ~ 1L,
+          p03c == 1 ~ 3,
+          p03c > 1 & p03c <= 4 ~ 2,
+          p03c == 5 ~ 1,
           TRUE ~ NA_integer_
 
         ),
-        mat_aceptable   = if_else(cond_muro == 3 & cond_techo == 3 & cond_suelo == 3, 1L, 0L),
-        mat_irrecup     = if_else(cond_muro == 1 | cond_techo == 1 | cond_suelo == 1, 1L, 0L),
-        mat_recuperable = if_else(mat_aceptable == 0 & mat_irrecup == 0, 1L, 0L),
+        mat_aceptable   = if_else(cond_muro == 3 & cond_techo == 3 & cond_suelo == 3, 1, 0),
+        mat_irrecup     = if_else(cond_muro == 1 | cond_techo == 1 | cond_suelo == 1, 1, 0),
+        mat_recuperable = if_else(mat_aceptable == 0 & mat_irrecup == 0, 1, 0),
         ind_mater = cond_muro + cond_techo + cond_suelo,
 
         ind_hacinam = case_when(
@@ -76,9 +76,120 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
           p04 == 0 ~ cant_per * 2
 
         ),
-        sin_hacin = if_else(ind_hacinam <= 2.4, 1L, 0L),
-        hacin_medio = if_else(ind_hacinam > 2.4 & ind_hacinam <= 4.9, 1L, 0L),
-        hacin_critico = if_else(ind_hacinam > 4.9, 1L, 0L),
+        sin_hacin = if_else(ind_hacinam <= 2.4, 1, 0),
+        hacin_medio = if_else(ind_hacinam > 2.4 & ind_hacinam <= 4.9, 1, 0),
+        hacin_critico = if_else(ind_hacinam > 4.9, 1, 0),
+
+        a_esc_cont = case_when(
+
+          escolaridad == NA ~ NA_integer_,
+          escolaridad == 99 ~ NA_integer_,
+          escolaridad == 27 ~ NA_integer_,
+          T ~ escolaridad
+
+        )
+
+      ) %>%
+      filter(
+
+        !is.na(hacin_critico)
+
+      ) %>%
+      mutate(
+
+        n_hog_alleg = cant_hog - 1
+
+      ) %>%
+      select(
+
+        geocode, cond_muro, cond_techo, cond_suelo, mat_aceptable, mat_irrecup, mat_recuperable, sin_hacin, hacin_medio, hacin_critico, a_esc_cont, ind_mater, ind_hacinam, n_hog_alleg, escolaridad
+
+      )
+
+    return(cleandf)
+
+  } else if (year == 2012) {
+
+    nhogares2012 <- df %>%
+
+      filter(dpar == 1) %>%
+      group_by(folio, nviv) %>%
+      summarise(
+        cant_hog = as.integer(n())
+      ) %>%
+      ungroup()
+
+    c12clean <- df %>%
+      left_join(nhogares2012, by = c("folio", "nviv")) %>%
+      mutate(
+
+        escolaridad = case_when(
+          p28 == 1 ~ 0L,
+          p28 == 2 ~ 0L,
+          p28 == 3 ~ 0L,
+          p28 == 4 ~ 0L,
+          p28 == 5 ~ p30,
+          p28 == 6 ~ p30 + 8L,
+          p28 == 7 ~ p30 + 8L,
+          p28 == 8 ~ p30 + 12L,
+          p28 == 9 ~ p30 + 12L,
+          p28 == 10 ~ p30 + 12L,
+          p28 == 11 ~ p30 + 17L,
+          p28 == 12 & p30 <= 2 ~ p30 + 19L,
+          p28 == 12 & p30 > 2 ~ 21L,
+          TRUE ~ NA_integer_
+        ),
+        cant_per = if_else(v09m < 98 & v09m != 0, v09m, NA_integer_),
+        cant_hog = if_else(cant_hog < 98 , cant_hog, NA_integer_)
+
+      )
+
+    cleandf <- c12clean %>%
+      filter(
+
+        p07 == 1
+
+      ) %>%
+      mutate(
+
+        cond_muro = case_when(
+
+          p03a %in% c(1 : 3) ~ 3,
+          p03a %in% c(4, 5) ~ 2,
+          p03a == 6 ~ 1,
+          TRUE ~ NA_integer_
+
+        ),
+        cond_techo = case_when(
+
+          p03b %in% c(1 : 3) ~ 3,
+          p03b %in% c(4, 5) ~ 2,
+          p03b %in% c(6, 7) ~ 1,
+          TRUE ~ NA_integer_
+
+        ),
+        cond_suelo = case_when(
+
+          p03c %in% c(1 : 3) ~ 3,
+          p03c %in% c(4 : 6) ~ 2,
+          p03c == 7 ~ 1,
+          TRUE ~ NA_integer_
+
+        ),
+        mat_aceptable   = if_else(cond_muro == 3 & cond_techo == 3 & cond_suelo == 3, 1, 0),
+        mat_irrecup     = if_else(cond_muro == 1 | cond_techo == 1 | cond_suelo == 1, 1, 0),
+        mat_recuperable = if_else(mat_aceptable == 0 & mat_irrecup == 0, 1, 0),
+        ind_mater = cond_muro + cond_techo + cond_suelo,
+
+        ind_hacinam = case_when(
+
+          p04 >= 1 ~ cant_per / p04,
+          p04 == 0 ~ cant_per * 2
+
+        ),
+        sin_hacin = if_else(ind_hacinam <= 2.4, 1, 0),
+        hacin_medio = if_else(ind_hacinam > 2.4 & ind_hacinam <= 4.9, 1, 0),
+        hacin_critico = if_else(ind_hacinam > 4.9, 1, 0),
 
         a_esc_cont = case_when(
 
