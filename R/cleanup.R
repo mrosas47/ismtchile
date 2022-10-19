@@ -225,7 +225,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
       filter(p07 == 1) %>%
       group_by(portafolio, vn) %>%
       summarise(
-        cant_hog = max(nh),
+        cant_hog = max(hn),
         cant_pers = max(tp),
         p04 = max(h13)
       ) %>%
