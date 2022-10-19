@@ -222,7 +222,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
   } else if (year == 2002) {
 
     nhogares2002 <- df %>%
-      filter(p17 == 1) %>%
+      filter(p07 == 1) %>%
       group_by(portafolio, vn) %>%
       summarise(
         cant_hog = max(nhog),
