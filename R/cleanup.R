@@ -240,6 +240,25 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
       ) %>%
       mutate(
 
+        escolaridad = case_when(
+          p26a == 1 ~ 0,
+          p26a == 2 ~ 0,
+          p26a == 3 ~ 0,
+          p26a == 4 ~ p26b,
+          p26a == 5 ~ p26b + 8,
+          p26a == 6 ~ p26b + 8,
+          p26a == 7 ~ p26b + 8,
+          p26a == 8 ~ p26b + 8,
+          p26a == 9 ~ p26b + 8,
+          p26a == 10 ~ p26b + 8,
+          p26a == 11 ~ p26b + 8,
+          p26a == 12 ~ p26b + 8,
+          p26a == 13 ~ p26b + 12,
+          p26a == 14 ~ p26b + 12,
+          p26a == 15 ~ p26b + 12,
+          T ~ NA_integer_
+        ),
+
         cond_muro = case_when(
 
           p03a %in% c(1 : 3) ~ 3,
