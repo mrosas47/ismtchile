@@ -256,7 +256,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
           p26a == 13 ~ p26b + 12,
           p26a == 14 ~ p26b + 12,
           p26a == 15 ~ p26b + 12,
-          T ~ NA_integer_
+          T ~ NA_real_
         ),
 
         cond_muro = case_when(
