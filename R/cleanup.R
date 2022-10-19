@@ -219,6 +219,94 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
 
     return(cleandf)
 
+  } else if (year == 2002) {
+
+    nhogares2002 <- df %>%
+      filter(p17 == 1) %>%
+      group_by(portafolio, vn) %>%
+      summarise(
+        cant_hog = max(nhog),
+        cant_pers = max(tp),
+        p04 = max(h13)
+      ) %>%
+      ungroup()
+
+    c02clean <- df %>%
+      left_join(nhogares2002, by = c("portafolio", "vn")) %>%
+      filter(
+
+        p07 == 1
+
+      ) %>%
+      mutate(
+
+        cond_muro = case_when(
+
+          p03a %in% c(1 : 3) ~ 3,
+          p03a %in% c(4, 5) ~ 2,
+          p03a == 6 ~ 1,
+          TRUE ~ NA_real_
+
+        ),
+        cond_techo = case_when(
+
+          p03b %in% c(1 : 3) ~ 3,
+          p03b %in% c(4, 5) ~ 2,
+          p03b %in% c(6, 7) ~ 1,
+          TRUE ~ NA_real_
+
+        ),
+        cond_suelo = case_when(
+
+          p03c %in% c(1 : 3) ~ 3,
+          p03c %in% c(4 : 6) ~ 2,
+          p03c == 7 ~ 1,
+          TRUE ~ NA_real_
+
+        ),
+        mat_aceptable   = if_else(cond_muro == 3 & cond_techo == 3 & cond_suelo == 3, 1, 0),
+        mat_irrecup     = if_else(cond_muro == 1 | cond_techo == 1 | cond_suelo == 1, 1, 0),
+        mat_recuperable = if_else(mat_aceptable == 0 & mat_irrecup == 0, 1, 0),
+        ind_mater = cond_muro + cond_techo + cond_suelo,
+
+        ind_hacinam = case_when(
+
+          p04 >= 1 ~ cant_per / p04,
+          p04 == 0 ~ cant_per * 2
+
+        ),
+        sin_hacin = if_else(ind_hacinam <= 2.4, 1, 0),
+        hacin_medio = if_else(ind_hacinam > 2.4 & ind_hacinam <= 4.9, 1, 0),
+        hacin_critico = if_else(ind_hacinam > 4.9, 1, 0),
+
+        a_esc_cont = case_when(
+
+          escolaridad == NA ~ NA_integer_,
+          escolaridad == 99 ~ NA_integer_,
+          escolaridad == 27 ~ NA_integer_,
+          T ~ escolaridad
+
+        )
+
+      ) %>%
+      filter(
+
+        !is.na(hacin_critico)
+
+      ) %>%
+      mutate(
+
+        n_hog_alleg = cant_hog - 1
+
+      ) %>%
+      select(
+
+        geocode, cond_muro, cond_techo, cond_suelo, mat_aceptable, mat_irrecup, mat_recuperable, sin_hacin, hacin_medio, hacin_critico, a_esc_cont, ind_mater, ind_hacinam, n_hog_alleg, escolaridad
+
+      )
+
+    return(cleandf)
+
   } else {
 
     message('not supported for version 1.x.x')
