@@ -225,13 +225,13 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
       filter(p07 == 1) %>%
       group_by(portafolio, vn) %>%
       summarise(
-        cant_hog = max(nhog),
+        cant_hog = max(nh),
         cant_pers = max(tp),
         p04 = max(h13)
       ) %>%
       ungroup()
 
-    c02clean <- df %>%
+    cleandf <- df %>%
       left_join(nhogares2002, by = c("portafolio", "vn")) %>%
       filter(
 
