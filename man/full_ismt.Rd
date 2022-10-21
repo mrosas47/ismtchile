@@ -32,6 +32,8 @@ full_ismt(
 
 \item{urfield}{string. Nombre del campo que define el tipo de área (urbana o rural). Default es \code{area}. \cr \cr string Name of the field corresponding to the desired area (urban or rural). Default is \code{area}.}
 
+\item{year}{integer. Default es \code{2017}, que es la única disponible para la versión \code{1.x.x}. \cr \cr integer. Default is \code{2017}, which is the only supported for version \code{1.x.x}.}
+
 \item{tiphog}{string. Nombre del campo de tipo de hogar. Default es \code{p01}. \cr \cr string. Name of the home type field. Default is \code{p01}.}
 
 \item{ocupac}{string. Nombre del campo de ocupación de la vivienda. Default es \code{p02}. \cr \cr string. Name of the home occupation field. Default is \code{p02}.}
