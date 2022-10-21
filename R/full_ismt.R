@@ -7,6 +7,7 @@
 #' @param ur integer. Valores aceptables son \code{1} y \code{2}. Define si se requiere zona urbana \code{ur = 1} o rural \code{ur = 2}. \cr \cr integer. Accepted values are \code{1} and \code{2}. Defines whether urban \code{ur = 1} or rural \code{ur = 2} data is requested.
 #' @param rfield string. Nombre del campo que corresponde al número de la región. Default es \code{region}. \cr \cr string. Name of the field corresponding to the region number. Default is \code{region}.
 #' @param urfield string. Nombre del campo que define el tipo de área (urbana o rural). Default es \code{area}. \cr \cr string Name of the field corresponding to the desired area (urban or rural). Default is \code{area}.
+#' @param year integer. Default es \code{2017}, que es la única disponible para la versión \code{1.x.x}. \cr \cr integer. Default is \code{2017}, which is the only supported for version \code{1.x.x}.
 #' @param tiphog string. Nombre del campo de tipo de hogar. Default es \code{p01}. \cr \cr string. Name of the home type field. Default is \code{p01}.
 #' @param ocupac string. Nombre del campo de ocupación de la vivienda. Default es \code{p02}. \cr \cr string. Name of the home occupation field. Default is \code{p02}.
 #' @param ndorms string. Nombre del campo con el número de dormitorios del hogar. Default es \code{p04}. \cr \cr string. Name of the number of bedrooms field. Default is \code{p04}.

@@ -1,7 +1,7 @@
 Package: ismtchile
 Type: Package
 Title: Calculating Índice SocioMaterial Territorial
-Version: 1.1.1
+Version: 1.2.0
 Author: Martín Rosas
 Maintainer: Martín Rosas Araya <mrosas1690@gmail.com>
 Description: Paquete creado con el fin de facilitar el cálculo y distribución del índice Socio Material Territorial (ISMT), elaborado por el Observatorio de Ciudades UC ( \code{\link{www.observatoriodeciudades.com}} ). \cr La metodología completa está disponible en \code{\link{https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about}}. \cr \cr Package created to facilitate the calculation and distribution of the Socio-Material Territorial Index by Observatorio de Ciudades UC ( \code{\link{www.observatoriodeciudades.com}} ). \cr The full methodology is available at \code{\link{https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about}}.
