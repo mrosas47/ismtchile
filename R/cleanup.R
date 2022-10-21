@@ -1,4 +1,4 @@
-#' Limpieza de la base de datos censal -- Census database cleanup
+#' @title Limpieza de la base de datos censal -- Census database cleanup
 #'
 #' @description Limpia la base de datos de forma de normalizar los nombres de los campos y reducir la cantidad de variables, facilitando así la ejecución de las funciones que siguen en el flujo de cálculo. \cr \cr Cleans the database, normalizing the field names and reducing the number of variables, facilitiating the execution of the following functions down the workflow.
 #'

@@ -1,4 +1,4 @@
-#' Cálculo de ISMT completo a partir del Censo 2017 -- Full ISMT calculation from 2017 Census.
+#' @title Cálculo de ISMT completo a partir del Censo 2017 -- Full ISMT calculation from 2017 Census.
 #'
 #' @description Ejecuta el cálculo completo del ISMT
 #'
@@ -31,7 +31,7 @@ full_ismt <- function (df, r, ur, rfield = 'region', urfield = 'area', year = 20
 
   df0 <- df %>%
     ismtchile::region_filter(r = r, ur = ur, rfield = rfield, urfield = urfield) %>%
-    ismtchile::cleanup(tiphog = tiphog, ocupac = ocupac, ndorms = ndorms, parent = parent, muro = muro, techo = techo, suelo = suelo) %>%
+    ismtchile::cleanup(year = year, tiphog = tiphog, ocupac = ocupac, ndorms = ndorms, parent = parent, muro = muro, techo = techo, suelo = suelo) %>%
     ismtchile::precalc() %>%
     ismtchile::get_pca() %>%
     ismtchile::ismt_scores(r = r, grouping = grouping)
