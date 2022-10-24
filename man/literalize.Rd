@@ -2,20 +2,20 @@
 % Please edit documentation in R/literalize.R
 \name{literalize}
 \alias{literalize}
-\title{Literalizar bases censales -- iteralize census databases}
+\title{Literalizar bases censales -- Literalize census databases}
 \usage{
 literalize(df, year)
 }
 \arguments{
-\item{df}{objeto \code{data.frame} correspondiente a la base de datos original de los censos 20177, 2012, 2002, 1992 o 1982. -- \code{data.frame} objectcorresponding to the original database for the 2017, 2012, 2002, 1992 or 1982 census.}
+\item{df}{objeto \code{data.frame} correspondiente a la base de datos original de los censos 2017, 2012, 2002, 1992 o 1982. -- \code{data.frame} object corresponding to the original database for the 2017, 2012, 2002, 1992 or 1982 census.}
 
-\item{year}{}
+\item{year}{integer. Default es \code{2017}, que es la única disponible para la versión \code{1.x.x}. \cr \cr integer. Default is \code{2017}, which is the only supported for version \code{1.x.x}.}
 }
 \value{
-\code{data.frame}
+objeto \code{data.frame}
 }
 \description{
-Literalizar bases censales -- iteralize census databases
+Literalizar bases censales -- Literalize census databases
 }
 \examples{
 'no example for now'
