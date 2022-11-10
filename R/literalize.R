@@ -1,13 +1,13 @@
 #' @title Literalizar bases censales -- Literalize census databases
 #'
 #' @param df objeto \code{data.frame} correspondiente a la base de datos original de los censos 2017, 2012, 2002, 1992 o 1982. -- \code{data.frame} object corresponding to the original database for the 2017, 2012, 2002, 1992 or 1982 census.
-#' @param year integer. Default es \code{2017}, que es la única disponible para la versión \code{1.x.x}. \cr \cr integer. Default is \code{2017}, which is the only supported for version \code{1.x.x}.
+#' @param year integer. No provee Default para forzar la explicitación del año de la base. \cr \cr integer. Default is not provided, so as to fiorce explicitation of the database's year.
 #'
 #' @import magrittr
 #' @import dplyr
 #' @import stringr
 #'
-#' @return objeto \code{data.frame}
+#' @return objeto \code{data.frame} con las variables como texto en lugar de factores (nombres y categorías homologados para todos los censos)
 #' @export literalize
 #'
 #' @examples 'no example for now'
@@ -1194,21 +1194,21 @@ literalize <- function (df, year) {
         hijos_vivos = as.integer(hijos_vivos),
         escolaridad = case_when(
 
-          nivel_educ == 0 ~ as.integer(0),
-          nivel_educ == 1 ~ as.integer(0),
-          nivel_educ == 2 ~ as.integer(curso),
-          nivel_educ == 3 ~ as.integer(curso + 8),
-          nivel_educ == 4 ~ as.integer(curso + 8),
-          nivel_educ == 5 ~ as.integer(curso + 8),
-          nivel_educ == 6 ~ as.integer(curso + 8),
-          nivel_educ == 7 ~ as.integer(curso + 8),
-          nivel_educ == 8 ~ as.integer(curso + 8),
-          nivel_educ == 9 ~ as.integer(curso + 8),
-          nivel_educ == 10 ~ as.integer(curso + 8),
-          nivel_educ == 11 ~ as.integer(curso + 8),
-          nivel_educ == 12 ~ as.integer(curso + 12),
-          nivel_educ == 13 ~ as.integer(curso + 12),
-          nivel_educ == 14 ~ as.integer(curso + 12),
+          tipo_educacion == 0 ~ as.integer(0),
+          tipo_educacion == 1 ~ as.integer(0),
+          tipo_educacion == 2 ~ as.integer(curso),
+          tipo_educacion == 3 ~ as.integer(curso + 8),
+          tipo_educacion == 4 ~ as.integer(curso + 8),
+          tipo_educacion == 5 ~ as.integer(curso + 8),
+          tipo_educacion == 6 ~ as.integer(curso + 8),
+          tipo_educacion == 7 ~ as.integer(curso + 8),
+          tipo_educacion == 8 ~ as.integer(curso + 8),
+          tipo_educacion == 9 ~ as.integer(curso + 8),
+          tipo_educacion == 10 ~ as.integer(curso + 8),
+          tipo_educacion == 11 ~ as.integer(curso + 8),
+          tipo_educacion == 12 ~ as.integer(curso + 12),
+          tipo_educacion == 13 ~ as.integer(curso + 12),
+          tipo_educacion == 14 ~ as.integer(curso + 12),
           TRUE ~ NA_integer_
 
         ),

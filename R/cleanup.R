@@ -227,7 +227,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
       summarise(
         cant_hog = max(hn),
         cant_per = max(tp),
-        p04 = max(h13)
+        p04 = max(p04)
       ) %>%
       ungroup()
 
@@ -240,12 +240,15 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
       ) %>%
       mutate(
 
+        geocode = manzent,
         escolaridad = case_when(
-          p26a %in% c(1 : 3) ~ 0,
-          p26a == 4 ~ p26b,
-          p26a %in% c(5 : 12) ~ p26b + 8,
-          p26a %in% c(13 : 15) ~ p26b + 12,
-          T ~ NA_real_
+
+          p26a %in% c(1 : 3) ~ as.integer(0),
+          p26a == 4 ~ as.integer(p26b),
+          p26a %in% c(5 : 12) ~ as.integer(p26b + 8),
+          p26a %in% c(13 : 15) ~ as.integer(p26b + 12),
+          T ~ NA_integer_
+
         ),
         cond_muro = case_when(
 
@@ -301,6 +304,107 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
         !is.na(hacin_critico)
 
       ) %>%
+      mutate(
+
+        n_hog_alleg = cant_hog - 1
+
+      ) %>%
+      select(
+
+        geocode, cond_muro, cond_techo, cond_suelo, mat_aceptable, mat_irrecup, mat_recuperable, sin_hacin, hacin_medio, hacin_critico, a_esc_cont, ind_mater, ind_hacinam, n_hog_alleg, escolaridad
+
+      )
+
+    return(cleandf)
+
+  } else if (year == 1992) {
+
+    nhogs92 <- df %>%
+      filter(p07 == 1) %>%
+      group_by(portafolio, vivienda) %>%
+      summarise(
+
+        cant_hog = max(hogar),
+        cant_per = max(tp),
+        p04 = max(p04)
+
+      ) %>%
+      ungroup()
+
+    cleandf <- df %>%
+      left_join(nhogs92, by = c('portafolio', 'vivienda')) %>%
+      mutate(
+
+        geocode = geo,
+        escolaridad = case_when(
+
+          tipo_educacion == 0 ~ as.integer(0),
+          tipo_educacion == 1 ~ as.integer(0),
+          tipo_educacion == 2 ~ as.integer(curso),
+          tipo_educacion == 3 ~ as.integer(curso + 8),
+          tipo_educacion == 4 ~ as.integer(curso + 8),
+          tipo_educacion == 5 ~ as.integer(curso + 8),
+          tipo_educacion == 6 ~ as.integer(curso + 8),
+          tipo_educacion == 7 ~ as.integer(curso + 8),
+          tipo_educacion == 8 ~ as.integer(curso + 8),
+          tipo_educacion == 9 ~ as.integer(curso + 8),
+          tipo_educacion == 10 ~ as.integer(curso + 8),
+          tipo_educacion == 11 ~ as.integer(curso + 8),
+          tipo_educacion == 12 ~ as.integer(curso + 12),
+          tipo_educacion == 13 ~ as.integer(curso + 12),
+          tipo_educacion == 14 ~ as.integer(curso + 12),
+          T ~ NA_integer_
+
+        ),
+        cond_muro = case_when(
+
+          p03a %in% c(1, 2) ~ as.integer(3),
+          p03a %in% c(3, 4) ~ as.integer(2),
+          p03a %in% c(5, 6) ~ as.integer(1),
+          T ~ NA_integer_
+
+        ),
+        cond_techo = case_when(
+
+          p03b %in% c(1 : 5) ~ as.integer(3),
+          p03b %in% c(6, 7) ~ as.integer(2),
+          p03b == 8 ~ as.integer(1),
+          T ~ NA_integer_
+
+        ),
+        cond_suelo = case_when(
+
+          p03c %in% c(1 : 3) ~ as.integer(3),
+          p03c %in% c(4 : 6) ~ as.integer(2),
+          p03c %in% c(7, 8) ~ as.integer(1),
+          T ~ NA_integer_
+
+        ),
+        mat_aceptable   = if_else(cond_muro == 3 & cond_techo == 3 & cond_suelo == 3, 1, 0),
+        mat_irrecup     = if_else(cond_muro == 1 | cond_techo == 1 | cond_suelo == 1, 1, 0),
+        mat_recuperable = if_else(mat_aceptable == 0 & mat_irrecup == 0, 1, 0),
+        ind_mater = cond_muro + cond_techo + cond_suelo,
+
+        ind_hacinam = case_when(
+
+          p04.y >= 1 ~ cant_per / p04.y,
+          p04.y == 0 ~ cant_per * 2
+
+        ),
+        sin_hacin = if_else(ind_hacinam <= 2.4, 1, 0),
+        hacin_medio = if_else(ind_hacinam > 2.4 & ind_hacinam <= 4.9, 1, 0),
+        hacin_critico = if_else(ind_hacinam > 4.9, 1, 0),
+
+        a_esc_cont = case_when(
+
+          escolaridad == NA ~ NA_integer_,
+          escolaridad == 99 ~ NA_integer_,
+          escolaridad == 27 ~ NA_integer_,
+          T ~ escolaridad
+
+        )
+
+      )%>%
       mutate(
 
         n_hog_alleg = cant_hog - 1
