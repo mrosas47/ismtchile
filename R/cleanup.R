@@ -21,7 +21,7 @@
 #'
 #' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>%  cleanup()
 
-cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p04', parent = 'p07', muro = 'p03a', techo = 'p03b', suelo = 'p03c') {
+cleanup <- function(df, year = 2017, ocupac = 'p02', ndorms = 'p04', parent = 'p07', muro = 'p03a', techo = 'p03b', suelo = 'p03c') {
 
   names(df)[names(df) == glue('{tiphog}')] <- 'p01'
   names(df)[names(df) == glue('{ocupac}')] <- 'p02'
@@ -122,7 +122,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
     c12clean <- df %>%
       left_join(nhogares2012, by = c("folio", "nviv")) %>%
       mutate(
-
+        geocode = str_pad(as.character(manzent), 14, 'left', '0'),
         escolaridad = case_when(
           p28 == 1 ~ 0L,
           p28 == 2 ~ 0L,
@@ -240,7 +240,6 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
       ) %>%
       mutate(
 
-        geocode = manzent,
         escolaridad = case_when(
 
           p26a %in% c(1 : 3) ~ as.integer(0),
@@ -333,6 +332,7 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
 
     cleandf <- df %>%
       left_join(nhogs92, by = c('portafolio', 'vivienda')) %>%
+      filter(p07 == 1) %>%
       mutate(
 
         geocode = geo,
@@ -377,6 +377,122 @@ cleanup <- function(df, year = 2017, tiphog = 'p01', ocupac = 'p02', ndorms = 'p
           p03c %in% c(1 : 3) ~ as.integer(3),
           p03c %in% c(4 : 6) ~ as.integer(2),
           p03c %in% c(7, 8) ~ as.integer(1),
+          T ~ NA_integer_
+
+        ),
+        mat_aceptable   = if_else(cond_muro == 3 & cond_techo == 3 & cond_suelo == 3, 1, 0),
+        mat_irrecup     = if_else(cond_muro == 1 | cond_techo == 1 | cond_suelo == 1, 1, 0),
+        mat_recuperable = if_else(mat_aceptable == 0 & mat_irrecup == 0, 1, 0),
+        ind_mater = cond_muro + cond_techo + cond_suelo,
+
+        ind_hacinam = case_when(
+
+          p04.y >= 1 ~ cant_per / p04.y,
+          p04.y == 0 ~ cant_per * 2
+
+        ),
+        sin_hacin = if_else(ind_hacinam <= 2.4, 1, 0),
+        hacin_medio = if_else(ind_hacinam > 2.4 & ind_hacinam <= 4.9, 1, 0),
+        hacin_critico = if_else(ind_hacinam > 4.9, 1, 0),
+
+        a_esc_cont = case_when(
+
+          escolaridad == NA ~ NA_integer_,
+          escolaridad == 99 ~ NA_integer_,
+          escolaridad == 27 ~ NA_integer_,
+          T ~ escolaridad
+
+        )
+
+      )%>%
+      mutate(
+
+        n_hog_alleg = cant_hog - 1
+
+      ) %>%
+      select(
+
+        geocode, cond_muro, cond_techo, cond_suelo, mat_aceptable, mat_irrecup, mat_recuperable, sin_hacin, hacin_medio, hacin_critico, a_esc_cont, ind_mater, ind_hacinam, n_hog_alleg, escolaridad
+
+      )
+
+    return(cleandf)
+
+  } else if (year == 1982) {
+
+    nhogs82 <- df %>%
+      filter(parentesco == 1) %>%
+      group_by(
+
+        id_hog
+
+      ) %>%
+      summarise(
+
+        cant_hog = n(),
+        cant_per = max(persona)
+
+      ) %>%
+      ungroup()
+
+    hijos <- df %>%
+      filter(parentesco %in% c(1 : 3)) %>%
+      group_by(
+
+        id_hog
+
+      ) %>%
+      summarise(
+
+        hijos_nacido = max(hijos_nacidosvivos),
+        hijos_vivo = max(hijos_sobrevivientes)
+
+      ) %>%
+      ungroup()
+
+    cleandf <- df %>%
+      left_join(nhogs82, by = 'id_hog') %>%
+      left_join(hijos, by = 'id_hog') %>%
+      filter(p07 == 1) %>%
+      mutate(
+
+        geocode = geo,
+        escolaridad = case_when(
+
+          tipo_educacion == 1 & curso == 0 ~ as.integer(curso),
+          tipo_educacion == 2 ~ as.integer(curso + 8),
+          tipo_educacion == 3 ~ as.integer(curso + 8),
+          tipo_educacion == 4 ~ as.integer(curso + 8),
+          tipo_educacion == 5 ~ as.integer(curso + 8),
+          tipo_educacion == 6 ~ as.integer(curso + 8),
+          tipo_educacion == 7 ~ as.integer(curso + 8),
+          tipo_educacion == 8 ~ as.integer(curso + 8),
+          tipo_educacion == 9 ~ as.integer(curso + 12),
+          tipo_educacion == 10 ~ as.integer(curso + 12),
+          T ~ NA_integer_
+
+        ),
+        cond_muro = case_when(
+
+          p03a %in% c(1, 2) ~ as.integer(3),
+          p03a == 4 ~ as.integer(2),
+          p03a %in% c(5, 6) ~ as.integer(1),
+          T ~ NA_integer_
+
+        ),
+        cond_techo = case_when(
+
+          p03b %in% c(1 : 4) ~ as.integer(3),
+          p03b %in% c(5, 6) ~ as.integer(2),
+          p03b == 8 ~ as.integer(1),
+          T ~ NA_integer_
+
+        ),
+        cond_suelo = case_when(
+
+          p03c %in% c(1 : 4) ~ as.integer(3),
+          p03c %in% c(5, 6) ~ as.integer(2),
+          p03c == 7 ~ as.integer(1),
           T ~ NA_integer_
 
         ),

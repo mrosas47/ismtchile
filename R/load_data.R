@@ -1,6 +1,6 @@
-#' Descargar data censal -- Downloading census data
+#' @title Descargar data censal -- Downloading census data
 #'
-#' @description Descarga la base de datos original del Censo 2017 de Chile a \code{path} y la carga a RStudio, quedando lista para su uso. \cr \cr Downloads the original 2017 Chilean Census database to \code{path} and loads it to RStudio, making it immediately available for use.
+#' @description Descarga la base de datos original del Censo 2017 de Chile a \code{path} y la carga a RStudio, quedando lista para su uso. Cada llamada ala función descarga un archivo, por lo que se debe usar una vez. Para acceder a los datos posteriormente, ver \code{utils::read.csv()} y \code{base::readRDS()}. \cr \cr Downloads the original 2017 Chilean Census database to \code{path} and loads it to RStudio, making it immediately available for use. Each call to the function downloads a file, so it needs to be called once. For posterior access to the data, see \code{utils::read.csv()} and \code{base::readRDS()}.
 #'
 #' @param r integer. Número de la región de trabajo. Acepta valores entre 1 y 16. Si \code{r = 99}, descarga la data censal completa. \code{r = 99} y \code{r = 13} aumentan considerablemente el tiempo de ejecución debido a la gran cantidad de datos. \cr \cr integer. Number of the working region. Accepts values between 1 and 16. If \code{r = 99}, will download the entire database. \code{r = 99} and \code{r = 13} considerably increase execution time due to the volume of data.
 #' @param year integer. Define el año de los datos a descargar. Para la versión \code{1.x.x}, solo se acepta {2017}. \cr \cr integer. Defines the year of the data to download. As for version \code{1.x.x}, only \code{2017} is accepted.

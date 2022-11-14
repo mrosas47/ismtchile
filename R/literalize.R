@@ -479,6 +479,7 @@ literalize <- function (df, year) {
 
         ),
         nviv = as.integer(nviv),
+        folio = as.integer(folio),
         nhogar = as.integer(nhog),
         npers = as.integer(nper),
         cant_hog = as.integer(cant_hog),
@@ -731,6 +732,7 @@ literalize <- function (df, year) {
       ungroup()
 
     hijos2002 <- df %>%
+      filter(p17 %in% c(1 : 3)) %>%
       group_by(portafolio, vn, hn) %>%
       summarise(
         hijos_nacido = max(p34, na.rm = T),
@@ -1001,7 +1003,7 @@ literalize <- function (df, year) {
       ) %>%
       select(
 
-        year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, tipo_area, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, hijos_nacido, hijos_vivos, escolaridad
+        year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, tipo_area, portafolio, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, hijos_nacido, hijos_vivos, escolaridad
 
       )
 
@@ -1386,6 +1388,7 @@ literalize <- function (df, year) {
 
     df0 <- df %>%
       left_join(nhogs82, by = 'id_hog') %>%
+      left_join(hijos, by = 'id_hog') %>%
       mutate(
 
         npers = as.integer(persona),
@@ -1501,7 +1504,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        curso_alto = as.integer(curso),
+        curso_alto = if_else(as.integer(curso) %in% c(1:8), as.integer(curso), 0),
         trabajo = case_when(
 
           as.integer(situacion_empleo) == 1 ~ 'PAGADO',

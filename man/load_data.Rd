@@ -17,7 +17,7 @@ load_data(r, year = 2017, path = "")
 data.frame object
 }
 \description{
-Descarga la base de datos original del Censo 2017 de Chile a \code{path} y la carga a RStudio, quedando lista para su uso. \cr \cr Downloads the original 2017 Chilean Census database to \code{path} and loads it to RStudio, making it immediately available for use.
+Descarga la base de datos original del Censo 2017 de Chile a \code{path} y la carga a RStudio, quedando lista para su uso. Cada llamada ala función descarga un archivo, por lo que se debe usar una vez. Para acceder a los datos posteriormente, ver \code{utils::read.csv()} y \code{base::readRDS()}. \cr \cr Downloads the original 2017 Chilean Census database to \code{path} and loads it to RStudio, making it immediately available for use. Each call to the function downloads a file, so it needs to be called once. For posterior access to the data, see \code{utils::read.csv()} and \code{base::readRDS()}.
 }
 \examples{
 c17 <- load_data(13, path = loc_dir)
