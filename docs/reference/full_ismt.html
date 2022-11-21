@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ismtchile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.4</span>
       </span>
     </div>
 
@@ -48,17 +48,18 @@
 <span>  <span class="va">df</span>,</span>
 <span>  <span class="va">r</span>,</span>
 <span>  <span class="va">ur</span>,</span>
-<span>  rfield <span class="op">=</span> <span class="st">"region"</span>,</span>
-<span>  urfield <span class="op">=</span> <span class="st">"area"</span>,</span>
+<span>  rfield <span class="op">=</span> <span class="st">"id_region"</span>,</span>
+<span>  urfield <span class="op">=</span> <span class="st">"tipo_area"</span>,</span>
 <span>  year <span class="op">=</span> <span class="fl">2017</span>,</span>
-<span>  tiphog <span class="op">=</span> <span class="st">"p01"</span>,</span>
-<span>  ocupac <span class="op">=</span> <span class="st">"p02"</span>,</span>
-<span>  ndorms <span class="op">=</span> <span class="st">"p04"</span>,</span>
-<span>  parent <span class="op">=</span> <span class="st">"p07"</span>,</span>
-<span>  muro <span class="op">=</span> <span class="st">"p03a"</span>,</span>
-<span>  techo <span class="op">=</span> <span class="st">"p03b"</span>,</span>
-<span>  suelo <span class="op">=</span> <span class="st">"p03c"</span>,</span>
-<span>  grouping <span class="op">=</span> <span class="st">"geocode"</span></span>
+<span>  tipo_vivienda <span class="op">=</span> <span class="st">"tipoviv"</span>,</span>
+<span>  ocupacion <span class="op">=</span> <span class="st">"ocup_viv"</span>,</span>
+<span>  ndorms <span class="op">=</span> <span class="st">"ndorms"</span>,</span>
+<span>  parentesco <span class="op">=</span> <span class="st">"parentesco"</span>,</span>
+<span>  muro <span class="op">=</span> <span class="st">"mat_muro"</span>,</span>
+<span>  techo <span class="op">=</span> <span class="st">"mat_techo"</span>,</span>
+<span>  piso <span class="op">=</span> <span class="st">"mat_piso"</span>,</span>
+<span>  grouping <span class="op">=</span> <span class="st">"id_zona"</span>,</span>
+<span>  level <span class="op">=</span> <span class="st">"zc"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -81,43 +82,47 @@
 
 
 <dt>urfield</dt>
-<dd><p>string. Nombre del campo que define el tipo de área (urbana o rural). Default es <code>area</code>. <br><br> string Name of the field corresponding to the desired area (urban or rural). Default is <code>area</code>.</p></dd>
+<dd><p>string. Nombre del campo que define el tipo de área (urbana o rural). Default es <code>tipo_area</code>. <br><br> string Name of the field corresponding to the desired area (urban or rural). Default is <code>tipo_area</code>.</p></dd>
 
 
 <dt>year</dt>
-<dd><p>integer. Default es <code>2017</code>, que es la única disponible para la versión <code>1.x.x</code>. <br><br> integer. Default is <code>2017</code>, which is the only supported for version <code>1.x.x</code>.</p></dd>
+<dd><p>integer. Default es <code>2017</code>. <br><br> integer. Default is <code>2017</code>.</p></dd>
 
 
-<dt>tiphog</dt>
-<dd><p>string. Nombre del campo de tipo de hogar. Default es <code>p01</code>. <br><br> string. Name of the home type field. Default is <code>p01</code>.</p></dd>
+<dt>tipo_vivienda</dt>
+<dd><p>string. Nombre del campo de tipo de vivienda. Default es <code>tipoviv</code>. <br><br> string. Name of the dwelling type field. Default is <code>tipoviv</code>.</p></dd>
 
 
-<dt>ocupac</dt>
-<dd><p>string. Nombre del campo de ocupación de la vivienda. Default es <code>p02</code>. <br><br> string. Name of the home occupation field. Default is <code>p02</code>.</p></dd>
+<dt>ocupacion</dt>
+<dd><p>string. Nombre del campo de ocupación de la vivienda. Default es <code>ocup_viv</code>. <br><br> string. Name of the home occupation field. Default is <code>ocup_viv</code>.</p></dd>
 
 
 <dt>ndorms</dt>
-<dd><p>string. Nombre del campo con el número de dormitorios del hogar. Default es <code>p04</code>. <br><br> string. Name of the number of bedrooms field. Default is <code>p04</code>.</p></dd>
+<dd><p>string. Nombre del campo con el número de dormitorios del hogar. Default es <code>ndorms</code>. <br><br> string. Name of the number of bedrooms field. Default is <code>ndorms</code>.</p></dd>
 
 
-<dt>parent</dt>
-<dd><p>string. Nombre del campo de parentesco. Default es <code>p07</code>. <br><br> string. Name of the familial relationship field. Default is <code>p07</code>.</p></dd>
+<dt>parentesco</dt>
+<dd><p>string. Nombre del campo de parentesco. Default es <code>parentesco</code>. <br><br> string. Name of the familial relationship field. Default is <code>parentesco</code>.</p></dd>
 
 
 <dt>muro</dt>
-<dd><p>string. Nombre del campo de condición del muro. Default es <code>p03a</code>. <br><br> string. Name of the wall condition field. Default is <code>p03a</code>.</p></dd>
+<dd><p>string. Nombre del campo de condición del muro. Default es <code>mat_muro</code>. <br><br> string. Name of the wall condition field. Default is <code>mat_muro</code>.</p></dd>
 
 
 <dt>techo</dt>
-<dd><p>string. Nombre del campo de condición del techo. Default es <code>p03b</code>. <br><br> string. Name of the ceiling condition field. Default is <code>p03b</code>.</p></dd>
+<dd><p>string. Nombre del campo de condición del techo. Default es <code>mat_techo</code>. <br><br> string. Name of the ceiling condition field. Default is <code>mat_techo</code>.</p></dd>
 
 
-<dt>suelo</dt>
-<dd><p>string. Nombre del campo de condición del suelo. Default es <code>p03c</code>. <br><br> string. Name of the floor condition field. Default is <code>p03c</code>.</p></dd>
+<dt>piso</dt>
+<dd><p>string. Nombre del campo de condición del suelo. Default es <code>mat_piso</code>. <br><br> string. Name of the floor condition field. Default is <code>mat_piso</code>.</p></dd>
 
 
 <dt>grouping</dt>
-<dd><p>string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es <code>geocode</code>. <br><br> string. Name of the field with the spacial grouping unit variable. Default is <code>geocode</code>.</p></dd>
+<dd><p>string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es <code>id_zona</code>. <br><br> string. Name of the field with the spacial grouping unit variable. Default is <code>id_zona</code>.</p></dd>
+
+
+<dt>level</dt>
+<dd><p><code>string</code>. Nivel de agrupación de los datos finales. Acepta valores <code>zc</code> (zona censal) y <code>mzn</code> (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es <code>zc</code>. <br><br><code>string</code>. Grouping level for the final data. Values <code>zc</code> (census zone) and <code>mzn</code> (block). Block level is not available for 2017 due to statistical secret of original database. Default is <code>zc</code>.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -130,7 +135,7 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ismt</span> <span class="op">&lt;-</span> <span class="fu">full_ismt</span><span class="op">(</span><span class="va">c17</span>, <span class="fl">13</span>, <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in ismtchile::region_filter(., r = r, ur = ur, rfield = rfield,     urfield = urfield):</span> object 'c17' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in ismtchile::cleanup(., year = year, tiphog = tiphog, ocupac = ocupac,     ndorms = ndorms, parent = parent, muro = muro, techo = techo,     piso = piso, level = level):</span> unused arguments (tiphog = tiphog, ndorms = ndorms)</span>
 </code></pre></div>
     </div>
   </div>

@@ -7,33 +7,39 @@
 cleanup(
   df,
   year = 2017,
-  tiphog = "p01",
-  ocupac = "p02",
-  ndorms = "p04",
-  parent = "p07",
-  muro = "p03a",
-  techo = "p03b",
-  suelo = "p03c"
+  vars.as.factors = F,
+  level = "zc",
+  tipo_viv = "tipoviv",
+  ocupacion = "ocup_viv",
+  parentesco = "parentesco",
+  dormitorios = "ndorms",
+  muro = "mat_muro",
+  techo = "mat_techo",
+  piso = "mat_piso"
 )
 }
 \arguments{
 \item{df}{objeto \code{data.frame}. Se recomienda usar la base original del Censo 2017, disponible a través de \code{load_data()}. \cr \cr \code{data.frame} object; recommendation is to use the original 2017 census database, available through \code{load_data()}.}
 
-\item{year}{integer. Default es \code{2017}, que es la única disponible para la versión \code{1.x.x}. \cr \cr integer. Default is \code{2017}, which is the only supported for version \code{1.x.x}.}
+\item{year}{integer. Default es \code{2017}. \cr \cr integer. Default is \code{2017}.}
 
-\item{tiphog}{string. Nombre del campo de tipo de hogar. Default es \code{p01}. \cr \cr string. Name of the home type field. Default is \code{p01}.}
+\item{vars.as.factors}{\code{boolean}. Si las variables están como factores (como en las bases censales originales), cambiar a \code{TRUE}. Default es \code{FALSE}, ya que se asume que la base pasá por la función \code{literalize()}. \cr \cr \code{boolean}. If variables are as factors (like in the original census databases), change to \code{TRUE}. Default is \code{FALSE}, as it is assumed the database has been through the \code{literalize()} function.}
 
-\item{ocupac}{string. Nombre del campo de ocupación de la vivienda. Default es \code{p02}. \cr \cr string. Name of the home occupation field. Default is \code{p02}.}
+\item{level}{\code{string}. Nivel de agrupación de los datos finales. Acepta valores \code{zc} (zona censal) y \code{mzn} (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es \code{zc}. \cr \cr \code{string}. Grouping level for the final data. Values \code{zc} (census zone) and \code{mzn} (block). Block level is not available for 2017 due to statistical secret of original database. Default is \code{zc}.}
 
-\item{ndorms}{string. Nombre del campo con el número de dormitorios del hogar. Default es \code{p04}. \cr \cr string. Name of the number of bedrooms field. Default is \code{p04}.}
+\item{tipo_viv}{string. Nombre del campo de tipo de vivienda. Default es \code{tipoviv}. \cr \cr string. Name of the dwelling type field. Default is \code{tipoviv}.}
 
-\item{parent}{string. Nombre del campo de parentesco. Default es \code{p07}. \cr \cr string. Name of the familial relationship field. Default is \code{p07}.}
+\item{ocupacion}{string. Nombre del campo de ocupación de la vivienda. Default es \code{ocup_viv}. \cr \cr string. Name of the home occupation field. Default is \code{ocup_viv}.}
 
-\item{muro}{string. Nombre del campo de condición del muro. Default es \code{p03a}. \cr \cr string. Name of the wall condition field. Default is \code{p03a}.}
+\item{parentesco}{string. Nombre del campo de parentesco. Default es \code{parentesco}. \cr \cr string. Name of the familial relationship field. Default is \code{parentesco}.}
 
-\item{techo}{string. Nombre del campo de condición del techo. Default es \code{p03b}. \cr \cr string. Name of the ceiling condition field. Default is \code{p03b}.}
+\item{dormitorios}{string. Nombre del campo con el número de dormitorios del hogar. Default es \code{ndorms}. \cr \cr string. Name of the number of bedrooms field. Default is \code{ndorms}.}
 
-\item{suelo}{string. Nombre del campo de condición del suelo. Default es \code{p03c}. \cr \cr string. Name of the floor condition field. Default is \code{p03c}.}
+\item{muro}{string. Nombre del campo de condición del muro. Default es \code{mat_muro}. \cr \cr string. Name of the wall condition field. Default is \code{mat_muro}.}
+
+\item{techo}{string. Nombre del campo de condición del techo. Default es \code{mat_techo}. \cr \cr string. Name of the ceiling condition field. Default is \code{mat_techo}.}
+
+\item{piso}{string. Nombre del campo de condición del suelo. Default es \code{mat_piso}. \cr \cr string. Name of the floor condition field. Default is \code{mat_piso}.}
 }
 \value{
 objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. \cr \cr \code{data.frame} object containing only the variables that are necessary for the following calculations.
