@@ -32,8 +32,9 @@ full_ismt <- function (df, r, ur, rfield = 'id_region', urfield = 'tipo_area', y
 
   df0 <- df %>%
 
-    ismtchile::region_filter(r = r, ur = ur, rfield = rfield, urfield = urfield) %>%
-    ismtchile::cleanup(year = year, tiphog = tiphog, ocupac = ocupac, ndorms = ndorms, parent = parent, muro = muro, techo = techo, piso = piso, level = level) %>%
+    ismtchile::literalize(year = year) %>%
+    ismtchile::geofilter(r = r, area = ur, rfield = rfield, urfield = urfield) %>%
+    ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) %>%
     ismtchile::precalc() %>%
     ismtchile::get_pca() %>%
     ismtchile::ismt_scores(r = r, grouping = grouping)

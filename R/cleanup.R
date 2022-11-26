@@ -213,7 +213,7 @@ mzn level not supported for 2017
 
       )
 
-    return(clone)
+    return(cleanclone)
 
   } else if (vars.as.factors == T) {
 
