@@ -23,7 +23,7 @@ full_ismt(
 )
 }
 \arguments{
-\item{df}{objeto \code{data.frame}. Hasta la versión \code{1.x.x}, sólo se acepta el Censo 2017. \cr \cr \code{data.frame} object. As for package version \code{1.x.x}, only the 2017 Chilean census is accepted.}
+\item{df}{objeto \code{data.frame}. Default es \code{2017}. \cr \cr \code{data.frame} object. Default is \code{2017}.}
 
 \item{r}{integer. Se aceptan valores entre 1 y 16 para Chile 2017. Si \code{r == 99}, no se define una región en particular y se trabaja con valores a nivel nacional. \cr \cr integer. Values between 1 and 16 are acceptable for Chile 2017. If \code{r == 99}, no region will be defined and work will continue with national level values.}
 
@@ -57,7 +57,7 @@ full_ismt(
 objeto data.frame conteniendo
 }
 \description{
-Ejecuta el cálculo completo del ISMT
+Ejecuta el cálculo completo del ISMT. Agrupa las funciones `literalize()`, `geofilter()`, `cleanup()`, `precalc()`, `get_pca()` e `ismt_scores()`. La tabla obtenida debería ser idéntica al resultado de concatenar estas funciones una a una.
 }
 \examples{
 ismt <- full_ismt(c17, 13, 1)

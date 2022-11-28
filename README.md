@@ -86,7 +86,7 @@ Se calculó tomando en consideración los parámetros definidos por el Ministeri
 
 ##### <b>Hacinamiento</b>
 
-se realizó considerando la metodología del Ministerio de Desarrollo Social (MDS), el cual estipula el hacinamiento como la razón entre el número de personas residentes en la vivienda y el número de dormitorios de la misma. Este cálculo considera aquellos dormitorios de uso exclusivo o múltiple, y determina las categorías sin hacinamiento, hacinamiento medio y hacinamiento crítico, considerando los siguientes puntajes como referencia: </br>
+Se realizó considerando la metodología del Ministerio de Desarrollo Social (MDS), el cual estipula el hacinamiento como la razón entre el número de personas residentes en la vivienda y el número de dormitorios de la misma. Este cálculo considera aquellos dormitorios de uso exclusivo o múltiple, y determina las categorías sin hacinamiento, hacinamiento medio y hacinamiento crítico, considerando los siguientes puntajes como referencia: </br>
 
 <ul>
 
@@ -101,6 +101,10 @@ se realizó considerando la metodología del Ministerio de Desarrollo Social (MD
 ##### <b>Allegamiento</b>
 
 El cálculo del allegamiento se establece de manera simple y directa considerando la cantidad de hogares por vivienda.
+
+### Adaptación y homologación
+
+Las variables descritas anteriormente corresponden a las variables del censo 2017. Para las versiones `2.x.x` y superiores, se realizó una homologación de las variables censales de 1982, 1992, 2002, 2012 y 2017 a través de la literalización de los factores. Si bien ralentiza ligeramente el proceso de cálculo, provee la posibilidad de trabajar de forma transversal con los distintos años. La descarga de la data del 2017 es posible a través de la función `load_data()`, mientras que las bases de los otros años se añadirán al mismo método de descarga desde las versiones `2.1.x` junto con la metadata de la literalización.
 
 ### Flujo de trabajo
 

@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ismtchile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.7</span>
       </span>
     </div>
 
@@ -161,7 +161,7 @@ IRRECUPERABLE: Piso de tierra.
 <h5 id="hacinamiento">
 <b>Hacinamiento</b><a class="anchor" aria-label="anchor" href="#hacinamiento"></a>
 </h5>
-<p>se realizó considerando la metodología del Ministerio de Desarrollo Social (MDS), el cual estipula el hacinamiento como la razón entre el número de personas residentes en la vivienda y el número de dormitorios de la misma. Este cálculo considera aquellos dormitorios de uso exclusivo o múltiple, y determina las categorías sin hacinamiento, hacinamiento medio y hacinamiento crítico, considerando los siguientes puntajes como referencia: </p>
+<p>Se realizó considerando la metodología del Ministerio de Desarrollo Social (MDS), el cual estipula el hacinamiento como la razón entre el número de personas residentes en la vivienda y el número de dormitorios de la misma. Este cálculo considera aquellos dormitorios de uso exclusivo o múltiple, y determina las categorías sin hacinamiento, hacinamiento medio y hacinamiento crítico, considerando los siguientes puntajes como referencia: </p>
 <ul>
 <li>
 2.4 o menos - sin hacinamiento
@@ -180,6 +180,11 @@ IRRECUPERABLE: Piso de tierra.
 </h5>
 <p>El cálculo del allegamiento se establece de manera simple y directa considerando la cantidad de hogares por vivienda.</p>
 </div>
+</div>
+<div class="section level3">
+<h3 id="adaptación-y-homologación">Adaptación y homologación<a class="anchor" aria-label="anchor" href="#adaptaci%C3%B3n-y-homologaci%C3%B3n"></a>
+</h3>
+<p>Las variables descritas anteriormente corresponden a las variables del censo 2017. Para las versiones <code>2.x.x</code> y superiores, se realizó una homologación de las variables censales de 1982, 1992, 2002, 2012 y 2017 a través de la literalización de los factores. Si bien ralentiza ligeramente el proceso de cálculo, provee la posibilidad de trabajar de forma transversal con los distintos años. La descarga de la data del 2017 es posible a través de la función <code><a href="reference/load_data.html">load_data()</a></code>, mientras que las bases de los otros años se añadirán al mismo método de descarga desde las versiones <code>2.1.x</code> junto con la metadata de la literalización.</p>
 </div>
 <div class="section level3">
 <h3 id="flujo-de-trabajo">Flujo de trabajo<a class="anchor" aria-label="anchor" href="#flujo-de-trabajo"></a>

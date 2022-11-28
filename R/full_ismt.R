@@ -1,8 +1,8 @@
 #' @title Cálculo de ISMT completo a partir del Censo 2017 -- Full ISMT calculation from 2017 Census.
 #'
-#' @description Ejecuta el cálculo completo del ISMT
+#' @description Ejecuta el cálculo completo del ISMT. Agrupa las funciones `literalize()`, `geofilter()`, `cleanup()`, `precalc()`, `get_pca()` e `ismt_scores()`. La tabla obtenida debería ser idéntica al resultado de concatenar estas funciones una a una.
 #'
-#' @param df objeto \code{data.frame}. Hasta la versión \code{1.x.x}, sólo se acepta el Censo 2017. \cr \cr \code{data.frame} object. As for package version \code{1.x.x}, only the 2017 Chilean census is accepted.
+#' @param df objeto \code{data.frame}. Default es \code{2017}. \cr \cr \code{data.frame} object. Default is \code{2017}.
 #' @param r integer. Se aceptan valores entre 1 y 16 para Chile 2017. Si \code{r == 99}, no se define una región en particular y se trabaja con valores a nivel nacional. \cr \cr integer. Values between 1 and 16 are acceptable for Chile 2017. If \code{r == 99}, no region will be defined and work will continue with national level values.
 #' @param ur integer. Valores aceptables son \code{1} y \code{2}. Define si se requiere zona urbana \code{ur = 1} o rural \code{ur = 2}. \cr \cr integer. Accepted values are \code{1} and \code{2}. Defines whether urban \code{ur = 1} or rural \code{ur = 2} data is requested.
 #' @param rfield string. Nombre del campo que corresponde al número de la región. Default es \code{region}. \cr \cr string. Name of the field corresponding to the region number. Default is \code{region}.
