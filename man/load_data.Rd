@@ -9,7 +9,7 @@ load_data(r, year = 2017, path = "")
 \arguments{
 \item{r}{integer. Número de la región de trabajo. Acepta valores entre 1 y 16. Si \code{r = 99}, descarga la data censal completa. \code{r = 99} y \code{r = 13} aumentan considerablemente el tiempo de ejecución debido a la gran cantidad de datos. \cr \cr integer. Number of the working region. Accepts values between 1 and 16. If \code{r = 99}, will download the entire database. \code{r = 99} and \code{r = 13} considerably increase execution time due to the volume of data.}
 
-\item{year}{integer. Define el año de los datos a descargar. Para la versión \code{1.x.x}, solo se acepta {2017}. \cr \cr integer. Defines the year of the data to download. As for version \code{1.x.x}, only \code{2017} is accepted.}
+\item{year}{integer. Default es \code{2017}. \cr \cr integer. Default is \code{2017}.}
 
 \item{path}{string. Ubicación de la carpeta donde se deberían guardar los archivos. En caso de no proveer una ubicación, se creará un carpeta \code{C:/ISMT_Files/data}, que se usará como \code{path}. \cr \cr string. Location of the directory where files should be saved. If empty, will create a \code{C:/ISMT_Files/data} folder, which will be used as \code{path}.}
 }

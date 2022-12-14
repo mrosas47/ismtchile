@@ -38,7 +38,7 @@ data_export <- function(df, r , path = '', format = 'rds') {
 
   } else if (format == 'csv') {
 
-    df %>% write.csv2(glue('{path}/ISMT_R{r}_data.csv'))
+    df %>% write.csv2(glue('{path}/ISMT_R{region}_data.csv'))
 
   }
 
