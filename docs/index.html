@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ismtchile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.1.0</span>
       </span>
     </div>
 
@@ -184,7 +184,7 @@ IRRECUPERABLE: Piso de tierra.
 <div class="section level3">
 <h3 id="adaptación-y-homologación">Adaptación y homologación<a class="anchor" aria-label="anchor" href="#adaptaci%C3%B3n-y-homologaci%C3%B3n"></a>
 </h3>
-<p>Las variables descritas anteriormente corresponden a las variables del censo 2017. Para las versiones <code>2.x.x</code> y superiores, se realizó una homologación de las variables censales de 1982, 1992, 2002, 2012 y 2017 a través de la literalización de los factores. Si bien ralentiza ligeramente el proceso de cálculo, provee la posibilidad de trabajar de forma transversal con los distintos años. La descarga de la data del 2017 es posible a través de la función <code><a href="reference/load_data.html">load_data()</a></code>, mientras que las bases de los otros años se añadirán al mismo método de descarga desde las versiones <code>2.1.x</code> junto con la metadata de la literalización.</p>
+<p>Las variables descritas anteriormente corresponden a las variables del censo 2017. Para las versiones <code>2.x.x</code> y superiores, se realizó una homologación de las variables censales de 1982, 1992, 2002, 2012 y 2017 a través de la literalización de los factores. Si bien ralentiza ligeramente el proceso de cálculo, provee la posibilidad de trabajar de forma transversal con los distintos años. La descarga de la data del 2017 es posible a través de la función <code>load_data()</code>, mientras que las bases de los otros años se añadirán al mismo método de descarga desde las versiones <code>2.1.x</code> junto con la metadata de la literalización.</p>
 </div>
 <div class="section level3">
 <h3 id="flujo-de-trabajo">Flujo de trabajo<a class="anchor" aria-label="anchor" href="#flujo-de-trabajo"></a>
@@ -192,10 +192,10 @@ IRRECUPERABLE: Piso de tierra.
 <p>El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores pasos a seguir en el cálculo del indicador, en el siguiente orden: </p>
 <ol>
 <li>
-<code><a href="reference/load_data.html">load_data()</a></code>descargar la data censal a la carpeta especificada y cargar a RStudio
+<code>load_data()</code>descargar la data censal a la carpeta especificada y cargar a RStudio
 </li>
 <li>
-<code><a href="reference/region_filter.html">region_filter()</a></code> filtrar la data por región y tipo de área
+<code>region_filter()</code> filtrar la data por región y tipo de área
 </li>
 <li>
 <code><a href="reference/cleanup.html">cleanup()</a></code> normaliza los nombres de los campos y elimina variables redundantes
@@ -210,7 +210,7 @@ IRRECUPERABLE: Piso de tierra.
 <code><a href="reference/ismt_scores.html">ismt_scores()</a></code> cálculo del índice
 </li>
 </ol>
-<p> Adicionalmente, existe la posibilidad de espacializar la información a través de <code><a href="reference/load_shp.html">load_shp()</a></code> (descarga la data espacial y la carga a RStudio) y <code><a href="reference/geomerge.html">geomerge()</a></code> (une los resultados del ISMT con el shapefile), y de exportarla a través de <code><a href="reference/data_export.html">data_export()</a></code> (<code>.csv</code>, <code>.rds</code>) y <code><a href="reference/geoexport.html">geoexport()</a></code> (<code>.shp</code>).</p>
+<p> Adicionalmente, existe la posibilidad de espacializar la información a través de <code>load_shp()</code> (descarga la data espacial y la carga a RStudio) y <code><a href="reference/geomerge.html">geomerge()</a></code> (une los resultados del ISMT con el shapefile), y de exportarla a través de <code><a href="reference/data_export.html">data_export()</a></code> (<code>.csv</code>, <code>.rds</code>) y <code><a href="reference/geoexport.html">geoexport()</a></code> (<code>.shp</code>).</p>
 </div>
 <div class="section level3">
 <h3 id="instalación-y-uso">Instalación y uso<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-y-uso"></a>
@@ -227,8 +227,8 @@ IRRECUPERABLE: Piso de tierra.
 <span></span>
 <span><span class="va">crit_AIM</span> <span class="op">&lt;-</span> <span class="fu">get_criteria</span><span class="op">(</span><span class="fl">13</span>, path <span class="op">=</span> <span class="va">loc_dir</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">c17</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/load_data.html">load_data</a></span><span class="op">(</span><span class="fl">13</span>, path <span class="op">=</span> <span class="va">loc_dir</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="reference/region_filter.html">region_filter</a></span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">c17</span> <span class="op">&lt;-</span> <span class="fu">load_data</span><span class="op">(</span><span class="fl">13</span>, path <span class="op">=</span> <span class="va">loc_dir</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">region_filter</span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/cleanup.html">cleanup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/precalc.html">precalc</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/get_pca.html">get_pca</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -236,7 +236,7 @@ IRRECUPERABLE: Piso de tierra.
 <span>      </span>
 <span><span class="va">c17</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/data_export.html">data_export</a></span><span class="op">(</span><span class="fl">13</span>, <span class="va">loc_dir</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">c17geo</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/load_shp.html">load_shp</a></span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span>, <span class="va">loc_dir</span><span class="op">)</span></span>
+<span><span class="va">c17geo</span> <span class="op">&lt;-</span> <span class="fu">load_shp</span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span>, <span class="va">loc_dir</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">c17geomerge</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geomerge.html">geomerge</a></span><span class="op">(</span><span class="va">c17</span>, <span class="va">c17geo</span><span class="op">)</span></span>
 <span></span>
