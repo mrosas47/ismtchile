@@ -66,7 +66,7 @@
 <div class="section level3">
 <h3 id="general">General<a class="anchor" aria-label="anchor" href="#general"></a>
 </h3>
-<p>El paquete <code>ismtchile</code> fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href="https://www.observatoriodeciudades.com" class="external-link"> Observatorio de Ciudades UC</a>. La metodología completa está disponible en &lt;a href=‘<a href="https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about" class="external-link uri">https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about</a>’ target=“_blank&gt;este link.  La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, y el hacinamiento.</p>
+<p>El paquete <code>ismtchile</code> fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href="https://www.observatoriodeciudades.com" class="external-link"> Observatorio de Ciudades UC</a>. La metodología completa está disponible en <a href="https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about" target="_blank" class="external-link">este link</a>.  La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, y el hacinamiento.</p>
 <div class="section level4">
 <h4 id="escolaridad-del-jefe-de-hogar">Escolaridad del jefe de hogar<a class="anchor" aria-label="anchor" href="#escolaridad-del-jefe-de-hogar"></a>
 </h4>
@@ -229,7 +229,7 @@ Puntajes ponderados por categoría de allegamiento.
 </div>
 </div>
 <div class="section level3">
-<h3 id="clasificación-del-istm">Clasificación del ISTM<a class="anchor" aria-label="anchor" href="#clasificaci%C3%B3n-del-istm"></a>
+<h3 id="clasificación-del-ismt">Clasificación del ISMT<a class="anchor" aria-label="anchor" href="#clasificaci%C3%B3n-del-ismt"></a>
 </h3>
 <p>Una vez obtenido el puntaje continuo, se procede a clasificar el ISMT a través de la percentilización del mismo. Este se realiza considerando tres clasificaciones:</p>
 <ol>
@@ -240,7 +240,7 @@ Quintiles: se clasifica en 5 categorías con igual porcentaje de hogares para ca
 NSE: se clasifica tomando los <a href="https://www.criteria.cl/nuevo-gse-aim/" target="_blank" class="external-link">percentiles y cortes definidos por AIM y Criteria para el año 2021</a>, tomando las diferencias regionales establecidas por el estudio.
 </li>
 </ol>
-<table class="table">
+<br><table class="table">
 <tr>
 <th>
 Región
@@ -740,7 +740,7 @@ Chile
 <code><a href="reference/ismt_scores.html">ismt_scores()</a></code> cálculo del índice
 </li>
 </ol>
-<p> Adicionalmente, existe la posibilidad de espacializar la información a través de <code>load_shp()</code> (descarga la data espacial y la carga a RStudio) y <code><a href="reference/geomerge.html">geomerge()</a></code> (une los resultados del ISMT con el shapefile), y de exportarla a través de <code><a href="reference/data_export.html">data_export()</a></code> (<code>.csv</code>, <code>.rds</code>) y <code><a href="reference/geoexport.html">geoexport()</a></code> (<code>.shp</code>).</p>
+<p> Adicionalmente, existe la posibilidad de espacializar la información a través de <code>load_shp()</code> (descarga la data espacial y la carga a RStudio) y <code>geomerge()</code> (une los resultados del ISMT con el shapefile), y de exportarla a través de <code>data_export()</code> (<code>.csv</code>, <code>.rds</code>) y <code>geoexport()</code> (<code>.shp</code>).</p>
 </div>
 <div class="section level3">
 <h3 id="instalación-y-uso">Instalación y uso<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-y-uso"></a>
@@ -764,13 +764,13 @@ Chile
 <span>  <span class="fu"><a href="reference/get_pca.html">get_pca</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/ismt_scores.html">ismt_scores</a></span><span class="op">(</span><span class="va">crit_AIM</span>, <span class="fl">13</span><span class="op">)</span></span>
 <span>      </span>
-<span><span class="va">c17</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/data_export.html">data_export</a></span><span class="op">(</span><span class="fl">13</span>, <span class="va">loc_dir</span><span class="op">)</span></span>
+<span><span class="va">c17</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">data_export</span><span class="op">(</span><span class="fl">13</span>, <span class="va">loc_dir</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">c17geo</span> <span class="op">&lt;-</span> <span class="fu">load_shp</span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span>, <span class="va">loc_dir</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">c17geomerge</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geomerge.html">geomerge</a></span><span class="op">(</span><span class="va">c17</span>, <span class="va">c17geo</span><span class="op">)</span></span>
+<span><span class="va">c17geomerge</span> <span class="op">&lt;-</span> <span class="fu">geomerge</span><span class="op">(</span><span class="va">c17</span>, <span class="va">c17geo</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">c17geomerge</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/geoexport.html">geoexport</a></span><span class="op">(</span><span class="fl">13</span>, <span class="va">loc_dir</span><span class="op">)</span></span></code></pre>
+<span><span class="va">c17geomerge</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">geoexport</span><span class="op">(</span><span class="fl">13</span>, <span class="va">loc_dir</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="autoría-y-crédito">Autoría y crédito<a class="anchor" aria-label="anchor" href="#autor%C3%ADa-y-cr%C3%A9dito"></a>
@@ -822,8 +822,12 @@ Martín Rosas
 </h3>
 <p>The <code>ismtchile</code> package was created to facilitate the calculation and distribution of the Socio-Material Territorial Index, made by <a href="https://www.observatoriodeciudades.com" class="external-link"> Observatorio de Ciudades UC</a>. The complete methodology is available at <a href="https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about" class="external-link">this link</a>. </p>
 <style>
-  html {text-align: justify}
-  h1, h3 {text-align: center}
+  html {text-align: justify;}
+  h1, h3 {text-align: center;}
+  body {
+    background-color: #000033;
+    color: #FAFAFF
+  }
 </style>
 </div>
 </div>

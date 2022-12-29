@@ -110,7 +110,7 @@ Luego de finalizada esta prueba mediante el análisis PCA, los puntajes finales 
 
 Los resultados por zona luego fueron normalizados entre 0 y 1 para representar el nuevo índice de materialidad territorial por zona censal.
 
-### Clasificación del ISTM
+### Clasificación del ISMT
 
 Una vez obtenido el puntaje continuo, se procede a clasificar el ISMT a través de la percentilización del mismo. Este se realiza considerando tres clasificaciones:
 
@@ -118,7 +118,7 @@ Una vez obtenido el puntaje continuo, se procede a clasificar el ISMT a través 
     <li>Quintiles: se clasifica en 5 categorías con igual porcentaje de hogares para cada uno en función de la distribución del puntaje continuo del ISMT.</li>
     <li>NSE: se clasifica tomando los <a href="https://www.criteria.cl/nuevo-gse-aim/" target="_blank">percentiles y cortes definidos por AIM y Criteria para el año 2021</a>, tomando las diferencias regionales establecidas por el estudio.</li>
 </ol>
-
+<br>
 <table>
     <tr>
         <th>Región</th>
@@ -400,6 +400,10 @@ Autores del Indicador: </br>
 The `ismtchile` package was created to facilitate the calculation and distribution of the Socio-Material Territorial Index, made by <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. The complete methodology is available at <a href='https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about'>this link</a>. </br> 
 
 <style>
-  html {text-align: justify}
-  h1, h3 {text-align: center}
+  html {text-align: justify;}
+  h1, h3 {text-align: center;}
+  body {
+    background-color: #000033;
+    color: #FAFAFF
+  }
 </style>
