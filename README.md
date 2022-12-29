@@ -4,107 +4,307 @@
 
 ### General
 
-El paquete `ismtchile` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. La metodología completa está disponible en <a href='https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about'>este link</a>. </br> La construcción social del territorio y su materialidad resultan de una dialéctica socio-espacial donde se reconoce que el componente social estructura los territorios, al mismo tiempo que los territorios dan forma a la sociedad. En el presente estudio, esta dialéctica es fundamental para comprender la dimensión de materialidad territorial, la cual es observada a través de variables sociales y la calidad de la vivienda en la ciudad de Santiago. </br> </br> El Índice está basado en 4 variables derivadas del Censo de Población:
+El paquete `ismtchile` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. La metodología completa está disponible en <a href='https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about' target="_blank>este link</a>. </br> La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, y el hacinamiento.
+
+#### Escolaridad del jefe de hogar
+
+El índice de escolaridad se calculó tomando en cuenta 7 niveles de escolaridad alcanzado por el jefe de hogar: 
 
 <ul>
-
-<li>Escolaridad del jefe de hogar</li>
-
-<li>Materialidad de la vivienda</li>
-
-<li>Hacinamiento</li>
-
-<li>Allegamiento</li>
-
+  <li>Sin instrucción: sala cuna o jardín infantil, pre-kinder, kinder.</li>
+  <li>Primario: educación básica, primaria o preparatoria (sistema antiguo).</li>
+  <li>Secundario: científico humanista, técnica profesional, humanidades (sistema antiguo), técnica comercial (sistema antiguo), industrial / normalista (sistema antiguo).</li>
+  <li>Profesional técnico: técnico superior (0 a 3 años)</li>
+  <li>profesional pregrado: profesional (4 o más años)</li>
+  <li>Magíster</li>
+  <li>Doctorado</li>
 </ul>
 
-### Variables
+Estos niveles de escolaridad fueron complementados con información del censo que hace referencia a si se completó o no el nivel educacional previamente declarado (variables `p14` y `p15`).
 
-##### <b>Escolaridad</b>
+Los puntajes ponderados de los 7 niveles de escolaridad se calcularon considerando el porcentaje de cada nivel dentro de cada zona censal (con respecto al total de casos). Este porcentaje de representación de la variable fue multiplicado por un puntaje de entre 1 (nivel de escolaridad bajo) y 1000 (nivel de escolaridad alto) para cada una de las zonas 
+ 
+El puntaje ponderado de la escolaridad básica se suma a los puntajes ponderados de los demás niveles educacionales para generar una suma ponderada de la escolaridad del jefe de hogar en la zona censal. Este puntaje va de 1 a 1000.
 
-Se calculó tomando en cuenta 7 niveles de escolaridad alcanzado por el jefe de hogar:
+#### Índice de calidad de la vivienda
+
+El índice de calidad de la vivienda se calculó tomando en consideración los parámetros definidos por el Ministerio de Desarrollo Social (MDS). De acuerdo con este índice, se consideraron 3 dimensiones a evaluar en las viviendas ocupadas: paredes exteriores, techo y piso. Estas condiciones se evalúan y resultan en un índice de la vivienda basado en aquellas que son: 
 
 <ul>
-
-<li>Sin instrucción: Sala cuna o jardín infantil, pre-kínder, kínder.</li>
-
-<li>Primario: Educación básica, primaria o preparatoria (sistema antiguo).</li>
-
-<li>Secundario: Científico-humanista, técnica profesional, humanidades (sistema antiguo), técnica comercial, industrial/normalista (sistema antiguo).</li>
-
-<li>Profesional técnico: Técnico superior (0 a 3 años).</li>
-
-<li>Profesional pregrado: Profesional (4 o más años).</li>
-
-<li>Magister</li>
-
-<li>Doctorado</li>
-
+    <li>Paredes exteriores</li>
+    <ul>
+        <li>Aceptable: hormigón armado, albañilería, tabique forrado por ambas caras.</li>
+        <li>Recuperable: tabique sin forro interior.</li>
+        <li>Irrecuperable: materiales precarios o de desechos.</li>
+    </ul>
+    <li>Techo</li>
+    <ul>
+        <li>Aceptable: tejas o tejuela, fibrocemento.</li>
+        <li>Recuperable: fonolita, paja, coirón, totora o caña.</li>
+        <li>Irrecuperable: materiales precarios o de desecho, sin cubierta en el techo.</li>
+    </ul>
+    <li>Piso</li>
+    <ul>
+        <li>Aceptable: parquet, madera, piso flotante o similar, cerámico, flexit, alfombra, cubre piso.</li>
+        <li>Recuperable: baldosa de cemento, radier, enchapado de cemento.</li>
+        <li>Irrecuperable: piso de tierra.</li>
+    </ul>
 </ul>
-
-Estos niveles de escolaridad fueron complementados con información del censo que hace referencia a si se completó o no el nivel educacional previamente declarado. (Variables ```p14``` y ```p15```).
-
-##### <b>Calidad de la vivienda</b>
-
-Se calculó tomando en consideración los parámetros definidos por el Ministerio de Desarrollo Social (MDS). De acuerdo con este índice, se consideraron 3 dimensiones a evaluar en las viviendas ocupadas: Las paredes exteriores, el techo y el piso. Estas condiciones se evalúan y resultan en un índice de la vivienda basado en aquellas que son ACEPTABLES, RECUPERABLES e IRRECUPERABLES. </br> <u>Muro</u>
+  
+A continuación, se clasificó a las viviendas de acuerdo a un índice, tomando en consideración las categorías de Aceptable, Recuperable e Irrecuperable, determinadas de acuerdo a las siguientes condiciones: 
 
 <ul>
-
-<li>ACEPTABLES: Hormigón, armado; albañilería, tabique forrado por ambas caras.</li>
-
-<li>RECUPERABLES: Tabique sin forro interior.</li>
-
-<li>IRRECUPERABLES: Materiales precarios o de desechos.</li>
-
+    <li>Aceptable: materialidad de muros, techo y piso aceptables.</li>
+    <li>Recuperable: muro recuperable y un ídice aceptable sea piso o techo, además de un indicador recuperable y ningún indicador irrecuperable.</li>
+    <li>Irrecuperable: al menos un indicador irrecuperable.</li>
 </ul>
 
-</br> <u>Techo</u>
+#### Índice de hacinamiento
+
+El índice de hacinamiento se realizó considerando la metodología del Ministerio de Desarrollo Social (MDS), el cual estipula el hacinamiento como la razón entre el número de personas residentes en la vivienda y el número de dormitorios de la misma. Este cálculo considera aquellos dormitorios de uso exclusivo o múltiple, y determina las categorías sin hacinamiento, hacinamiento medio y hacinamiento crítico, considerando los siguientes puntajes como referencia:
 
 <ul>
-
-<li>ACEPTABLE: Tejas o tejuela, fibrocemento.</li>
-
-<li>RECUPERABLE: Fonolita; paja, coirón, totora o caña.</li>
-
-<li>IRRECUPERABLE: Materiales precarios o de desecho; sin cubierta en el techo.</li>
-
+    <li>Sin hacinamiento: igual o menor a 2.4</li>
+    <li>Hacinamiento medio: entre 2.5 y 4.9</li>
+    <li>Hacinamiento crítico: igual o mayor a 5</li>
 </ul>
 
-</br> <u>Piso</u>
-
-<ul>
-
-<li>ACEPTABLE: Parquet, madera, piso flotante o similar; cerámico, flexit; alfombra o cubre piso.</li>
-
-<li>RECUPERABLE: Baldosa de cemento, radier, enchapado de cemento.</li>
-
-<li>IRRECUPERABLE: Piso de tierra.</li>
-
-</ul>
-
-</br> A continuación, se clasificó a las viviendas de acuerdo a un índice, tomando en consideración las categorías de "Aceptable"," Recuperable "e"Irrecuperable", determinadas de acuerdo a las siguientes condiciones: Categoría aceptable: Materialidad en muros, piso y techo aceptable; Categoría recuperable: Muro recuperable, y un índice aceptable, sea de piso o techo, además de un indicador recuperable y ningún indicador irrecuperable; Categoría irrecuperable: Al menos un indicador irrecuperable.
-
-##### <b>Hacinamiento</b>
-
-Se realizó considerando la metodología del Ministerio de Desarrollo Social (MDS), el cual estipula el hacinamiento como la razón entre el número de personas residentes en la vivienda y el número de dormitorios de la misma. Este cálculo considera aquellos dormitorios de uso exclusivo o múltiple, y determina las categorías sin hacinamiento, hacinamiento medio y hacinamiento crítico, considerando los siguientes puntajes como referencia: </br>
-
-<ul>
-
-<li>2.4 o menos - sin hacinamiento</li>
-
-<li>2.5 a 4.9 - hacinamiento medio</li>
-
-<li>6 o más - hacinamiento crítico</li>
-
-</ul>
-
-##### <b>Allegamiento</b>
+#### Índice de allegamiento
 
 El cálculo del allegamiento se establece de manera simple y directa considerando la cantidad de hogares por vivienda.
 
+### Cáluclo del Índice de materialidad territorial (IMT)
+
+El índice compuesto de materialidad territorial se calcula con respecto al número de casos, ya sean de personas o viviendas por zona censal, e incluye:
+
+<ul>
+    <li>Puntajes ponderados por nivel de escolaridad del jefe de hogar.</li>
+    <li>Puntajes ponderados por categoría de calidad de la vivienda.</li>
+    <li>Puntajes ponderados por categoría de hacinamiento.</li>
+    <li>Puntajes ponderados por categoría de allegamiento.</li>
+</ul>
+
+#### Cálculo de escolaridad
+
+Los puntajes ponderados de los 7 niveles de escolaridad se calcularon considerando el porcentaje de cada nivel dentro de cada zona censal (con respecto al total de casos). Este porcentaje de representación de la variable fue multiplicado por un puntaje de entre 1 (nivel de escolaridad bajo) y 1000 (nivel de escolaridad alto) para cada una de las zonas.
+ 
+El puntaje ponderado de la escolaridad básica se suma a los puntajes ponderados de los demás niveles educacionales para generar una suma ponderada de la escolaridad del jefe de hogar en la zona censal. Este puntaje va de 1 a 1000.
+
+#### Cálculo de calidad de la vivienda
+
+Los puntajes ponderados de las categorías de calidad de la vivienda fueron calculados considerando el porcentaje que cada categoría representaba en cada zona censal. Los porcentajes de representación de estas categorías fueron multiplicados por un puntaje dado de entre 1 y 1000 (1: viviendas irrecuperables y 1000: viviendas aceptables). El resultado de estos puntajes ponderados fue sumado para determinar el índice de calidad de la vivienda para la zona censal estudiada. Este puntaje va de 1 a 1000.
+
+#### Cálculo de hacinamiento
+
+Así como en ambos casos anteriores, las tres categorías de hacinamiento fueron calculadas por zona censal, ponderándose puntajes de entre 1 para aquellas viviendas con hacinamiento crítico, y 1000 para aquellas sin hacinamiento. Luego de realizadas las ponderaciones, el puntaje final de hacinamiento va desde 1 a 1000.
+
+#### Cálculo de allegamiento
+
+Así como en ambos casos anteriores, las categorías de allegamiento fueron calculadas por zona censal, ponderándose puntajes de entre 1 para aquellas viviendas con dos núcleos y 1000 para el valor máximo de allegamiento posible por la unidad territorial (ciudad o región) en donde se calcule. 
+
+#### Cálculo de puntajes finales
+
+Para relacionar estas variables y entender la significancia de cada una en sí misma, se realizó cálculo de componentes principales el cual busca el peso de cada una de las variables en función de la región (cada región tiene su propio PCA) y dentro de cada región se establece la separación entre territorios rurales y urbanos (tomando en consideración la clasificación del INE).
+
+Luego de finalizada esta prueba mediante el análisis PCA, los puntajes finales fueron ponderados por la discriminación arrojada para generar una nueva suma ponderada de las cuatro variables con sus nuevos pesos.
+
+Los resultados por zona luego fueron normalizados entre 0 y 1 para representar el nuevo índice de materialidad territorial por zona censal.
+
+### Clasificación del ISTM
+
+Una vez obtenido el puntaje continuo, se procede a clasificar el ISMT a través de la percentilización del mismo. Este se realiza considerando tres clasificaciones:
+
+<ol>
+    <li>Quintiles: se clasifica en 5 categorías con igual porcentaje de hogares para cada uno en función de la distribución del puntaje continuo del ISMT.</li>
+    <li>NSE: se clasifica tomando los <a href="https://www.criteria.cl/nuevo-gse-aim/" target="_blank">percentiles y cortes definidos por AIM y Criteria para el año 2021</a>, tomando las diferencias regionales establecidas por el estudio.</li>
+</ol>
+
+<table>
+    <tr>
+        <th>Región</th>
+        <th>AB</th>
+        <th>C1a</th>
+        <th>C1b</th>
+        <th>C2</th>
+        <th>C3</th>
+        <th>D</th>
+        <th>E</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1.3</td>
+        <td>6.6</td>
+        <td>6.9</td>
+        <td>13.7</td>
+        <td>30</td>
+        <td>33.2</td>
+        <td>8.3</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>1.7</td>
+        <td>6.8</td>
+        <td>7.8</td>
+        <td>19.5</td>
+        <td>33.8</td>
+        <td>25.4</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>0.9</td>
+        <td>5.3</td>
+        <td>5.6</td>
+        <td>12.7</td>
+        <td>33.1</td>
+        <td>34.7</td>
+        <td>7.6</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>0.3</td>
+        <td>3.2</td>
+        <td>4.6</td>
+        <td>9.8</td>
+        <td>24.9</td>
+        <td>42.4</td>
+        <td>14.7</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>0.9</td>
+        <td>5.6</td>
+        <td>6.5</td>
+        <td>12.1</td>
+        <td>26.8</td>
+        <td>37.1</td>
+        <td>11.1</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>0.4</td>
+        <td>3.3</td>
+        <td>4.5</td>
+        <td>9.9</td>
+        <td>23.7</td>
+        <td>41.7</td>
+        <td>16.5</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>0.4</td>
+        <td>2.4</td>
+        <td>3.9</td>
+        <td>7.4</td>
+        <td>19.8</td>
+        <td>44.5</td>
+        <td>21.5</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>0.7</td>
+        <td>3.8</td>
+        <td>5.3</td>
+        <td>9.4</td>
+        <td>21.9</td>
+        <td>42.2</td>
+        <td>16.7</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>0.5</td>
+        <td>3.5</td>
+        <td>4.2</td>
+        <td>7.8</td>
+        <td>18.8</td>
+        <td>42.6</td>
+        <td>22.5</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>0.6</td>
+        <td>4</td>
+        <td>4.8</td>
+        <td>8.9</td>
+        <td>21.5</td>
+        <td>44.6</td>
+        <td>15.6</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>1.2</td>
+        <td>7.6</td>
+        <td>7.3</td>
+        <td>12.8</td>
+        <td>27.8</td>
+        <td>36</td>
+        <td>7.1</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>1.6</td>
+        <td>7.1</td>
+        <td>8.4</td>
+        <td>17.2</td>
+        <td>34.8</td>
+        <td>27</td>
+        <td>3.9</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>3.6</td>
+        <td>9</td>
+        <td>8.1</td>
+        <td>13.7</td>
+        <td>27.2</td>
+        <td>30.6</td>
+        <td>7.8</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>0.8</td>
+        <td>4.5</td>
+        <td>5</td>
+        <td>8.6</td>
+        <td>21.4</td>
+        <td>41.7</td>
+        <td>17.9</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>0.5</td>
+        <td>4.6</td>
+        <td>6</td>
+        <td>11.7</td>
+        <td>29.2</td>
+        <td>38.3</td>
+        <td>9.7</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>0.3</td>
+        <td>2.9</td>
+        <td>4.2</td>
+        <td>7.4</td>
+        <td>19</td>
+        <td>42.5</td>
+        <td>23.7</td>
+    </tr>
+    <tr>
+        <td>Chile</td>
+        <td>1.8</td>
+        <td>6</td>
+        <td>6.3</td>
+        <td>11.2</td>
+        <td>24.7</td>
+        <td>36</td>
+        <td>14</td>
+    </tr>
+</table>
+
 ### Adaptación y homologación
 
-Las variables descritas anteriormente corresponden a las variables del censo 2017. Para las versiones `2.x.x` y superiores, se realizó una homologación de las variables censales de 1982, 1992, 2002, 2012 y 2017 a través de la literalización de los factores. Si bien ralentiza ligeramente el proceso de cálculo, provee la posibilidad de trabajar de forma transversal con los distintos años. La descarga de la data del 2017 es posible a través de la función `load_data()`, mientras que las bases de los otros años se añadirán al mismo método de descarga desde las versiones `2.1.x` junto con la metadata de la literalización.
+Las variables descritas anteriormente corresponden a las variables del censo 2017. Para las versiones `2.x.x` y superiores, se realizó una homologación de las variables censales de 1982, 1992, 2002, 2012 y 2017 a través de la literalización de los factores. Si bien ralentiza ligeramente el proceso de cálculo, provee la posibilidad de trabajar de forma transversal con los distintos años. La descarga de la data del 2017 está disponible en la página del ISMT, así como la metadata de la literalización.
 
 ### Flujo de trabajo
 

@@ -18,6 +18,13 @@
 
 precalc <- function(df, hacin = 'ind_hacinam', alleg = 'n_hog_alleg', esc = 'a_esc_cont', mat = 'ind_mater') {
 
+  normvar <- function(x) {
+
+    (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
+
+  }
+
+
   names(df)[names(df) == glue('{hacin}')] <- 'ind_hacinam'
   names(df)[names(df) == glue('{alleg}')] <- 'n_hog_alleg'
   names(df)[names(df) == glue('{esc}')] <- 'a_esc_cont'
@@ -29,10 +36,10 @@ precalc <- function(df, hacin = 'ind_hacinam', alleg = 'n_hog_alleg', esc = 'a_e
       ind_hacinam = -1 * ind_hacinam,
       ind_alleg = -1 * n_hog_alleg,
 
-      ptje_esc = ismtchile::normvar(a_esc_cont) * 1000,
-      ptje_hacin = ismtchile::normvar(ind_hacinam) * 1000,
-      ptje_mater = ismtchile::normvar(ind_mater) * 1000,
-      ptje_alleg = ismtchile::normvar(ind_alleg) * 1000
+      ptje_esc = normvar(a_esc_cont) * 1000,
+      ptje_hacin = normvar(ind_hacinam) * 1000,
+      ptje_mater = normvar(ind_mater) * 1000,
+      ptje_alleg = normvar(ind_alleg) * 1000
 
     )
 
