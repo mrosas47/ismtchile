@@ -27,13 +27,17 @@
 #' @export full_ismt
 #'
 #' @examples ismt <- full_ismt(c17, 13, 1)
+#'
 
 full_ismt <- function (df, r, ur, rfield = 'id_region', urfield = 'tipo_area', year = 2017, tipo_vivienda = 'tipoviv', ocupacion = 'ocup_viv', ndorms = 'ndorms', parentesco = 'parentesco', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso', grouping = 'id_zona', level = 'zc') {
+
+  key <- if_else(ur == 1, 'URBANO', 'RURAL')
+  stringy <- str_pad(r, width = 2, side = 'left', pad = '0')
 
   df0 <- df %>%
 
     ismtchile::literalize(year = year) %>%
-    ismtchile::geofilter(r = r, area = ur, rfield = rfield, urfield = urfield) %>%
+    filter(id_region == stringy, tipo_area == key) %>%
     ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) %>%
     ismtchile::precalc() %>%
     ismtchile::get_pca() %>%

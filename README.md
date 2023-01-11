@@ -365,7 +365,7 @@ Autor del paquete: </br>
 
 <ul>
 
-<li>Martín Rosas Araya, Observatorio de Ciudades UC -- [mrosas1690\@gmail.com](mailto:mrosas1690@gmail.com){.email}</li>
+<li>Martín Rosas Araya, Observatorio de Ciudades UC -- <a href="mailto:mrosas1690@gmail.com" target="_blank">mrosas1690@gmail.com</a></li>
 
 </ul>
 
@@ -387,9 +387,9 @@ Autores del Indicador: </br>
 
 <li>Martín Rosas</li>
 
-<li>[hola\@observatoriodeciudades.com](mailto:hola@observatoriodeciudades.com)</li>
-
 </ul>
+
+<a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a>
 
 # Socio-Material Territorial Index
 

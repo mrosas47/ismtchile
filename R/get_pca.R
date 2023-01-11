@@ -18,6 +18,12 @@
 
 get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mater', alleg = 'ptje_alleg') {
 
+  normvar <- function(x) {
+
+    (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
+
+  }
+
   names(df)[names(df) == glue('{hacin}')] <- 'ptje_hacin'
   names(df)[names(df) == glue('{esc}')] <- 'ptje_esc'
   names(df)[names(df) == glue('{mat}')] <- 'ptje_mater'
@@ -73,7 +79,7 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
     ) %>%
     mutate(
 
-      ismt_pn = ismtchile::normvar(ismt_p)
+      ismt_pn = normvar(ismt_p)
 
     )
 
