@@ -1,12 +1,16 @@
-# <span id="spanish">Índice Socio Material Territorial</span>
+<div class="buttons" id="top">
+  <button>
+    <a href="#hook" class="btn">To English</a>
+  </button>
+</div>
 
-<a href="#spanish">Español</a> <a href="#english">English</a>
+# <span id="spanish">Índice Socio Material Territorial</span>
 
 #### ESP
 
 ### General
 
-El paquete `ismtchile` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. </br> La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, el hacinamiento y el allegamiento.
+El paquete `ismtchile` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el  <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. </br> La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, el hacinamiento y el allegamiento.
 
 #### Escolaridad del jefe de hogar
 
@@ -313,22 +317,11 @@ Las variables descritas anteriormente corresponden a las variables del censo 201
 El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores pasos a seguir en el cálculo del indicador, en el siguiente orden: </br>
 
 <ol>
-
-<li>`load_data()`descargar la data censal a la carpeta especificada y cargar a RStudio</li>
-
-<li>`region_filter()` filtrar la data por región y tipo de área</li>
-
-<li>`cleanup()` normaliza los nombres de los campos y elimina variables redundantes</li>
-
-<li>`precalc()` precálculos necesarios para el proceso</li>
-
-<li>`get_pca()` análisis de componentes principales</li>
-
-<li>`ismt_scores()` cálculo del índice</li>
-
+  <li>`cleanup()` normaliza los nombres de los campos y elimina variables redundantes</li>
+  <li>`precalc()` precálculos necesarios para el proceso</li>
+  <li>`get_pca()` análisis de componentes principales</li>
+  <li>`ismt_scores()` cálculo del índice</li>
 </ol>
-
-</br> Adicionalmente, existe la posibilidad de espacializar la información a través de `load_shp()` (descarga la data espacial y la carga a RStudio) y `geomerge()` (une los resultados del ISMT con el shapefile), y de exportarla a través de `data_export()` (`.csv`, `.rds`) y `geoexport()` (`.shp`).
 
 ### Instalación y uso
 
@@ -339,11 +332,6 @@ El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores
 
 library(ismtchile)
 library(tidyverse)
-library(here)
-
-loc_dir <- here()
-
-crit_AIM <- get_criteria(13, path = loc_dir)
 
 c17 <- readRDS('censo2017.rds')
   cleanup() %>% 
@@ -383,6 +371,22 @@ Autores del Indicador: </br>
 </ul>
 
 <a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a>
+
+<br><br>
+<div class="logos">
+  <a href="home.html"><img src="https://drive.google.com/uc?export=view&id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a>
+</div>
+
+<br>
+<div id="hook"></div>
+<hr>
+<br>
+
+<div class="buttons">
+  <button>
+    <a class="btn" href="#top">A Español</a>
+  </button>
+</div>
 
 # <span id="english">Socio-Material Territorial Indicator</span>
 
@@ -486,7 +490,243 @@ Just like in the previous cases,the categories for this indicator were calculate
 
 #### Calculation of final scores
 
+In order to relate these variables and understand the significance of each of them on their own, a principal components analysis calculation was applied, looking for each of the variable's weight. Each region has its own PCA, and the separation of urban and rural areas within the region is established, per INE classification.
 
+### ISMT classification
+
+Once the continuous score is obtained, the ISMT is classified through its percentiles. This is done by considering 2 methods:
+
+<ol>
+    <li>Quintiles: 5 categories with equal percentage of households through the distribution of continuous ISMT scores.</li>
+    <li>NSE: classification according to <a href="https://www.criteria.cl/nuevo-gse-aim/" target="_blank">percentiles and cuts as defined by AIM and Criteria for 2021</a>,taking into consideration the regional differences established by the study.</li>
+</ol>
+<br>
+<table>
+    <tr>
+        <th>Region</th>
+        <th>AB</th>
+        <th>C1a</th>
+        <th>C1b</th>
+        <th>C2</th>
+        <th>C3</th>
+        <th>D</th>
+        <th>E</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1.3</td>
+        <td>6.6</td>
+        <td>6.9</td>
+        <td>13.7</td>
+        <td>30</td>
+        <td>33.2</td>
+        <td>8.3</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>1.7</td>
+        <td>6.8</td>
+        <td>7.8</td>
+        <td>19.5</td>
+        <td>33.8</td>
+        <td>25.4</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>0.9</td>
+        <td>5.3</td>
+        <td>5.6</td>
+        <td>12.7</td>
+        <td>33.1</td>
+        <td>34.7</td>
+        <td>7.6</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>0.3</td>
+        <td>3.2</td>
+        <td>4.6</td>
+        <td>9.8</td>
+        <td>24.9</td>
+        <td>42.4</td>
+        <td>14.7</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>0.9</td>
+        <td>5.6</td>
+        <td>6.5</td>
+        <td>12.1</td>
+        <td>26.8</td>
+        <td>37.1</td>
+        <td>11.1</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>0.4</td>
+        <td>3.3</td>
+        <td>4.5</td>
+        <td>9.9</td>
+        <td>23.7</td>
+        <td>41.7</td>
+        <td>16.5</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>0.4</td>
+        <td>2.4</td>
+        <td>3.9</td>
+        <td>7.4</td>
+        <td>19.8</td>
+        <td>44.5</td>
+        <td>21.5</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>0.7</td>
+        <td>3.8</td>
+        <td>5.3</td>
+        <td>9.4</td>
+        <td>21.9</td>
+        <td>42.2</td>
+        <td>16.7</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>0.5</td>
+        <td>3.5</td>
+        <td>4.2</td>
+        <td>7.8</td>
+        <td>18.8</td>
+        <td>42.6</td>
+        <td>22.5</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>0.6</td>
+        <td>4</td>
+        <td>4.8</td>
+        <td>8.9</td>
+        <td>21.5</td>
+        <td>44.6</td>
+        <td>15.6</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>1.2</td>
+        <td>7.6</td>
+        <td>7.3</td>
+        <td>12.8</td>
+        <td>27.8</td>
+        <td>36</td>
+        <td>7.1</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>1.6</td>
+        <td>7.1</td>
+        <td>8.4</td>
+        <td>17.2</td>
+        <td>34.8</td>
+        <td>27</td>
+        <td>3.9</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>3.6</td>
+        <td>9</td>
+        <td>8.1</td>
+        <td>13.7</td>
+        <td>27.2</td>
+        <td>30.6</td>
+        <td>7.8</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>0.8</td>
+        <td>4.5</td>
+        <td>5</td>
+        <td>8.6</td>
+        <td>21.4</td>
+        <td>41.7</td>
+        <td>17.9</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>0.5</td>
+        <td>4.6</td>
+        <td>6</td>
+        <td>11.7</td>
+        <td>29.2</td>
+        <td>38.3</td>
+        <td>9.7</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>0.3</td>
+        <td>2.9</td>
+        <td>4.2</td>
+        <td>7.4</td>
+        <td>19</td>
+        <td>42.5</td>
+        <td>23.7</td>
+    </tr>
+    <tr>
+        <td>Chile</td>
+        <td>1.8</td>
+        <td>6</td>
+        <td>6.3</td>
+        <td>11.2</td>
+        <td>24.7</td>
+        <td>36</td>
+        <td>14</td>
+    </tr>
+</table>
+
+### Adaptation and homologation
+
+### Workflow
+
+### Installation and usage
+
+### Authorship and credit
+
+Package author: </br>
+
+<ul>
+
+<li>Martín Rosas Araya, Observatorio de Ciudades UC -- <a href="mailto:mrosas1690@gmail.com" target="_blank">mrosas1690@gmail.com</a></li>
+
+</ul>
+
+ISMT authors: </br>
+
+<ul>
+
+<li>Ricardo Truffello</li>
+
+<li>Mónica Flores</li>
+
+<li>Gabriela Ulloa</li>
+
+<li>Isidro Puig</li>
+
+<li>Natalia Ramírez</li>
+
+<li>Francisca Balbontin</li>
+
+<li>Martín Rosas</li>
+
+</ul>
+
+<a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a>
+<br><br>
+<div class="logos">
+  <a href="home.html"><img src="https://drive.google.com/uc?export=view&id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a>
+</div>
+
+<button onclick="topFunction()" id="backToTop" title="Go to top">Top</button>
 
 <style>
   html {text-align: justify;}
@@ -506,4 +746,92 @@ Just like in the previous cases,the categories for this indicator were calculate
     border-color: #fafaff;
     border-style: solid;
   }
+  hr {
+    background-color: black;
+    height: 3px;
+    width: 100%;
+    
+  }
+  .buttons {
+    display: block;
+    text-align: right;
+  }
+
+  .btn {
+    padding: 3px;
+    color: black;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    text-decoration: none;
+    color: black;
+  }
+
+  button {
+    margin-right: 25px;
+    background-color: darkgrey;
+    border-style: none;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  button:hover {
+    background-color: #737373;
+  }
+  #backToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: darkgrey;
+    color: black;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 2em;
+  }
+  #backToTop:hover {
+    background-color: #737373;
+  }
+  .logos {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 50%;
+    /*max-height: 50%;*/
+    margin-top: 50px;
+  }
+
+  .logos img {
+    max-width: 100%;
+    max-height: 90%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 </style>
+
+<script>
+  // Get the button
+  let mybutton = document.getElementById("backToTop");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)   {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+  }
+</script>
