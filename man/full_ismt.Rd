@@ -61,4 +61,5 @@ Ejecuta el cálculo completo del ISMT. Agrupa las funciones `literalize()`, `geo
 }
 \examples{
 ismt <- full_ismt(c17, 13, 1)
+
 }

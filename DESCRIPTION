@@ -8,7 +8,7 @@ Description: Paquete creado con el fin de facilitar el cálculo y distribución 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: false
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Imports:
     tidyverse,
     glue,

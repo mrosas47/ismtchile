@@ -1211,7 +1211,7 @@ literalize <- function (df, year) {
           tipo_educacion == 12 ~ as.integer(curso + 12),
           tipo_educacion == 13 ~ as.integer(curso + 12),
           tipo_educacion == 14 ~ as.integer(curso + 12),
-          TRUE ~ NA_integer_
+          T ~ NA_integer_
 
         ),
         dc = str_pad(

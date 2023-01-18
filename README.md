@@ -1,10 +1,12 @@
-# Índice Socio Material Territorial
+# <span id="spanish">Índice Socio Material Territorial</span>
+
+<a href="#spanish">Español</a> <a href="#english">English</a>
 
 #### ESP
 
 ### General
 
-El paquete `ismtchile` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. La metodología completa está disponible en <a href='https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about' target=_blank>este link</a>. </br> La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, y el hacinamiento.
+El paquete `ismtchile` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. </br> La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, el hacinamiento y el allegamiento.
 
 #### Escolaridad del jefe de hogar
 
@@ -343,20 +345,11 @@ loc_dir <- here()
 
 crit_AIM <- get_criteria(13, path = loc_dir)
 
-c17 <- load_data(13, path = loc_dir) %>% 
-  region_filter(13, 1) %>% 
+c17 <- readRDS('censo2017.rds')
   cleanup() %>% 
   precalc() %>% 
   get_pca() %>% 
-  ismt_scores(crit_AIM, 13)
-      
-c17 %>% data_export(13, loc_dir)
-
-c17geo <- load_shp(13, 1, loc_dir)
-
-c17geomerge <- geomerge(c17, c17geo)
-
-c17geomerge %>% geoexport(13, loc_dir)
+  ismt_scores(13)
 ```
 
 ### Autoría y crédito
@@ -391,19 +384,126 @@ Autores del Indicador: </br>
 
 <a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a>
 
-# Socio-Material Territorial Index
+# <span id="english">Socio-Material Territorial Indicator</span>
 
 #### ENG
 
 ### General
 
-The `ismtchile` package was created to facilitate the calculation and distribution of the Socio-Material Territorial Index, made by <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. The complete methodology is available at <a href='https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about'>this link</a>. </br> 
+The R package `ismtchile` was created to fecilitate the calculation and distribution of the Socio Material Territorial Indicator (ISMT), an indicator created by <a href='https://www.observatoriodeciudades.com'> Observatorio de Ciudades UC</a>. </br> The ISMT was created based on 4 socio-material indices with territorial specificity. These indices are the scholarity of the head of household, the materials of the dwelling, overcrowding and number of households within the same dwelling.
+
+#### Scholarity of the head of household
+
+This indicator was calculated with 7 levels in mind:
+
+<ul>
+  <li>No education: playgroup, pre-school.</li>
+  <li>Primary: basic edication, primary or elementary (old system).</li>
+  <li>Secondary: scientific humanities, professional technical, humanities (old system), commercial technical (old system), industrial / normalist (old system).</li>
+  <li>Technical professional: superior (0 a 3 years)</li>
+  <li>Bachelors degree: professional (4 or more years)</li>
+  <li>Masters</li>
+  <li>Doctorate</li>
+</ul>
+
+These scholarity levels have been calculated with census information referencing to completion of the specified scholarity level (variables `p14` and `p15`).
+
+The weighted scores for the 7 levels were calculated considering the percentage of each level within the zone, with respect to the total amount of observations.This variable representation percentage was multiplied by a score between 1 (low scholarity level) and 1000 (high scholarity level) for each zone.
+
+The weighted score for primary scholarity is added to the other levels in order to generate a weighted sum of for the scholarity of the head of household within the zone. This score goes from 1 to 1000.
+
+#### Dwelling quality indicator
+
+The dwelling quality indicator was calculated based on parameters as defined by the Ministry of Social Development (MDS). According to the indicator, 3 dimensions were taken into consideration in order to evaluate the occupied dwellings: exterior walls, roofing and floors. These conditions are then evaluated and  result in an indicator for dwelling quality based on the following categories:
+
+<ul>
+    <li>Exterior walls</li>
+    <ul>
+        <li>Acceptable:</li>
+        <li>Retreivable:</li>
+        <li>Irretrievable:</li>
+    </ul>
+    <li>Roofing</li>
+    <ul>
+        <li>Acceptable:</li>
+        <li>Retreivable:</li>
+        <li>Irretrievable:</li>
+    </ul>
+    <li>Floors</li>
+    <ul>
+        <li>Acceptable:</li>
+        <li>Retreivable:</li>
+        <li>Irretrievable:</li>
+    </ul>
+</ul>
+
+After this, the dwellings were classified according to the indicator, considering the Acceptable, Retrievable and Irretrievable categories, determined by the following conditons:
+
+<ul>
+    <li>Acceptable: exterior walls, roofing and floors are all acceptable.</li>
+    <li>Retrievable: exterior walls, floors and roofing are all at least retrievable, and there is no irretrievable variable.</li>
+    <li>Irretrievable: at least one of the variables (exterior wallas, roofing and floors) is irretrievable.</li>
+</ul>
+
+#### Overcrowding indicator
+
+The overcrowding indicator was made in consideration of the methodology as defined by the Ministry of Social Development (MDS), which stipulates overcrowding as the rate of persons residing in a dwelling and the number of bedrooms in it. This calculation takes into consideration rooms with exclusive/multi-purpose use as a bedroom, and determines the Critical overcrowding, Medium overcrwoding and No overcrowding categories.
+
+<ul>
+    <li>No overcrowding: less than or equal to 2.4</li>
+    <li>Medium overcrowding: between 2.5 and 4.9</li>
+    <li>Critical overcrowding:equal to or bigger than 5</li>
+</ul>
+
+#### number of households within the same dwelling indicator
+
+### Calculation of the Territorial materiality indicator (IMT)
+
+The composite IMT is calculated relative to the number of observations, either persons or dwellings within the zone. It includes:
+
+<ul>
+    <li>Weighted scores for the scholarity of the head of household.</li>
+    <li>Weighted scores for the quality of the dwelling.</li>
+    <li>Weighted scores for overcrowding.</li>
+    <li>Weighted scores for number of households within the same dwelling.</li>
+</ul>
+
+#### Calculation of the scholarity of the head of household
+
+The weighted scores for the 7 levels of scholarity were calculated takeing into consideration the percentage of each level within the zone (relative to the total number of observations). This percentage was multiplied by a score between 1 (low scholarity) and 1000 (high scholarity) for each zone.
+
+#### Calculation of quality of the dwelling
+
+The weighted scores for the dwelling quality categories were calculated considering the percentage  that each category represents within each zone. The percentage of representation for each categorywere multiplied by a score between 1 (irretrievable dwellings) and 1000 (acceptable dwellings). The result of these weighted scores were added to form the quality of dwelling indicator for each zone. This score spans values between 1 and 1000.
+
+#### Calculation of overcrowding
+
+Just like in the previous cases, the 3 categories for overcrowding were calculated considering the percentage that each one represents within its zone. The scores are also weighted with scores between 1 (critical overcrowding) and 1000 (no overcrowding). 
+
+#### Calculation of number of dwellings within the same dwelling
+
+Just like in the previous cases,the categories for this indicator were calculated by weighing scores between 1 (dwellings with 2 households) and 1000 (for the maximum pssible value) for each zone.
+
+#### Calculation of final scores
+
+
 
 <style>
   html {text-align: justify;}
   h1, h3 {text-align: center;}
-  body {
+  /*body {
     background-color: #000033;
     color: #FAFAFF
+  }*/
+  table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  td, th {
+    padding: 5px 15px;
+    border-width: 1px;
+    border-color: #fafaff;
+    border-style: solid;
   }
 </style>
