@@ -14,7 +14,7 @@
 #' @return objeto \code{data.frame} con el cálculo de componentes principales. \cr \cr \code{data.frame} object with the principal components analysis calculation.
 #' @export get_pca
 #'
-#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>% cleanup() %>% precalc() %>% get_pca()
+#' @examples c17 <- load_data(13, path = loc_dir) |> region_filter(13, 1) |> cleanup() |> precalc() |> get_pca()
 
 get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mater', alleg = 'ptje_alleg') {
 
@@ -29,7 +29,7 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
   names(df)[names(df) == glue('{mat}')] <- 'ptje_mater'
   names(df)[names(df) == glue('{alleg}')] <- 'ptje_alleg'
 
-  tempdf <- na.omit(df) %>%
+  tempdf <- na.omit(df) |>
     select(
 
       ptje_hacin, ptje_esc, ptje_mater, ptje_alleg
@@ -38,7 +38,7 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
 
   pca <- prcomp(tempdf)
 
-  loadings <- as.data.frame(pca$rotation) %>%
+  loadings <- as.data.frame(pca$rotation) |>
     select(
 
       PC1
@@ -47,7 +47,7 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
 
   pc1score <- as.data.frame(t(loadings))
 
-  pc1score <- pc1score %>%
+  pc1score <- pc1score |>
     mutate(
 
       ptje_esc = abs(ptje_esc),
@@ -66,17 +66,17 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
   pviv <- pc1score$ptje_mater * propvar
   pall <- pc1score$ptje_alleg * propvar
 
-  calculations <- df %>%
+  calculations <- df |>
     mutate(
 
       ismt_p = (ptje_esc * pesc) + (ptje_hacin * phac) + (ptje_mater * pviv) + (ptje_alleg * pall)
 
-    ) %>%
+    ) |>
     filter(
 
       !is.na(ismt_p)
 
-    ) %>%
+    ) |>
     mutate(
 
       ismt_pn = normvar(ismt_p)

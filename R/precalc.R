@@ -14,7 +14,7 @@
 #' @return objeto \code{data.frame} con los precálculos necesarios para calcular el ISMT. \cr \cr \code{data.frame} object with the necessary precalculations to calculate ISMT.
 #' @export precalc
 #'
-#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>% cleanup() %>% precalc()
+#' @examples c17 <- load_data(13, path = loc_dir) |> region_filter(13, 1) |> cleanup() |> precalc()
 
 precalc <- function(df, hacin = 'ind_hacinam', alleg = 'n_hog_alleg', esc = 'a_esc_cont', mat = 'ind_mater') {
 
@@ -30,7 +30,7 @@ precalc <- function(df, hacin = 'ind_hacinam', alleg = 'n_hog_alleg', esc = 'a_e
   names(df)[names(df) == glue('{esc}')] <- 'a_esc_cont'
   names(df)[names(df) == glue('{mat}')] <- 'ind_mater'
 
-  calculations <- df %>%
+  calculations <- df |>
     mutate(
 
       ind_hacinam = -1 * ind_hacinam,

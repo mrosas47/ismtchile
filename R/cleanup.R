@@ -21,7 +21,7 @@
 #' @return objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. \cr \cr \code{data.frame} object containing only the variables that are necessary for the following calculations.
 #' @export cleanup
 #'
-#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>%  cleanup()
+#' @examples c17 <- load_data(13, path = loc_dir) |> region_filter(13, 1) |>  cleanup()
 
 cleanup <- function(df, year = 2017, vars.as.factors = F, level = 'zc', tipo_viv = 'tipoviv', ocupacion = 'ocup_viv', parentesco = 'parentesco', dormitorios = 'ndorms', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso') {
 
@@ -104,13 +104,13 @@ mzn level not supported for 2017
 
     invalid <- c('COLECTIVA', 'TRANSITO', 'CALLE')
 
-    cleanclone <- clone %>%
+    cleanclone <- clone |>
       filter(
 
         parentesco == 'JEFE_HOGAR',
         tipo_viv %notin% invalid
 
-      ) %>%
+      ) |>
       mutate(
 
         cond_muro = case_when(
@@ -196,17 +196,17 @@ mzn level not supported for 2017
 
         )
 
-      ) %>%
+      ) |>
       filter(
 
         !is.na(hacin_critico)
 
-      ) %>%
+      ) |>
       mutate(
 
         n_hog_alleg = cant_hog - 1
 
-      ) %>%
+      ) |>
       select(
 
         year, geocode, cond_muro, cond_techo, cond_piso, mat_aceptable, mat_irrecup, mat_recuperable, sin_hacin, hacin_medio, hacin_critico, a_esc_cont, ind_mater, ind_hacinam, n_hog_alleg, escolaridad

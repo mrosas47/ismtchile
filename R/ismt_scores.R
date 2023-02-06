@@ -15,7 +15,7 @@
 #' @return objeto \code{data.frame} agrupado por la unidad espacial especificada con información de ISMT. \cr \cr \code{data.frame} object grouped by the specified spatial unit with ISMT information.
 #' @export ismt_scores
 #'
-#' @examples c17 <- load_data(13, path = loc_dir) %>% region_filter(13, 1) %>% cleanup() %>% precalc() %>% get_pca() %>% ismt_scores(crit_AIM, 13)
+#' @examples c17 <- load_data(13, path = loc_dir) |> region_filter(13, 1) |> cleanup() |> precalc() |> get_pca() |> ismt_scores(crit_AIM, 13)
 
 ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
 
@@ -46,7 +46,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
 
   }
 
-  cuts <- spawn_AIMcuts() %>% filter(as.numeric(region) == r)
+  cuts <- spawn_AIMcuts() |> filter(as.numeric(region) == r)
 
   q <- as.data.frame(quantile(df$ismt_pn, prob = seq(0, 1, length = 101)))
 
@@ -67,7 +67,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
   q3cut = q[41,]
   q4cut = q[21,]
 
-  ismt <- df %>%
+  ismt <- df |>
     mutate(
 
       Q1 = if_else(ismt_pn > q1cut, 1L, 0L),
@@ -92,12 +92,12 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
 
       zona = geocode
 
-    ) %>%
+    ) |>
     group_by(
 
       zona
 
-    ) %>%
+    ) |>
     summarise(
 
       total_hogs = n(),
@@ -127,7 +127,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
       mat_irrec = sum(mat_irrecup),
       ind_mat = mean(ind_mater)
 
-    ) %>%
+    ) |>
     mutate(
 
       gse_prom = case_when(
@@ -152,7 +152,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
 
       )
 
-    ) %>%
+    ) |>
     select(
 
       zona, total_hogs, ismtpn, gse_prom, gse_dom, Q1, Q2, Q3, Q4, Q5, Alto, Medio, Bajo, AB, C1, C2, C3, D, E, ind_hac, hacin_cri, hacin_med, hacin_no, alleg, escolar, mat_acept, mat_recup, mat_irrec, ind_mat

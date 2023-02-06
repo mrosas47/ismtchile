@@ -16,7 +16,7 @@ literalize <- function (df, year) {
 
   if (year == 2017) {
 
-    df0 <- df %>%
+    df0 <- df |>
       mutate(
 
         id_region = str_pad(
@@ -376,7 +376,7 @@ literalize <- function (df, year) {
 
         )
 
-      ) %>%
+      ) |>
       select(
 
         year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, tipo_area, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, tipo_hog, operativo, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, rama, hijos_nacido, hijos_vivos, escolaridad
@@ -387,21 +387,21 @@ literalize <- function (df, year) {
 
   } else if (year == 2012) {
 
-    nhogares2012 <- df %>%
-      filter(dpar == 1) %>%
-      group_by(folio, nviv) %>%
+    nhogares2012 <- df |>
+      filter(dpar == 1) |>
+      group_by(folio, nviv) |>
       summarise(
         cant_hog = as.integer(n())
-      ) %>%
+      ) |>
       ungroup()
 
-    df0 <- df %>%
+    df0 <- df |>
       left_join(
 
         nhogares2012,
         by = c('folio', 'nviv')
 
-      ) %>%
+      ) |>
       mutate(
 
         year = '2012',
@@ -711,7 +711,7 @@ literalize <- function (df, year) {
 
         )
 
-      ) %>%
+      ) |>
       select(
 
         year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, tipo_area, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, hijos_nacido, hijos_vivos, escolaridad
@@ -722,27 +722,27 @@ literalize <- function (df, year) {
 
   } else if (year == 2002) {
 
-    nhogares2002 <- df %>%
-      filter(p17 == 1) %>%
-      group_by(portafolio, vn) %>%
+    nhogares2002 <- df |>
+      filter(p17 == 1) |>
+      group_by(portafolio, vn) |>
       summarise(
         cant_hog = n(),
         cant_per = sum(tp, na.rm = TRUE)
-      ) %>%
+      ) |>
       ungroup()
 
-    hijos2002 <- df %>%
-      filter(p17 %in% c(1 : 3)) %>%
-      group_by(portafolio, vn, hn) %>%
+    hijos2002 <- df |>
+      filter(p17 %in% c(1 : 3)) |>
+      group_by(portafolio, vn, hn) |>
       summarise(
         hijos_nacido = max(p34, na.rm = T),
         hijos_vivos = max(p35, na.rm = T)
-      ) %>%
+      ) |>
       ungroup()
 
-    df0 <- df %>%
-      left_join(nhogares2002, by = c("portafolio", "vn")) %>%
-      left_join(hijos2002, by = c('portafolio', 'vn', 'hn')) %>%
+    df0 <- df |>
+      left_join(nhogares2002, by = c("portafolio", "vn")) |>
+      left_join(hijos2002, by = c('portafolio', 'vn', 'hn')) |>
       mutate(
 
         year = '2002',
@@ -1000,7 +1000,7 @@ literalize <- function (df, year) {
 
         )
 
-      ) %>%
+      ) |>
       select(
 
         year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, tipo_area, portafolio, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, hijos_nacido, hijos_vivos, escolaridad
@@ -1011,18 +1011,18 @@ literalize <- function (df, year) {
 
   } else if (year == 1992) {
 
-    npers1992 <- df %>%
-      filter(parentesco == 1) %>%
-      group_by(portafolio, vivienda) %>%
+    npers1992 <- df |>
+      filter(parentesco == 1) |>
+      group_by(portafolio, vivienda) |>
       summarise(
         cant_hog = max(hogar),
         cant_per = sum(tp),
         ndorms = sum(pieza_dormir)
-      ) %>%
+      ) |>
       ungroup()
 
-    df0 <- df %>%
-      left_join(npers1992, by = c("portafolio", "vivienda")) %>%
+    df0 <- df |>
+      left_join(npers1992, by = c("portafolio", "vivienda")) |>
       mutate(
 
         tipo_area = case_when(
@@ -1300,7 +1300,7 @@ literalize <- function (df, year) {
         manzent92 = manzent92,
         geocode92 = geocode92
 
-      ) %>%
+      ) |>
       select(
 
         year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, portafolio, tipo_area, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, hijos_nacido, hijos_vivos, escolaridad
@@ -1311,7 +1311,7 @@ literalize <- function (df, year) {
 
   } else if (year == 1982) {
 
-    df <- df %>%
+    df <- df |>
       mutate(
 
         c = as.character(comuna),
@@ -1356,39 +1356,39 @@ literalize <- function (df, year) {
 
       )
 
-    nhogs82 <- df %>%
-      filter(parentesco == 1) %>%
+    nhogs82 <- df |>
+      filter(parentesco == 1) |>
       group_by(
 
         id_hog
 
-      ) %>%
+      ) |>
       summarise(
 
         cant_hog = n(),
         cant_per = max(persona)
 
-      ) %>%
+      ) |>
       ungroup()
 
-    hijos <- df %>%
-      filter(parentesco %in% c(1 : 3)) %>%
+    hijos <- df |>
+      filter(parentesco %in% c(1 : 3)) |>
       group_by(
 
         id_hog
 
-      ) %>%
+      ) |>
       summarise(
 
         hijos_nacido = max(hijos_nacidosvivos),
         hijos_vivo = max(hijos_sobrevivientes)
 
-      ) %>%
+      ) |>
       ungroup()
 
-    df0 <- df %>%
-      left_join(nhogs82, by = 'id_hog') %>%
-      left_join(hijos, by = 'id_hog') %>%
+    df0 <- df |>
+      left_join(nhogs82, by = 'id_hog') |>
+      left_join(hijos, by = 'id_hog') |>
       mutate(
 
         npers = as.integer(persona),
@@ -1524,7 +1524,7 @@ literalize <- function (df, year) {
         nhogar = as.integer(hogar),
         year = '1982'
 
-      ) %>%
+      ) |>
       select(
 
         year, tipo_area, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, asiste_educ, curso_alto, nivel_educ, trabajo, hijos_nacido, hijos_vivos
