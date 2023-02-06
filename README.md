@@ -317,10 +317,10 @@ Las variables descritas anteriormente corresponden a las variables del censo 201
 El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores pasos a seguir en el cálculo del indicador, en el siguiente orden: </br>
 
 <ol>
-  <li>`cleanup()` normaliza los nombres de los campos y elimina variables redundantes</li>
-  <li>`precalc()` precálculos necesarios para el proceso</li>
-  <li>`get_pca()` análisis de componentes principales</li>
-  <li>`ismt_scores()` cálculo del índice</li>
+  <li><code>cleanup()</code> normaliza los nombres de los campos y elimina variables redundantes</li>
+  <li><code>precalc()</code> precálculos necesarios para el proceso</li>
+  <li><code>get_pca()</code> análisis de componentes principales</li>
+  <li><code>ismt_scores()</code> cálculo del índice</li>
 </ol>
 
 ### Instalación y uso
@@ -333,45 +333,35 @@ El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores
 library(ismtchile)
 library(tidyverse)
 
-c17 <- readRDS('censo2017.rds')
+ismt2017 <- readRDS('censo2017.rds')
   cleanup() %>% 
   precalc() %>% 
   get_pca() %>% 
   ismt_scores(13)
+
+ismt2017 <- full_ismt(13, 1)
 ```
 
 ### Autoría y crédito
 
-Autor del paquete: </br>
-
-<ul>
-
-<li>Martín Rosas Araya, Observatorio de Ciudades UC -- <a href="mailto:mrosas1690@gmail.com" target="_blank">mrosas1690@gmail.com</a></li>
-
-</ul>
-
-Autores del Indicador: </br>
-
-<ul>
-
-<li>Ricardo Truffello</li>
-
-<li>Mónica Flores</li>
-
-<li>Gabriela Ulloa</li>
-
-<li>Isidro Puig</li>
-
-<li>Natalia Ramírez</li>
-
-<li>Francisca Balbontin</li>
-
-<li>Martín Rosas</li>
-
-</ul>
-
-<a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a>
-
+<div id="authorsdiv">
+    <p id="authors">
+        <h4>Creación, desarrollo y mantención del paquete</h4><br>
+        <div class="people">
+                    <b>Martín Rosas Araya</b> | Estudiante de Planificación Urbana UC, Certificado profesional en Front-End Web Development (W3C). Ayudante de investigación, Observatorio de Ciudades UC | <a href="mailto:mrosas1690@gmail.com">mrosas1690@gmail.com</a> | <a href="mailto:mirosas@uc.cl">mirosas@uc.cl</a>
+        </div> <br>
+        <h4>Creación y desarrollo del índice</h4><br>
+        <div class="people">
+            <b>Ricardo Truffello Robledo</b> | Geógrafo UC; Doctor en Ingeniería en Sistemas Complejos (Universidad Adolfo Ibáñez - UAI); Magíster en Geografía y Geomática UC. Director, Observatorio de Ciudades UC <br><br>
+            <b>Mónica Flores Castillo</b> | Arquitecta UC y Master of Urban Planning NYU<br><br>
+            <b>Gabriela Ulloa Contador</b> | Geógrafa y Msc. en geografía, mención Justicia Ambiental; Estudiante de Doctorado en Territorio, Espacio y Sociedad de la Universidad de Chile<br><br>
+            <b>Isidro Puig Vásquez</b> | Geógrafo y Analista GIS, Universitat de València (España); Diplomado Programación GIS, Web Mapping y Tecnologías de la Información Geográfica, Asociación Geoinnova, Valencia (España); Diplomado de Especialización en Sostenibilidad, Ética Ecológica y Educación Ambiental, Universitat Politècnica de València (España)<br><br>
+            <b>Natalia Ramírez González</b> | Asesora Ministerial de Género en el Ministerio de Transportes y Telecomunicaciones de Chile; Geógrafa y MA. en Geografía, mención organización urbano-territorial.<br><br>
+            <b>Francisca Balbontin Puig</b> | Diseñadora integral UC; Diseño de plataformas de visualización de datos<br><br>
+            <b>Martín Rosas Araya</b> | Estudiante de Planificación Urbana UC, Certificado profesional en Front-End Web Development (W3C). Ayudante de investigación, Observatorio de Ciudades UC <br><br>
+        </div>
+    </p>
+</div>
 <br><br>
 <div class="logos">
   <a href="home.html"><img src="https://drive.google.com/uc?export=view&id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a>
@@ -423,21 +413,21 @@ The dwelling quality indicator was calculated based on parameters as defined by 
 <ul>
     <li>Exterior walls</li>
     <ul>
-        <li>Acceptable:</li>
-        <li>Retreivable:</li>
-        <li>Irretrievable:</li>
+        <li>Acceptable: reinforced concrete, masonry, stone partitions lined on both sides.</li>
+        <li>Retreivable: stone partitions (not lined).</li>
+        <li>Irretrievable: precarious materials, waste.</li>
     </ul>
     <li>Roofing</li>
     <ul>
-        <li>Acceptable:</li>
-        <li>Retreivable:</li>
-        <li>Irretrievable:</li>
+        <li>Acceptable: tiles, shingles, fibre cement.</li>
+        <li>Retreivable: phonoloite, straw, cat-tail, coiron, cane.</li>
+        <li>Irretrievable: precarious materials, no cover.</li>
     </ul>
     <li>Floors</li>
     <ul>
-        <li>Acceptable:</li>
-        <li>Retreivable:</li>
-        <li>Irretrievable:</li>
+        <li>Acceptable: parquet, wood, floating floor, flexit, carpet, ceramics.</li>
+        <li>Retreivable: tiled cement, concrete flooring, cement veneer.</li>
+        <li>Irretrievable: dirt.</li>
     </ul>
 </ul>
 
@@ -459,7 +449,7 @@ The overcrowding indicator was made in consideration of the methodology as defin
     <li>Critical overcrowding:equal to or bigger than 5</li>
 </ul>
 
-#### number of households within the same dwelling indicator
+#### Number of households within the same dwelling indicator
 
 ### Calculation of the Territorial materiality indicator (IMT)
 
@@ -486,7 +476,7 @@ Just like in the previous cases, the 3 categories for overcrowding were calculat
 
 #### Calculation of number of dwellings within the same dwelling
 
-Just like in the previous cases,the categories for this indicator were calculated by weighing scores between 1 (dwellings with 2 households) and 1000 (for the maximum pssible value) for each zone.
+Just like in the previous cases,the categories for this indicator were calculated by weighing scores between 1 (dwellings with 2 households) and 1000 (for the maximum possible value) for each zone.
 
 #### Calculation of final scores
 
@@ -688,38 +678,52 @@ Once the continuous score is obtained, the ISMT is classified through its percen
 
 ### Workflow
 
+The workflow has been though out show as many steps in the calculation as possible, in the following order:
+
+<ol>
+  <li><code>cleanup()</code> normalizes field names and eliminates redundant variables.</li>
+  <li><code>precalc()</code> nnecessary precalculations.</li>
+  <li><code>get_pca()</code> Principal Components Analyisis</li>
+  <li><code>ismt_scores()</code> index calculation</li>
+</ol>
+
 ### Installation and usage
+
+```
+# install.packages('remotes')
+
+# remotes::install_github('mrosas47/ismtchile')
+
+library(ismtchile)
+library(tidyverse)
+
+ismt2017 <- readRDS('censo2017.rds')
+  cleanup() %>% 
+  precalc() %>% 
+  get_pca() %>% 
+  ismt_scores(13)
+
+ismt2017 <- full_ismt(13, 1)
+```
 
 ### Authorship and credit
 
-Package author: </br>
-
-<ul>
-
-<li>Martín Rosas Araya, Observatorio de Ciudades UC -- <a href="mailto:mrosas1690@gmail.com" target="_blank">mrosas1690@gmail.com</a></li>
-
-</ul>
-
-ISMT authors: </br>
-
-<ul>
-
-<li>Ricardo Truffello</li>
-
-<li>Mónica Flores</li>
-
-<li>Gabriela Ulloa</li>
-
-<li>Isidro Puig</li>
-
-<li>Natalia Ramírez</li>
-
-<li>Francisca Balbontin</li>
-
-<li>Martín Rosas</li>
-
-</ul>
-
+<div id="authorsdiv">
+    <h4>Package creation, development and maintenance</h4><br>
+    <div class="people">
+      <b>Martín Rosas Araya</b> | City Planning Student, UC; Front-End Web Development Professional Certificate (W3C). Research Assistant, Observatorio de Ciudades UC | <a href="mailto:mrosas1690@gmail.com">mrosas1690@gmail.com</a> | <a href="mailto:mirosas@uc.cl">mirosas@uc.cl</a>
+    </div> <br>
+    <h4>Index creation and development</h4><br>
+    <div class="people">
+      <b>Ricardo Truffello Robledo</b> | Geógrafo UC; Doctor en Ingeniería en Sistemas Complejos (Universidad Adolfo Ibáñez - UAI); Magíster en Geografía y Geomática UC. Director, Observatorio de Ciudades UC <br><br>
+      <b>Mónica Flores Castillo</b> | Arquitecta UC y Master of Urban Planning NYU<br><br>
+      <b>Gabriela Ulloa Contador</b> | Geógrafa y Msc. en geografía, mención Justicia Ambiental; Estudiante de Doctorado en Territorio, Espacio y Sociedad de la Universidad de Chile<br><br>
+      <b>Isidro Puig Vásquez</b> | Geógrafo y Analista GIS, Universitat de València (España); Diplomado Programación GIS, Web Mapping y Tecnologías de la Información Geográfica, Asociación Geoinnova, Valencia (España); Diplomado de Especialización en Sostenibilidad, Ética Ecológica y Educación Ambiental, Universitat Politècnica de València (España)<br><br>
+      <b>Natalia Ramírez González</b> | Asesora Ministerial de Género en el Ministerio de Transportes y Telecomunicaciones de Chile; Geógrafa y MA. en Geografía, mención organización urbano-territorial.<br><br>
+      <b>Francisca Balbontin Puig</b> | Diseñadora integral UC; Diseño de plataformas de visualización de datos<br><br>
+      <b>Martín Rosas Araya</b> | Estudiante de Planificación Urbana UC, Certificado profesional en Front-End Web Development (W3C). Ayudante de investigación, Observatorio de Ciudades UC <br><br>
+    </div>
+</div>
 <a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a>
 <br><br>
 <div class="logos">

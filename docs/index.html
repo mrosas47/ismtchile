@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculating Índice SocioMaterial Territorial • ismtchile</title>
+<title>Calculating Socio Material Territorial Index • ismtchile</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Calculating Índice SocioMaterial Territorial">
+<script src="pkgdown.js"></script><meta property="og:title" content="Calculating Socio Material Territorial Index">
 <meta property="og:description" content="Paquete creado con el fin de facilitar el cálculo y distribución del índice Socio Material Territorial (ISMT), elaborado por el Observatorio de Ciudades UC ( \code{\link{www.observatoriodeciudades.com}} ). \cr La metodología completa está disponible en \code{\link{https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about}}. \cr \cr Package created to facilitate the calculation and distribution of the Socio-Material Territorial Index by Observatorio de Ciudades UC ( \code{\link{www.observatoriodeciudades.com}} ). \cr The full methodology is available at \code{\link{https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about}}.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -56,8 +56,12 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
+<div id="top" class="buttons">
+<p><button> <a href="#hook" class="btn">To English</a> </button></p>
+</div>
 <div class="section level1">
-<div class="page-header"><h1 id="índice-socio-material-territorial">Índice Socio Material Territorial<a class="anchor" aria-label="anchor" href="#%C3%ADndice-socio-material-territorial"></a>
+<div class="page-header"><h1 id="índice-socio-material-territorial">
+<span id="spanish">Índice Socio Material Territorial</span><a class="anchor" aria-label="anchor" href="#%C3%ADndice-socio-material-territorial"></a>
 </h1></div>
 <div class="section level4">
 <h4 id="esp">ESP<a class="anchor" aria-label="anchor" href="#esp"></a>
@@ -66,7 +70,7 @@
 <div class="section level3">
 <h3 id="general">General<a class="anchor" aria-label="anchor" href="#general"></a>
 </h3>
-<p>El paquete <code>ismtchile</code> fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href="https://www.observatoriodeciudades.com" class="external-link"> Observatorio de Ciudades UC</a>. La metodología completa está disponible en <a href="https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about" target="_blank" class="external-link">este link</a>.  La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, y el hacinamiento.</p>
+<p>El paquete <code>ismtchile</code> fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el <a href="https://www.observatoriodeciudades.com" class="external-link"> Observatorio de Ciudades UC</a>.  La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, el hacinamiento y el allegamiento.</p>
 <div class="section level4">
 <h4 id="escolaridad-del-jefe-de-hogar">Escolaridad del jefe de hogar<a class="anchor" aria-label="anchor" href="#escolaridad-del-jefe-de-hogar"></a>
 </h4>
@@ -722,12 +726,6 @@ Chile
 <p>El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores pasos a seguir en el cálculo del indicador, en el siguiente orden: </p>
 <ol>
 <li>
-<code>load_data()</code>descargar la data censal a la carpeta especificada y cargar a RStudio
-</li>
-<li>
-<code>region_filter()</code> filtrar la data por región y tipo de área
-</li>
-<li>
 <code><a href="reference/cleanup.html">cleanup()</a></code> normaliza los nombres de los campos y elimina variables redundantes
 </li>
 <li>
@@ -740,7 +738,6 @@ Chile
 <code><a href="reference/ismt_scores.html">ismt_scores()</a></code> cálculo del índice
 </li>
 </ol>
-<p> Adicionalmente, existe la posibilidad de espacializar la información a través de <code>load_shp()</code> (descarga la data espacial y la carga a RStudio) y <code>geomerge()</code> (une los resultados del ISMT con el shapefile), y de exportarla a través de <code>data_export()</code> (<code>.csv</code>, <code>.rds</code>) y <code>geoexport()</code> (<code>.shp</code>).</p>
 </div>
 <div class="section level3">
 <h3 id="instalación-y-uso">Instalación y uso<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-y-uso"></a>
@@ -751,65 +748,52 @@ Chile
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ismtchile</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/" class="external-link">here</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">loc_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">crit_AIM</span> <span class="op">&lt;-</span> <span class="fu">get_criteria</span><span class="op">(</span><span class="fl">13</span>, path <span class="op">=</span> <span class="va">loc_dir</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">c17</span> <span class="op">&lt;-</span> <span class="fu">load_data</span><span class="op">(</span><span class="fl">13</span>, path <span class="op">=</span> <span class="va">loc_dir</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">region_filter</span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">ismt2017</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">'censo2017.rds'</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="reference/cleanup.html">cleanup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/precalc.html">precalc</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="reference/get_pca.html">get_pca</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="reference/ismt_scores.html">ismt_scores</a></span><span class="op">(</span><span class="va">crit_AIM</span>, <span class="fl">13</span><span class="op">)</span></span>
-<span>      </span>
-<span><span class="va">c17</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">data_export</span><span class="op">(</span><span class="fl">13</span>, <span class="va">loc_dir</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="reference/ismt_scores.html">ismt_scores</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">c17geo</span> <span class="op">&lt;-</span> <span class="fu">load_shp</span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span>, <span class="va">loc_dir</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">c17geomerge</span> <span class="op">&lt;-</span> <span class="fu">geomerge</span><span class="op">(</span><span class="va">c17</span>, <span class="va">c17geo</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">c17geomerge</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">geoexport</span><span class="op">(</span><span class="fl">13</span>, <span class="va">loc_dir</span><span class="op">)</span></span></code></pre>
+<span><span class="va">ismt2017</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/full_ismt.html">full_ismt</a></span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="autoría-y-crédito">Autoría y crédito<a class="anchor" aria-label="anchor" href="#autor%C3%ADa-y-cr%C3%A9dito"></a>
 </h3>
-<p>Autor del paquete: </p>
-<ul>
-<li>
-Martín Rosas Araya, Observatorio de Ciudades UC – <a href="mailto:mrosas1690@gmail.com" target="_blank">mrosas1690@gmail.com</a>
-</li>
-</ul>
-<p>Autores del Indicador: </p>
-<ul>
-<li>
-Ricardo Truffello
-</li>
-<li>
-Mónica Flores
-</li>
-<li>
-Gabriela Ulloa
-</li>
-<li>
-Isidro Puig
-</li>
-<li>
-Natalia Ramírez
-</li>
-<li>
-Francisca Balbontin
-</li>
-<li>
-Martín Rosas
-</li>
-</ul>
-<p><a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a></p>
+<div id="authorsdiv">
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>p id<span class="ot">=</span><span class="st">"authors"</span><span class="sc">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;</span>h4<span class="sc">&gt;</span>Creación, desarrollo y mantención del paquete<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Estudiante de Planificación Urbana UC, Certificado profesional en Front<span class="sc">-</span>End Web <span class="fu">Development</span> (W3C). Ayudante de investigación, Observatorio de Ciudades UC <span class="sc">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mrosas1690@gmail.com"</span><span class="sc">&gt;</span>mrosas1690<span class="sc">@</span>gmail.com<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> <span class="er">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mirosas@uc.cl"</span><span class="sc">&gt;</span>mirosas<span class="sc">@</span>uc.cl<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;/</span>div<span class="sc">&gt;</span> <span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;</span>h4<span class="sc">&gt;</span>Creación y desarrollo del índice<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Ricardo Truffello Robledo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo UC; Doctor en Ingeniería en Sistemas <span class="fu">Complejos</span> (Universidad Adolfo Ibáñez <span class="sc">-</span> UAI); Magíster en Geografía y Geomática UC. Director, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Mónica Flores Castillo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Arquitecta UC y Master of Urban Planning NYU<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Gabriela Ulloa Contador<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafa y Msc. en geografía, mención Justicia Ambiental; Estudiante de Doctorado en Territorio, Espacio y Sociedad de la Universidad de Chile<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Isidro Puig Vásquez<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo y Analista GIS, Universitat de València (España); Diplomado Programación GIS, Web Mapping y Tecnologías de la Información Geográfica, Asociación Geoinnova, <span class="fu">Valencia</span> (España); Diplomado de Especialización en Sostenibilidad, Ética Ecológica y Educación Ambiental, Universitat Politècnica de València (España)<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Natalia Ramírez González<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Asesora Ministerial de Género en el Ministerio de Transportes y Telecomunicaciones de Chile; Geógrafa y MA. en Geografía, mención organización urbano<span class="sc">-</span>territorial.<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Francisca Balbontin Puig<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Diseñadora integral UC; Diseño de plataformas de visualización de datos<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Estudiante de Planificación Urbana UC, Certificado profesional en Front<span class="sc">-</span>End Web <span class="fu">Development</span> (W3C). Ayudante de investigación, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;/</span>div<span class="sc">&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>p<span class="sc">&gt;</span></span></code></pre></div>
+</div>
+<br><br><div class="logos">
+<p><a href="home.html"><img src="https://drive.google.com/uc?export=view&amp;id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a></p>
+</div>
+<br><div id="hook">
+
+</div>
+<hr>
+<p><br></p>
+<div class="buttons">
+<p><button> <a class="btn" href="#top">A Español</a> </button></p>
+</div>
 </div>
 </div>
 <div class="section level1">
-<h1 id="socio-material-territorial-index">Socio-Material Territorial Index<a class="anchor" aria-label="anchor" href="#socio-material-territorial-index"></a>
+<h1 id="socio-material-territorial-indicator">
+<span id="english">Socio-Material Territorial Indicator</span><a class="anchor" aria-label="anchor" href="#socio-material-territorial-indicator"></a>
 </h1>
 <div class="section level4">
 <h4 id="eng">ENG<a class="anchor" aria-label="anchor" href="#eng"></a>
@@ -818,15 +802,819 @@ Martín Rosas
 <div class="section level3">
 <h3 id="general-1">General<a class="anchor" aria-label="anchor" href="#general-1"></a>
 </h3>
-<p>The <code>ismtchile</code> package was created to facilitate the calculation and distribution of the Socio-Material Territorial Index, made by <a href="https://www.observatoriodeciudades.com" class="external-link"> Observatorio de Ciudades UC</a>. The complete methodology is available at <a href="https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about" class="external-link">this link</a>. </p>
+<p>The R package <code>ismtchile</code> was created to fecilitate the calculation and distribution of the Socio Material Territorial Indicator (ISMT), an indicator created by <a href="https://www.observatoriodeciudades.com" class="external-link"> Observatorio de Ciudades UC</a>.  The ISMT was created based on 4 socio-material indices with territorial specificity. These indices are the scholarity of the head of household, the materials of the dwelling, overcrowding and number of households within the same dwelling.</p>
+<div class="section level4">
+<h4 id="scholarity-of-the-head-of-household">Scholarity of the head of household<a class="anchor" aria-label="anchor" href="#scholarity-of-the-head-of-household"></a>
+</h4>
+<p>This indicator was calculated with 7 levels in mind:</p>
+<ul>
+<li>
+No education: playgroup, pre-school.
+</li>
+<li>
+Primary: basic edication, primary or elementary (old system).
+</li>
+<li>
+Secondary: scientific humanities, professional technical, humanities (old system), commercial technical (old system), industrial / normalist (old system).
+</li>
+<li>
+Technical professional: superior (0 a 3 years)
+</li>
+<li>
+Bachelors degree: professional (4 or more years)
+</li>
+<li>
+Masters
+</li>
+<li>
+Doctorate
+</li>
+</ul>
+<p>These scholarity levels have been calculated with census information referencing to completion of the specified scholarity level (variables <code>p14</code> and <code>p15</code>).</p>
+<p>The weighted scores for the 7 levels were calculated considering the percentage of each level within the zone, with respect to the total amount of observations.This variable representation percentage was multiplied by a score between 1 (low scholarity level) and 1000 (high scholarity level) for each zone.</p>
+<p>The weighted score for primary scholarity is added to the other levels in order to generate a weighted sum of for the scholarity of the head of household within the zone. This score goes from 1 to 1000.</p>
+</div>
+<div class="section level4">
+<h4 id="dwelling-quality-indicator">Dwelling quality indicator<a class="anchor" aria-label="anchor" href="#dwelling-quality-indicator"></a>
+</h4>
+<p>The dwelling quality indicator was calculated based on parameters as defined by the Ministry of Social Development (MDS). According to the indicator, 3 dimensions were taken into consideration in order to evaluate the occupied dwellings: exterior walls, roofing and floors. These conditions are then evaluated and result in an indicator for dwelling quality based on the following categories:</p>
+<ul>
+<li>
+Exterior walls
+</li>
+<ul>
+<li>
+Acceptable: reinforced concrete, masonry, stone partitions lined on both sides.
+</li>
+<li>
+Retreivable: stone partitions (not lined).
+</li>
+<li>
+Irretrievable: precarious materials, waste.
+</li>
+</ul>
+<li>
+Roofing
+</li>
+<ul>
+<li>
+Acceptable: tiles, shingles, fibre cement.
+</li>
+<li>
+Retreivable: phonoloite, straw, cat-tail, coiron, cane.
+</li>
+<li>
+Irretrievable: precarious materials, no cover.
+</li>
+</ul>
+<li>
+Floors
+</li>
+<ul>
+<li>
+Acceptable: parquet, wood, floating floor, flexit, carpet, ceramics.
+</li>
+<li>
+Retreivable: tiled cement, concrete flooring, cement veneer.
+</li>
+<li>
+Irretrievable: dirt.
+</li>
+</ul>
+</ul>
+<p>After this, the dwellings were classified according to the indicator, considering the Acceptable, Retrievable and Irretrievable categories, determined by the following conditons:</p>
+<ul>
+<li>
+Acceptable: exterior walls, roofing and floors are all acceptable.
+</li>
+<li>
+Retrievable: exterior walls, floors and roofing are all at least retrievable, and there is no irretrievable variable.
+</li>
+<li>
+Irretrievable: at least one of the variables (exterior wallas, roofing and floors) is irretrievable.
+</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="overcrowding-indicator">Overcrowding indicator<a class="anchor" aria-label="anchor" href="#overcrowding-indicator"></a>
+</h4>
+<p>The overcrowding indicator was made in consideration of the methodology as defined by the Ministry of Social Development (MDS), which stipulates overcrowding as the rate of persons residing in a dwelling and the number of bedrooms in it. This calculation takes into consideration rooms with exclusive/multi-purpose use as a bedroom, and determines the Critical overcrowding, Medium overcrwoding and No overcrowding categories.</p>
+<ul>
+<li>
+No overcrowding: less than or equal to 2.4
+</li>
+<li>
+Medium overcrowding: between 2.5 and 4.9
+</li>
+<li>
+Critical overcrowding:equal to or bigger than 5
+</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="number-of-households-within-the-same-dwelling-indicator">Number of households within the same dwelling indicator<a class="anchor" aria-label="anchor" href="#number-of-households-within-the-same-dwelling-indicator"></a>
+</h4>
+</div>
+</div>
+<div class="section level3">
+<h3 id="calculation-of-the-territorial-materiality-indicator-imt">Calculation of the Territorial materiality indicator (IMT)<a class="anchor" aria-label="anchor" href="#calculation-of-the-territorial-materiality-indicator-imt"></a>
+</h3>
+<p>The composite IMT is calculated relative to the number of observations, either persons or dwellings within the zone. It includes:</p>
+<ul>
+<li>
+Weighted scores for the scholarity of the head of household.
+</li>
+<li>
+Weighted scores for the quality of the dwelling.
+</li>
+<li>
+Weighted scores for overcrowding.
+</li>
+<li>
+Weighted scores for number of households within the same dwelling.
+</li>
+</ul>
+<div class="section level4">
+<h4 id="calculation-of-the-scholarity-of-the-head-of-household">Calculation of the scholarity of the head of household<a class="anchor" aria-label="anchor" href="#calculation-of-the-scholarity-of-the-head-of-household"></a>
+</h4>
+<p>The weighted scores for the 7 levels of scholarity were calculated takeing into consideration the percentage of each level within the zone (relative to the total number of observations). This percentage was multiplied by a score between 1 (low scholarity) and 1000 (high scholarity) for each zone.</p>
+</div>
+<div class="section level4">
+<h4 id="calculation-of-quality-of-the-dwelling">Calculation of quality of the dwelling<a class="anchor" aria-label="anchor" href="#calculation-of-quality-of-the-dwelling"></a>
+</h4>
+<p>The weighted scores for the dwelling quality categories were calculated considering the percentage that each category represents within each zone. The percentage of representation for each categorywere multiplied by a score between 1 (irretrievable dwellings) and 1000 (acceptable dwellings). The result of these weighted scores were added to form the quality of dwelling indicator for each zone. This score spans values between 1 and 1000.</p>
+</div>
+<div class="section level4">
+<h4 id="calculation-of-overcrowding">Calculation of overcrowding<a class="anchor" aria-label="anchor" href="#calculation-of-overcrowding"></a>
+</h4>
+<p>Just like in the previous cases, the 3 categories for overcrowding were calculated considering the percentage that each one represents within its zone. The scores are also weighted with scores between 1 (critical overcrowding) and 1000 (no overcrowding).</p>
+</div>
+<div class="section level4">
+<h4 id="calculation-of-number-of-dwellings-within-the-same-dwelling">Calculation of number of dwellings within the same dwelling<a class="anchor" aria-label="anchor" href="#calculation-of-number-of-dwellings-within-the-same-dwelling"></a>
+</h4>
+<p>Just like in the previous cases,the categories for this indicator were calculated by weighing scores between 1 (dwellings with 2 households) and 1000 (for the maximum possible value) for each zone.</p>
+</div>
+<div class="section level4">
+<h4 id="calculation-of-final-scores">Calculation of final scores<a class="anchor" aria-label="anchor" href="#calculation-of-final-scores"></a>
+</h4>
+<p>In order to relate these variables and understand the significance of each of them on their own, a principal components analysis calculation was applied, looking for each of the variable’s weight. Each region has its own PCA, and the separation of urban and rural areas within the region is established, per INE classification.</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="ismt-classification">ISMT classification<a class="anchor" aria-label="anchor" href="#ismt-classification"></a>
+</h3>
+<p>Once the continuous score is obtained, the ISMT is classified through its percentiles. This is done by considering 2 methods:</p>
+<ol>
+<li>
+Quintiles: 5 categories with equal percentage of households through the distribution of continuous ISMT scores.
+</li>
+<li>
+NSE: classification according to <a href="https://www.criteria.cl/nuevo-gse-aim/" target="_blank" class="external-link">percentiles and cuts as defined by AIM and Criteria for 2021</a>,taking into consideration the regional differences established by the study.
+</li>
+</ol>
+<br><table class="table">
+<tr>
+<th>
+Region
+</th>
+<th>
+AB
+</th>
+<th>
+C1a
+</th>
+<th>
+C1b
+</th>
+<th>
+C2
+</th>
+<th>
+C3
+</th>
+<th>
+D
+</th>
+<th>
+E
+</th>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+1.3
+</td>
+<td>
+6.6
+</td>
+<td>
+6.9
+</td>
+<td>
+13.7
+</td>
+<td>
+30
+</td>
+<td>
+33.2
+</td>
+<td>
+8.3
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+1.7
+</td>
+<td>
+6.8
+</td>
+<td>
+7.8
+</td>
+<td>
+19.5
+</td>
+<td>
+33.8
+</td>
+<td>
+25.4
+</td>
+<td>
+5
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+0.9
+</td>
+<td>
+5.3
+</td>
+<td>
+5.6
+</td>
+<td>
+12.7
+</td>
+<td>
+33.1
+</td>
+<td>
+34.7
+</td>
+<td>
+7.6
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+0.3
+</td>
+<td>
+3.2
+</td>
+<td>
+4.6
+</td>
+<td>
+9.8
+</td>
+<td>
+24.9
+</td>
+<td>
+42.4
+</td>
+<td>
+14.7
+</td>
+</tr>
+<tr>
+<td>
+5
+</td>
+<td>
+0.9
+</td>
+<td>
+5.6
+</td>
+<td>
+6.5
+</td>
+<td>
+12.1
+</td>
+<td>
+26.8
+</td>
+<td>
+37.1
+</td>
+<td>
+11.1
+</td>
+</tr>
+<tr>
+<td>
+6
+</td>
+<td>
+0.4
+</td>
+<td>
+3.3
+</td>
+<td>
+4.5
+</td>
+<td>
+9.9
+</td>
+<td>
+23.7
+</td>
+<td>
+41.7
+</td>
+<td>
+16.5
+</td>
+</tr>
+<tr>
+<td>
+7
+</td>
+<td>
+0.4
+</td>
+<td>
+2.4
+</td>
+<td>
+3.9
+</td>
+<td>
+7.4
+</td>
+<td>
+19.8
+</td>
+<td>
+44.5
+</td>
+<td>
+21.5
+</td>
+</tr>
+<tr>
+<td>
+8
+</td>
+<td>
+0.7
+</td>
+<td>
+3.8
+</td>
+<td>
+5.3
+</td>
+<td>
+9.4
+</td>
+<td>
+21.9
+</td>
+<td>
+42.2
+</td>
+<td>
+16.7
+</td>
+</tr>
+<tr>
+<td>
+9
+</td>
+<td>
+0.5
+</td>
+<td>
+3.5
+</td>
+<td>
+4.2
+</td>
+<td>
+7.8
+</td>
+<td>
+18.8
+</td>
+<td>
+42.6
+</td>
+<td>
+22.5
+</td>
+</tr>
+<tr>
+<td>
+10
+</td>
+<td>
+0.6
+</td>
+<td>
+4
+</td>
+<td>
+4.8
+</td>
+<td>
+8.9
+</td>
+<td>
+21.5
+</td>
+<td>
+44.6
+</td>
+<td>
+15.6
+</td>
+</tr>
+<tr>
+<td>
+11
+</td>
+<td>
+1.2
+</td>
+<td>
+7.6
+</td>
+<td>
+7.3
+</td>
+<td>
+12.8
+</td>
+<td>
+27.8
+</td>
+<td>
+36
+</td>
+<td>
+7.1
+</td>
+</tr>
+<tr>
+<td>
+12
+</td>
+<td>
+1.6
+</td>
+<td>
+7.1
+</td>
+<td>
+8.4
+</td>
+<td>
+17.2
+</td>
+<td>
+34.8
+</td>
+<td>
+27
+</td>
+<td>
+3.9
+</td>
+</tr>
+<tr>
+<td>
+13
+</td>
+<td>
+3.6
+</td>
+<td>
+9
+</td>
+<td>
+8.1
+</td>
+<td>
+13.7
+</td>
+<td>
+27.2
+</td>
+<td>
+30.6
+</td>
+<td>
+7.8
+</td>
+</tr>
+<tr>
+<td>
+14
+</td>
+<td>
+0.8
+</td>
+<td>
+4.5
+</td>
+<td>
+5
+</td>
+<td>
+8.6
+</td>
+<td>
+21.4
+</td>
+<td>
+41.7
+</td>
+<td>
+17.9
+</td>
+</tr>
+<tr>
+<td>
+15
+</td>
+<td>
+0.5
+</td>
+<td>
+4.6
+</td>
+<td>
+6
+</td>
+<td>
+11.7
+</td>
+<td>
+29.2
+</td>
+<td>
+38.3
+</td>
+<td>
+9.7
+</td>
+</tr>
+<tr>
+<td>
+16
+</td>
+<td>
+0.3
+</td>
+<td>
+2.9
+</td>
+<td>
+4.2
+</td>
+<td>
+7.4
+</td>
+<td>
+19
+</td>
+<td>
+42.5
+</td>
+<td>
+23.7
+</td>
+</tr>
+<tr>
+<td>
+Chile
+</td>
+<td>
+1.8
+</td>
+<td>
+6
+</td>
+<td>
+6.3
+</td>
+<td>
+11.2
+</td>
+<td>
+24.7
+</td>
+<td>
+36
+</td>
+<td>
+14
+</td>
+</tr>
+</table>
+</div>
+<div class="section level3">
+<h3 id="adaptation-and-homologation">Adaptation and homologation<a class="anchor" aria-label="anchor" href="#adaptation-and-homologation"></a>
+</h3>
+</div>
+<div class="section level3">
+<h3 id="workflow">Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
+</h3>
+<p>The workflow has been though out show as many steps in the calculation as possible, in the following order:</p>
+<ol>
+<li>
+<code><a href="reference/cleanup.html">cleanup()</a></code> normalizes field names and eliminates redundant variables.
+</li>
+<li>
+<code><a href="reference/precalc.html">precalc()</a></code> nnecessary precalculations.
+</li>
+<li>
+<code><a href="reference/get_pca.html">get_pca()</a></code> Principal Components Analyisis
+</li>
+<li>
+<code><a href="reference/ismt_scores.html">ismt_scores()</a></code> index calculation
+</li>
+</ol>
+</div>
+<div class="section level3">
+<h3 id="installation-and-usage">Installation and usage<a class="anchor" aria-label="anchor" href="#installation-and-usage"></a>
+</h3>
+<pre><code><span><span class="co"># install.packages('remotes')</span></span>
+<span></span>
+<span><span class="co"># remotes::install_github('mrosas47/ismtchile')</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ismtchile</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ismt2017</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">'censo2017.rds'</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="reference/cleanup.html">cleanup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/precalc.html">precalc</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/get_pca.html">get_pca</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ismt_scores.html">ismt_scores</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ismt2017</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/full_ismt.html">full_ismt</a></span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="authorship-and-credit">Authorship and credit<a class="anchor" aria-label="anchor" href="#authorship-and-credit"></a>
+</h3>
+<div id="authorsdiv">
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>h4<span class="sc">&gt;</span>Package creation, development and maintenance<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> City Planning Student, UC; Front<span class="sc">-</span>End Web Development Professional <span class="fu">Certificate</span> (W3C). Research Assistant, Observatorio de Ciudades UC <span class="sc">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mrosas1690@gmail.com"</span><span class="sc">&gt;</span>mrosas1690<span class="sc">@</span>gmail.com<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> <span class="er">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mirosas@uc.cl"</span><span class="sc">&gt;</span>mirosas<span class="sc">@</span>uc.cl<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>div<span class="sc">&gt;</span> <span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>h4<span class="sc">&gt;</span>Index creation and development<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Ricardo Truffello Robledo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo UC; Doctor en Ingeniería en Sistemas <span class="fu">Complejos</span> (Universidad Adolfo Ibáñez <span class="sc">-</span> UAI); Magíster en Geografía y Geomática UC. Director, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Mónica Flores Castillo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Arquitecta UC y Master of Urban Planning NYU<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Gabriela Ulloa Contador<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafa y Msc. en geografía, mención Justicia Ambiental; Estudiante de Doctorado en Territorio, Espacio y Sociedad de la Universidad de Chile<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Isidro Puig Vásquez<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo y Analista GIS, Universitat de València (España); Diplomado Programación GIS, Web Mapping y Tecnologías de la Información Geográfica, Asociación Geoinnova, <span class="fu">Valencia</span> (España); Diplomado de Especialización en Sostenibilidad, Ética Ecológica y Educación Ambiental, Universitat Politècnica de València (España)<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Natalia Ramírez González<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Asesora Ministerial de Género en el Ministerio de Transportes y Telecomunicaciones de Chile; Geógrafa y MA. en Geografía, mención organización urbano<span class="sc">-</span>territorial.<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Francisca Balbontin Puig<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Diseñadora integral UC; Diseño de plataformas de visualización de datos<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Estudiante de Planificación Urbana UC, Certificado profesional en Front<span class="sc">-</span>End Web <span class="fu">Development</span> (W3C). Ayudante de investigación, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>div<span class="sc">&gt;</span></span></code></pre></div>
+</div>
+<a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a> <br><br><div class="logos">
+<p><a href="home.html"><img src="https://drive.google.com/uc?export=view&amp;id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a></p>
+</div>
+<button onclick="topFunction()" id="backToTop" title="Go to top">
+Top
+</button>
 <style>
   html {text-align: justify;}
   h1, h3 {text-align: center;}
-  body {
+  /*body {
     background-color: #000033;
     color: #FAFAFF
+  }*/
+  table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  td, th {
+    padding: 5px 15px;
+    border-width: 1px;
+    border-color: #fafaff;
+    border-style: solid;
+  }
+  hr {
+    background-color: black;
+    height: 3px;
+    width: 100%;
+    
+  }
+  .buttons {
+    display: block;
+    text-align: right;
+  }
+
+  .btn {
+    padding: 3px;
+    color: black;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    text-decoration: none;
+    color: black;
+  }
+
+  button {
+    margin-right: 25px;
+    background-color: darkgrey;
+    border-style: none;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  button:hover {
+    background-color: #737373;
+  }
+  #backToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: darkgrey;
+    color: black;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 2em;
+  }
+  #backToTop:hover {
+    background-color: #737373;
+  }
+  .logos {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 50%;
+    /*max-height: 50%;*/
+    margin-top: 50px;
+  }
+
+  .logos img {
+    max-width: 100%;
+    max-height: 90%;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 </style>
+<script>
+  // Get the button
+  let mybutton = document.getElementById("backToTop");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)   {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+  }
+</script>
 </div>
 </div>
 
@@ -869,7 +1657,7 @@ Martín Rosas
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
