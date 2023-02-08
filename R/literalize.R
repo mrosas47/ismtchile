@@ -10,7 +10,7 @@
 #' @return objeto \code{data.frame} con las variables como texto en lugar de factores (nombres y categorías homologados para todos los censos)
 #' @export literalize
 #'
-#' @examples 'no example for now'
+#' @examples # lit <- c17 |> literalize(2017)
 
 literalize <- function (df, year) {
 
@@ -388,7 +388,7 @@ literalize <- function (df, year) {
   } else if (year == 2012) {
 
     nhogares2012 <- df |>
-      filter(dpar == 1) |>
+      dplyr::filter(dpar == 1) |>
       group_by(folio, nviv) |>
       summarise(
         cant_hog = as.integer(n())
@@ -569,7 +569,7 @@ literalize <- function (df, year) {
           dpar == 6 ~ 'HIJO_A_CONYUGUE',
           dpar == 7 ~ 'HERMANO_A',
           dpar == 8 ~ 'PADRE_MADRE',
-          dpar == 9 ~ 'CUÑADO_A',
+          dpar == 9 ~ 'CUNADO_A',
           dpar == 10 ~ 'SUEGRO_A',
           dpar == 11 ~ 'YERNO_NUERA',
           dpar == 12 ~ 'NIETO_A',
@@ -723,7 +723,7 @@ literalize <- function (df, year) {
   } else if (year == 2002) {
 
     nhogares2002 <- df |>
-      filter(p17 == 1) |>
+      dplyr::filter(p17 == 1) |>
       group_by(portafolio, vn) |>
       summarise(
         cant_hog = n(),
@@ -732,7 +732,7 @@ literalize <- function (df, year) {
       ungroup()
 
     hijos2002 <- df |>
-      filter(p17 %in% c(1 : 3)) |>
+      dplyr::filter(p17 %in% c(1 : 3)) |>
       group_by(portafolio, vn, hn) |>
       summarise(
         hijos_nacido = max(p34, na.rm = T),
@@ -1012,7 +1012,7 @@ literalize <- function (df, year) {
   } else if (year == 1992) {
 
     npers1992 <- df |>
-      filter(parentesco == 1) |>
+      dplyr::filter(parentesco == 1) |>
       group_by(portafolio, vivienda) |>
       summarise(
         cant_hog = max(hogar),
@@ -1357,7 +1357,7 @@ literalize <- function (df, year) {
       )
 
     nhogs82 <- df |>
-      filter(parentesco == 1) |>
+      dplyr::filter(parentesco == 1) |>
       group_by(
 
         id_hog
@@ -1372,7 +1372,7 @@ literalize <- function (df, year) {
       ungroup()
 
     hijos <- df |>
-      filter(parentesco %in% c(1 : 3)) |>
+      dplyr::filter(parentesco %in% c(1 : 3)) |>
       group_by(
 
         id_hog

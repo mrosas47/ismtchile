@@ -21,7 +21,7 @@
 #' @return objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. \cr \cr \code{data.frame} object containing only the variables that are necessary for the following calculations.
 #' @export cleanup
 #'
-#' @examples c17 <- load_data(13, path = loc_dir) |> region_filter(13, 1) |>  cleanup()
+#' @examples # clean <- c17 |> cleanup()
 
 cleanup <- function(df, year = 2017, vars.as.factors = F, level = 'zc', tipo_viv = 'tipoviv', ocupacion = 'ocup_viv', parentesco = 'parentesco', dormitorios = 'ndorms', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso') {
 
@@ -43,12 +43,12 @@ cleanup <- function(df, year = 2017, vars.as.factors = F, level = 'zc', tipo_viv
 
     if (
 
-      class(clone$tipoviv) != 'character' |
-      class(clone$ocup_viv) != 'character' |
-      class(clone$parentesco) != 'character' |
-      class(clone$mat_muro) != 'character' |
-      class(clone$mat_techo) != 'character' |
-      class(clone$mat_techo) != 'character'
+      is.character(clone$tipoviv) == T |
+      is.character(clone$ocup_viv) == T |
+      is.character(clone$parentesco) == T |
+      is.character(clone$mat_muro) == T |
+      is.character(clone$mat_techo) == T |
+      is.character(clone$mat_techo) == T
 
     ) {
 
@@ -105,7 +105,7 @@ mzn level not supported for 2017
     invalid <- c('COLECTIVA', 'TRANSITO', 'CALLE')
 
     cleanclone <- clone |>
-      filter(
+      dplyr::filter(
 
         parentesco == 'JEFE_HOGAR',
         tipo_viv %notin% invalid
@@ -197,7 +197,7 @@ mzn level not supported for 2017
         )
 
       ) |>
-      filter(
+      dplyr::filter(
 
         !is.na(hacin_critico)
 

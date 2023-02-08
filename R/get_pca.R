@@ -14,7 +14,11 @@
 #' @return objeto \code{data.frame} con el cálculo de componentes principales. \cr \cr \code{data.frame} object with the principal components analysis calculation.
 #' @export get_pca
 #'
-#' @examples c17 <- load_data(13, path = loc_dir) |> region_filter(13, 1) |> cleanup() |> precalc() |> get_pca()
+#' @examples # pca <- c17 |>
+#' #dplyr::filter(id_region == 13, tipo_area == 1) |>
+#' #cleanup() |>
+#' #precalc() |>
+#' #get_pca()
 
 get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mater', alleg = 'ptje_alleg') {
 
@@ -72,7 +76,7 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
       ismt_p = (ptje_esc * pesc) + (ptje_hacin * phac) + (ptje_mater * pviv) + (ptje_alleg * pall)
 
     ) |>
-    filter(
+    dplyr::filter(
 
       !is.na(ismt_p)
 

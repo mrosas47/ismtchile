@@ -60,6 +60,6 @@ objeto data.frame conteniendo
 Ejecuta el cálculo completo del ISMT. Agrupa las funciones `literalize()`, `geofilter()`, `cleanup()`, `precalc()`, `get_pca()` e `ismt_scores()`. La tabla obtenida debería ser idéntica al resultado de concatenar estas funciones una a una.
 }
 \examples{
-ismt <- full_ismt(c17, 13, 1)
+# ismt <- full_ismt(c17, 13, 1)
 
 }

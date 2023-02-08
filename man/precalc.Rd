@@ -30,5 +30,5 @@ objeto \code{data.frame} con los precálculos necesarios para calcular el ISMT. 
 Ejecuta precálculos necesarios para el resto del proceso del ISMT. \cr \cr Executes precalculations necessary for the rest of the ISMT process.
 }
 \examples{
-c17 <- load_data(13, path = loc_dir) \%>\% region_filter(13, 1) \%>\% cleanup() \%>\% precalc()
+# c17 <- load_data(13, path = loc_dir) |> region_filter(13, 1) |> cleanup() |> precalc()
 }

@@ -18,5 +18,5 @@ objeto \code{data.frame} con las variables como texto en lugar de factores (nomb
 Literalizar bases censales -- Literalize census databases
 }
 \examples{
-'no example for now'
+# lit <- c17 |> literalize(2017)
 }

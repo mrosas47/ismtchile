@@ -14,10 +14,6 @@ ismt_scores(df, r, ismt_score = "ismt_pn", grouping = "geocode")
 \item{ismt_score}{string. Nombre del campo del puntaje ISMT, calculado desde \code{get_pca()}. Default es \code{ismt_pn}. \cr \cr string. Name of the ISMT sscore field, as calculated from \code{get_pca()]}. Default is \code{ismt_pn}.}
 
 \item{grouping}{string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es \code{geocode}. \cr \cr string. Name of the field with the spacial grouping unit variable. Default is \code{geocode}.}
-
-\item{criteria}{objeto \code{data.frame} que contenga los criterios estadísticos AIM para el análisis de componentes principales. \cr \cr \code{data.frame} object that contains the AIM statistical criteria for principal components analysis.}
-
-\item{n}{string. Nombre del campo derivado de \code{cleanup()} que tiene valor \code{n = 1} para cada jefe de hogar. Usado para conteo de totales. Default es \code{n}. \cr \cr string. Name of the field, derived from \code{cleanup()}, that  has value \code{n = 1} for each home head. Default es \code{n}.}
 }
 \value{
 objeto \code{data.frame} agrupado por la unidad espacial especificada con información de ISMT. \cr \cr \code{data.frame} object grouped by the specified spatial unit with ISMT information.
@@ -26,5 +22,11 @@ objeto \code{data.frame} agrupado por la unidad espacial especificada con inform
 Ejecuta los cálculos finales de ISMT. Define los grupos socioeconómicos por unidad territorial y los cuantifica en varias categorías. \cr \cr Executes the final ISMT calculations. Defines the socio-economic groups and quantifies them in several categories.
 }
 \examples{
-c17 <- load_data(13, path = loc_dir) \%>\% region_filter(13, 1) \%>\% cleanup() \%>\% precalc() \%>\% get_pca() \%>\% ismt_scores(crit_AIM, 13)
+# ismt <- c17 |>
+#literalize(2017) |>
+#dplyr::filter(id_region == 13, tipo_area == 2) |>
+#cleanup() |>
+#precalc() |>
+#get_pca() |>
+#ismt_scores(13, 2017)
 }

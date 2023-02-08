@@ -26,10 +26,12 @@
 #' @return objeto data.frame conteniendo
 #' @export full_ismt
 #'
-#' @examples ismt <- full_ismt(c17, 13, 1)
+#' @examples # ismt <- full_ismt(c17, 13, 1)
 #'
 
 full_ismt <- function (df, r, ur, rfield = 'id_region', urfield = 'tipo_area', year = 2017, tipo_vivienda = 'tipoviv', ocupacion = 'ocup_viv', ndorms = 'ndorms', parentesco = 'parentesco', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso', grouping = 'id_zona', level = 'zc') {
+
+  utils::globalVariables(c('id_region', 'tipo_area'))
 
   key <- if_else(ur == 1, 'URBANO', 'RURAL')
   stringy <- str_pad(r, width = 2, side = 'left', pad = '0')
@@ -39,7 +41,7 @@ full_ismt <- function (df, r, ur, rfield = 'id_region', urfield = 'tipo_area', y
     df0 <- df |>
 
       ismtchile::literalize(year = year) |>
-      filter(id_region == stringy, tipo_area == key) |>
+      dplyr::filter(id_region == stringy, tipo_area == key) |>
       ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) |>
       ismtchile::precalc() |>
       ismtchile::get_pca() |>
@@ -50,7 +52,7 @@ full_ismt <- function (df, r, ur, rfield = 'id_region', urfield = 'tipo_area', y
     df0 <- df |>
 
       ismtchile::literalize(year = year) |>
-      filter(tipo_area == key) |>
+      dplyr::filter(tipo_area == key) |>
       ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) |>
       ismtchile::precalc() |>
       ismtchile::get_pca() |>
