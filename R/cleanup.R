@@ -14,9 +14,7 @@
 #' @param techo string. Nombre del campo de condición del techo. Default es \code{mat_techo}. \cr \cr string. Name of the ceiling condition field. Default is \code{mat_techo}.
 #' @param piso string. Nombre del campo de condición del suelo. Default es \code{mat_piso}. \cr \cr string. Name of the floor condition field. Default is \code{mat_piso}.
 #' @import dplyr
-#' @import magrittr
 #' @import stringr
-#' @import glue
 #'
 #' @return objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. \cr \cr \code{data.frame} object containing only the variables that are necessary for the following calculations.
 #' @export cleanup

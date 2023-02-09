@@ -3,7 +3,6 @@
 #' @param df objeto \code{data.frame} correspondiente a la base de datos original de los censos 2017, 2012, 2002, 1992 o 1982. -- \code{data.frame} object corresponding to the original database for the 2017, 2012, 2002, 1992 or 1982 census.
 #' @param year integer. No provee Default para forzar la explicitación del año de la base. \cr \cr integer. Default is not provided, so as to force explicitation of the database's year.
 #'
-#' @import magrittr
 #' @import dplyr
 #' @import stringr
 #'

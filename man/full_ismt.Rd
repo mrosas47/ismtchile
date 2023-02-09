@@ -54,7 +54,7 @@ full_ismt(
 \item{level}{\code{string}. Nivel de agrupación de los datos finales. Acepta valores \code{zc} (zona censal) y \code{mzn} (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es \code{zc}. \cr \cr \code{string}. Grouping level for the final data. Values \code{zc} (census zone) and \code{mzn} (block). Block level is not available for 2017 due to statistical secret of original database. Default is \code{zc}.}
 }
 \value{
-objeto data.frame conteniendo
+objeto data.frame conteniendo el cálculo completo del ISMT.
 }
 \description{
 Ejecuta el cálculo completo del ISMT. Agrupa las funciones `literalize()`, `geofilter()`, `cleanup()`, `precalc()`, `get_pca()` e `ismt_scores()`. La tabla obtenida debería ser idéntica al resultado de concatenar estas funciones una a una.

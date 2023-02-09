@@ -8,8 +8,9 @@
 #' @param mat string. Nombre del campo con el puntaje de materialidad de la vivienda. Default es \code{ptje_mater}. \cr \cr string. Name of the field with the dwelling material score. Default is \code{ptje_mater.}
 #' @param alleg string. Nombre del campo con el puntaje de allegamiento. Default is \code{ptje_alleg}. \cr \cr string. Name of the field with the relative crowding score. Default is \code{ptje_alleg}.
 #'
-#' @import tidyverse
-#' @import glue
+#' @import stringr
+#' @import dplyr
+#' @importFrom stats D na.omit prcomp quantile
 #'
 #' @return objeto \code{data.frame} con el cálculo de componentes principales. \cr \cr \code{data.frame} object with the principal components analysis calculation.
 #' @export get_pca
@@ -28,10 +29,10 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
 
   }
 
-  names(df)[names(df) == glue('{hacin}')] <- 'ptje_hacin'
-  names(df)[names(df) == glue('{esc}')] <- 'ptje_esc'
-  names(df)[names(df) == glue('{mat}')] <- 'ptje_mater'
-  names(df)[names(df) == glue('{alleg}')] <- 'ptje_alleg'
+  names(df)[names(df) == str_glue('{hacin}')] <- 'ptje_hacin'
+  names(df)[names(df) == str_glue('{esc}')] <- 'ptje_esc'
+  names(df)[names(df) == str_glue('{mat}')] <- 'ptje_mater'
+  names(df)[names(df) == str_glue('{alleg}')] <- 'ptje_alleg'
 
   tempdf <- na.omit(df) |>
     select(

@@ -7,8 +7,8 @@
 #' @param ismt_score string. Nombre del campo del puntaje ISMT, calculado desde \code{get_pca()}. Default es \code{ismt_pn}. \cr \cr string. Name of the ISMT sscore field, as calculated from \code{get_pca()]}. Default is \code{ismt_pn}.
 #' @param grouping string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es \code{geocode}. \cr \cr string. Name of the field with the spacial grouping unit variable. Default is \code{geocode}.
 #'
-#' @import tidyverse
-#' @import glue
+#' @import dplyr
+#' @import stringr
 #'
 #' @return objeto \code{data.frame} agrupado por la unidad espacial especificada con información de ISMT. \cr \cr \code{data.frame} object grouped by the specified spatial unit with ISMT information.
 #' @export ismt_scores
@@ -23,8 +23,8 @@
 
 ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
 
-  names(df)[names(df) == glue('{ismt_score}')] <- 'ismt_pn'
-  names(df)[names(df) == glue('{grouping}')] <- 'geocode'
+  names(df)[names(df) == str_glue('{ismt_score}')] <- 'ismt_pn'
+  names(df)[names(df) == str_glue('{grouping}')] <- 'geocode'
 
   spawn_AIMcuts <- function() {
 

@@ -19,11 +19,9 @@
 #' @param level \code{string}. Nivel de agrupación de los datos finales. Acepta valores \code{zc} (zona censal) y \code{mzn} (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es \code{zc}. \cr \cr \code{string}. Grouping level for the final data. Values \code{zc} (census zone) and \code{mzn} (block). Block level is not available for 2017 due to statistical secret of original database. Default is \code{zc}.
 #'
 #' @import dplyr
-#' @import magrittr
 #' @import stringr
-#' @import glue
 #'
-#' @return objeto data.frame conteniendo
+#' @return objeto data.frame conteniendo el cálculo completo del ISMT.
 #' @export full_ismt
 #'
 #' @examples # ismt <- full_ismt(c17, 13, 1)

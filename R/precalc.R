@@ -8,8 +8,8 @@
 #' @param esc string. Nombre del campo del indicador de escolaridad del jefe de hogar. Default es \code{a_esc_cont}. \cr \cr string. Name of the field with the scholarship of the home head score. Default is \code{a_esc_cont}.
 #' @param mat string. Nombre del campo del indicador de materialidad de la vivienda. Default es \code{ind_mater}. \cr \cr string. Name of the field with the dwelling material score. Default is \code{ind_mater}.
 #'
-#' @import tidyverse
-#' @import glue
+#' @import dplyr
+#' @import stringr
 #'
 #' @return objeto \code{data.frame} con los precálculos necesarios para calcular el ISMT. \cr \cr \code{data.frame} object with the necessary precalculations to calculate ISMT.
 #' @export precalc
@@ -25,10 +25,10 @@ precalc <- function(df, hacin = 'ind_hacinam', alleg = 'n_hog_alleg', esc = 'a_e
   }
 
 
-  names(df)[names(df) == glue('{hacin}')] <- 'ind_hacinam'
-  names(df)[names(df) == glue('{alleg}')] <- 'n_hog_alleg'
-  names(df)[names(df) == glue('{esc}')] <- 'a_esc_cont'
-  names(df)[names(df) == glue('{mat}')] <- 'ind_mater'
+  names(df)[names(df) == str_glue('{hacin}')] <- 'ind_hacinam'
+  names(df)[names(df) == str_glue('{alleg}')] <- 'n_hog_alleg'
+  names(df)[names(df) == str_glue('{esc}')] <- 'a_esc_cont'
+  names(df)[names(df) == str_glue('{mat}')] <- 'ind_mater'
 
   calculations <- df |>
     mutate(
