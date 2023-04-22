@@ -29,10 +29,11 @@
 
 full_ismt <- function (df, r, ur, rfield = 'id_region', urfield = 'tipo_area', year = 2017, tipo_vivienda = 'tipoviv', ocupacion = 'ocup_viv', ndorms = 'ndorms', parentesco = 'parentesco', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso', grouping = 'id_zona', level = 'zc') {
 
-  utils::globalVariables(c('id_region', 'tipo_area'))
+  id_region <- NULL
+  tipo_area <- NULL
 
-  key <- if_else(ur == 1, 'URBANO', 'RURAL')
-  stringy <- str_pad(r, width = 2, side = 'left', pad = '0')
+  key <- dplyr::if_else(ur == 1, 'URBANO', 'RURAL')
+  stringy <- stringr::str_pad(r, width = 2, side = 'left', pad = '0')
 
   if (r %in% c(1:16)) {
 

@@ -9,6 +9,7 @@
 #'
 #' @import dplyr
 #' @import stringr
+#' @importFrom stats quantile
 #'
 #' @return objeto \code{data.frame} agrupado por la unidad espacial especificada con información de ISMT. \cr \cr \code{data.frame} object grouped by the specified spatial unit with ISMT information.
 #' @export ismt_scores
@@ -23,8 +24,50 @@
 
 ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
 
-  names(df)[names(df) == str_glue('{ismt_score}')] <- 'ismt_pn'
-  names(df)[names(df) == str_glue('{grouping}')] <- 'geocode'
+  region <- NULL
+  ismt_pn <- NULL
+  ind_hacinam <- NULL
+  ind_alleg <- NULL
+  geocode <- NULL
+  zona <- NULL
+  Q1 <- NULL
+  Q2 <- NULL
+  Q3 <- NULL
+  Q4 <- NULL
+  Q5 <- NULL
+  Alto <- NULL
+  Medio <- NULL
+  Bajo <- NULL
+  AB <- NULL
+  C1 <- NULL
+  C2 <- NULL
+  C3 <- NULL
+  E <- NULL
+  hacin_critico <- NULL
+  hacin_medio <- NULL
+  sin_hacin <- NULL
+  escolaridad <- NULL
+  mat_aceptable <- NULL
+  mat_recuperable <- NULL
+  mat_irrecup <- NULL
+  ind_mater <- NULL
+  total_hogs <- NULL
+  ismtpn <- NULL
+  gse_prom <- NULL
+  gse_dom <- NULL
+  ind_hac <- NULL
+  hacin_cri <- NULL
+  hacin_med <- NULL
+  hacin_no <- NULL
+  alleg <- NULL
+  escolar <- NULL
+  mat_acept <- NULL
+  mat_recup <- NULL
+  mat_irrec <- NULL
+  ind_mat <- NULL
+
+  names(df)[names(df) == stringr::str_glue('{ismt_score}')] <- 'ismt_pn'
+  names(df)[names(df) == stringr::str_glue('{grouping}')] <- 'geocode'
 
   spawn_AIMcuts <- function() {
 
@@ -52,7 +95,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
 
   cuts <- spawn_AIMcuts() |> dplyr::filter(as.numeric(region) == r)
 
-  q <- as.data.frame(quantile(df$ismt_pn, prob = seq(0, 1, length = 101)))
+  q <- as.data.frame(stats::quantile(df$ismt_pn, prob = seq(0, 1, length = 101)))
 
   abcut = 100 - as.numeric(cuts$ab)
   c1cut = 100 - (as.numeric(cuts$c1a) + as.numeric(cuts$c1b) + as.numeric(cuts$ab))
@@ -72,24 +115,24 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
   q4cut = q[21,]
 
   ismt <- df |>
-    mutate(
+    dplyr::mutate(
 
-      Q1 = if_else(ismt_pn > q1cut, 1L, 0L),
-      Q2 = if_else(ismt_pn <= q1cut & ismt_pn > q2cut, 1L, 0L),
-      Q3 = if_else(ismt_pn <= q2cut & ismt_pn > q3cut, 1L, 0L),
-      Q4 = if_else(ismt_pn <= q3cut & ismt_pn > q4cut, 1L, 0L),
-      Q5 = if_else(ismt_pn <= q4cut, 1L, 0L),
+      Q1 = dplyr::if_else(ismt_pn > q1cut, 1L, 0L),
+      Q2 = dplyr::if_else(ismt_pn <= q1cut & ismt_pn > q2cut, 1L, 0L),
+      Q3 = dplyr::if_else(ismt_pn <= q2cut & ismt_pn > q3cut, 1L, 0L),
+      Q4 = dplyr::if_else(ismt_pn <= q3cut & ismt_pn > q4cut, 1L, 0L),
+      Q5 = dplyr::if_else(ismt_pn <= q4cut, 1L, 0L),
 
-      AB = if_else(ismt_pn > abq, 1L, 0L),
-      C1 = if_else(ismt_pn <= abq & ismt_pn > c1q, 1L, 0L),
-      C2 = if_else(ismt_pn <= c1q & ismt_pn > c2q, 1L, 0L),
-      C3 = if_else(ismt_pn <= c2q & ismt_pn > c3q, 1L, 0L),
-      D = if_else(ismt_pn <= c3q & ismt_pn > dq, 1L, 0L),
-      E = if_else(ismt_pn <= dq, 1L, 0L),
+      AB = dplyr::if_else(ismt_pn > abq, 1L, 0L),
+      C1 = dplyr::if_else(ismt_pn <= abq & ismt_pn > c1q, 1L, 0L),
+      C2 = dplyr::if_else(ismt_pn <= c1q & ismt_pn > c2q, 1L, 0L),
+      C3 = dplyr::if_else(ismt_pn <= c2q & ismt_pn > c3q, 1L, 0L),
+      D = dplyr::if_else(ismt_pn <= c3q & ismt_pn > dq, 1L, 0L),
+      E = dplyr::if_else(ismt_pn <= dq, 1L, 0L),
 
-      Alto = if_else(ismt_pn > c1q, 1L, 0L),
-      Medio = if_else(ismt_pn <= c1q & ismt_pn > c3q, 1L, 0L),
-      Bajo = if_else(ismt_pn <= c3q, 1L, 0L),
+      Alto = dplyr::if_else(ismt_pn > c1q, 1L, 0L),
+      Medio = dplyr::if_else(ismt_pn <= c1q & ismt_pn > c3q, 1L, 0L),
+      Bajo = dplyr::if_else(ismt_pn <= c3q, 1L, 0L),
 
       ind_hacinam = -1 * ind_hacinam,
       ind_alleg = -1 * ind_alleg,
@@ -97,12 +140,12 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
       zona = geocode
 
     ) |>
-    group_by(
+    dplyr::group_by(
 
       zona
 
     ) |>
-    summarise(
+    dplyr::summarise(
 
       total_hogs = n(),
       ismtpn = mean(ismt_pn),
@@ -132,9 +175,9 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
       ind_mat = mean(ind_mater)
 
     ) |>
-    mutate(
+    dplyr::mutate(
 
-      gse_prom = case_when(
+      gse_prom = dplyr::case_when(
 
         ismtpn > abq ~ 'AB',
         ismtpn <= abq & ismtpn > c1q ~ 'C1',
@@ -144,7 +187,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
         ismtpn <= dq ~ 'E'
 
       ),
-      gse_dom = case_when(
+      gse_dom = dplyr::case_when(
 
         AB > C1 & AB > C2 & AB > C3 & AB > D & AB > E ~ 'AB',
         C1 > AB & C1 > C2 & C1 > C3 & C1 > D & C1 > E ~ 'C1',
@@ -157,7 +200,7 @@ ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
       )
 
     ) |>
-    select(
+    dplyr::select(
 
       zona, total_hogs, ismtpn, gse_prom, gse_dom, Q1, Q2, Q3, Q4, Q5, Alto, Medio, Bajo, AB, C1, C2, C3, D, E, ind_hac, hacin_cri, hacin_med, hacin_no, alleg, escolar, mat_acept, mat_recup, mat_irrec, ind_mat
 

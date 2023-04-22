@@ -18,6 +18,12 @@
 
 precalc <- function(df, hacin = 'ind_hacinam', alleg = 'n_hog_alleg', esc = 'a_esc_cont', mat = 'ind_mater') {
 
+  ind_hacinam <- NULL
+  n_hog_alleg <- NULL
+  a_esc_cont <- NULL
+  ind_mater <- NULL
+  ind_alleg <- NULL
+
   normvar <- function(x) {
 
     (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
@@ -25,13 +31,13 @@ precalc <- function(df, hacin = 'ind_hacinam', alleg = 'n_hog_alleg', esc = 'a_e
   }
 
 
-  names(df)[names(df) == str_glue('{hacin}')] <- 'ind_hacinam'
-  names(df)[names(df) == str_glue('{alleg}')] <- 'n_hog_alleg'
-  names(df)[names(df) == str_glue('{esc}')] <- 'a_esc_cont'
-  names(df)[names(df) == str_glue('{mat}')] <- 'ind_mater'
+  names(df)[names(df) == stringr::str_glue('{hacin}')] <- 'ind_hacinam'
+  names(df)[names(df) == stringr::str_glue('{alleg}')] <- 'n_hog_alleg'
+  names(df)[names(df) == stringr::str_glue('{esc}')] <- 'a_esc_cont'
+  names(df)[names(df) == stringr::str_glue('{mat}')] <- 'ind_mater'
 
   calculations <- df |>
-    mutate(
+    dplyr::mutate(
 
       ind_hacinam = -1 * ind_hacinam,
       ind_alleg = -1 * n_hog_alleg,

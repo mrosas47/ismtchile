@@ -23,8 +23,24 @@
 
 cleanup <- function(df, year = 2017, vars.as.factors = F, level = 'zc', tipo_viv = 'tipoviv', ocupacion = 'ocup_viv', parentesco = 'parentesco', dormitorios = 'ndorms', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso') {
 
-  pass <- function() {}
+  cond_muro <- NULL
+  cond_techo <- NULL
+  cond_piso <- NULL
+  mat_aceptable <- NULL
+  mat_irrecup <- NULL
+  ind_hacinam <- NULL
+  hacin_critico <- NULL
+  cant_hog <- NULL
+  geocode <- NULL
+  mat_recuperable <- NULL
+  sin_hacin <- NULL
+  hacin_medio <- NULL
+  a_esc_cont <- NULL
+  ind_mater <- NULL
+  n_hog_alleg <- NULL
+  escolaridad <- NULL
 
+  pass <- function() {}
   `%notin%` <- Negate(`%in%`)
 
   if (vars.as.factors == F) {
@@ -109,9 +125,9 @@ mzn level not supported for 2017
         tipo_viv %notin% invalid
 
       ) |>
-      mutate(
+      dplyr::mutate(
 
-        cond_muro = case_when(
+        cond_muro = dplyr::case_when(
 
           mat_muro %in% muro_aceptable ~ as.integer(3),
           mat_muro %in% muro_recuperable ~ as.integer(2),
@@ -119,7 +135,7 @@ mzn level not supported for 2017
           T ~ NA_integer_
 
         ),
-        cond_techo = case_when(
+        cond_techo = dplyr::case_when(
 
           mat_techo %in% techo_aceptable ~ as.integer(3),
           mat_techo %in% techo_recuperable ~ as.integer(2),
@@ -127,7 +143,7 @@ mzn level not supported for 2017
           T ~ NA_integer_
 
         ),
-        cond_piso = case_when(
+        cond_piso = dplyr::case_when(
 
           mat_piso %in% piso_aceptable ~ as.integer(3),
           mat_piso %in% piso_recuperable ~ as.integer(2),
@@ -135,21 +151,21 @@ mzn level not supported for 2017
           T ~ NA_integer_
 
         ),
-        mat_aceptable = if_else(
+        mat_aceptable = dplyr::if_else(
 
           cond_muro == 3 & cond_techo == 3 & cond_piso == 3,
           1,
           0
 
         ),
-        mat_irrecup = if_else(
+        mat_irrecup = dplyr::if_else(
 
           cond_muro == 1 | cond_techo == 1 | cond_piso == 1,
           1,
           0
 
         ),
-        mat_recuperable = if_else(
+        mat_recuperable = dplyr::if_else(
 
           mat_aceptable == 0 & mat_irrecup == 0,
           1,
@@ -157,35 +173,35 @@ mzn level not supported for 2017
 
         ),
         ind_mater = cond_muro + cond_techo + cond_piso,
-        ind_hacinam = case_when(
+        ind_hacinam = dplyr::case_when(
 
           ndorms >= 1 ~ cant_per / ndorms,
           ndorms == 0 ~ cant_per * 2,
           T ~ NA_real_
 
         ),
-        sin_hacin = if_else(
+        sin_hacin = dplyr::if_else(
 
           ind_hacinam <= 2.4,
           1,
           0
 
         ),
-        hacin_medio = if_else(
+        hacin_medio = dplyr::if_else(
 
           ind_hacinam > 2.4 & ind_hacinam <= 4.9,
           1,
           0
 
         ),
-        hacin_critico = if_else(
+        hacin_critico = dplyr::if_else(
 
           ind_hacinam > 4.9,
           1,
           0
 
         ),
-        a_esc_cont = case_when(
+        a_esc_cont = dplyr::case_when(
 
           escolaridad == NA ~ NA_integer_,
           escolaridad == 99 ~ NA_integer_,
@@ -200,12 +216,12 @@ mzn level not supported for 2017
         !is.na(hacin_critico)
 
       ) |>
-      mutate(
+      dplyr::mutate(
 
         n_hog_alleg = cant_hog - 1
 
       ) |>
-      select(
+      dplyr::select(
 
         year, geocode, cond_muro, cond_techo, cond_piso, mat_aceptable, mat_irrecup, mat_recuperable, sin_hacin, hacin_medio, hacin_critico, a_esc_cont, ind_mater, ind_hacinam, n_hog_alleg, escolaridad
 

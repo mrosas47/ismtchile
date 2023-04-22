@@ -23,6 +23,13 @@
 
 get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mater', alleg = 'ptje_alleg') {
 
+  ptje_hacin <- NULL
+  ptje_esc <- NULL
+  ptje_mater <- NULL
+  ptje_alleg <- NULL
+  PC1 <- NULL
+  ismt_p <- NULL
+
   normvar <- function(x) {
 
     (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
@@ -34,17 +41,17 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
   names(df)[names(df) == str_glue('{mat}')] <- 'ptje_mater'
   names(df)[names(df) == str_glue('{alleg}')] <- 'ptje_alleg'
 
-  tempdf <- na.omit(df) |>
-    select(
+  tempdf <- stats::na.omit(df) |>
+    dplyr::select(
 
       ptje_hacin, ptje_esc, ptje_mater, ptje_alleg
 
     )
 
-  pca <- prcomp(tempdf)
+  pca <- stats::prcomp(tempdf)
 
   loadings <- as.data.frame(pca$rotation) |>
-    select(
+    dplyr::select(
 
       PC1
 
@@ -53,7 +60,7 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
   pc1score <- as.data.frame(t(loadings))
 
   pc1score <- pc1score |>
-    mutate(
+    dplyr::mutate(
 
       ptje_esc = abs(ptje_esc),
       ptje_hacin = abs(ptje_hacin),
@@ -72,7 +79,7 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
   pall <- pc1score$ptje_alleg * propvar
 
   calculations <- df |>
-    mutate(
+    dplyr::mutate(
 
       ismt_p = (ptje_esc * pesc) + (ptje_hacin * phac) + (ptje_mater * pviv) + (ptje_alleg * pall)
 
@@ -82,7 +89,7 @@ get_pca <- function(df, esc = 'ptje_esc', hacin = 'ptje_hacin', mat = 'ptje_mate
       !is.na(ismt_p)
 
     ) |>
-    mutate(
+    dplyr::mutate(
 
       ismt_pn = normvar(ismt_p)
 

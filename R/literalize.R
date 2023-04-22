@@ -13,83 +13,153 @@
 
 literalize <- function (df, year) {
 
+  region <- NULL
+  provincia <- NULL
+  comuna <- NULL
+  id_comuna <- NULL
+  dc <- NULL
+  id_distri <- NULL
+  area <- NULL
+  id_area <- NULL
+  zc_loc <- NULL
+  nviv <- NULL
+  nhogar <- NULL
+  personan <- NULL
+  cant_per <- NULL
+  p09 <- NULL
+  id_region <- NULL
+  id_provin <- NULL
+  id_zona <- NULL
+  id_manzan <- NULL
+  tipo_area <- NULL
+  npers <- NULL
+  cant_hog <- NULL
+  tipoviv <- NULL
+  ocup_viv <- NULL
+  mat_muro <- NULL
+  mat_techo <- NULL
+  mat_piso <- NULL
+  ndorms <- NULL
+  agua_orig <- NULL
+  tipo_hog <- NULL
+  operativo <- NULL
+  parentesco <- NULL
+  sexo <- NULL
+  edad <- NULL
+  res_5a <- NULL
+  nacimiento <- NULL
+  asiste_educ <- NULL
+  curso_alto <- NULL
+  nivel_educ <- NULL
+  pueblo_pert <- NULL
+  pueblo_orig <- NULL
+  trabajo <- NULL
+  rama <- NULL
+  hijos_nacido <- NULL
+  hijos_vivos <- NULL
+  escolaridad <- NULL
+  dpar <- NULL
+  folio <- NULL
+  prov <- NULL
+  zona <- NULL
+  manzana <- NULL
+  nhog <- NULL
+  nper <- NULL
+  p20c <- NULL
+  p40 <- NULL
+  p41 <- NULL
+  p17 <- NULL
+  portafolio <- NULL
+  vn <- NULL
+  tp <- NULL
+  hn <- NULL
+  p34 <- NULL
+  p35 <- NULL
+  distrito <- NULL
+  pn <- NULL
+  h13 <- NULL
+  p19 <- NULL
+  p26b <- NULL
+  vivienda <- NULL
+  hogar <- NULL
+  pieza_dormir <- NULL
+  persona <- NULL
+  curso <- NULL
+  hijos_nacidos_vivos <- NULL
+  region92 <- NULL
+  provincia92 <- NULL
+  comuna92 <- NULL
+  manzent92 <- NULL
+  geocode92 <- NULL
+  sector <- NULL
+  d <- NULL
+  z <- NULL
+  s <- NULL
+  v <- NULL
+  h <- NULL
+  id_hog <- NULL
+  hijos_nacidosvivos <- NULL
+  hijos_sobrevivientes <- NULL
+  dormitorio <- NULL
+  pass <- function(){}
+
   if (year == 2017) {
 
     df0 <- df |>
-      mutate(
-
-        id_region = str_pad(
-
+      dplyr::mutate(
+        id_region = stringr::str_pad(
           region,
           width = 2,
           side = 'left',
           pad = '0'
-
         ),
-        id_provin = str_pad(
-
+        id_provin = stringr::str_pad(
           provincia,
           width = 3,
           side = 'left',
           pad = '0'
-
         ),
-        id_comuna = str_pad(
-
+        id_comuna = stringr::str_pad(
           comuna,
           width = 5,
           side = 'left',
           pad = '0'
-
         ),
         id_distri = paste(
-
           id_comuna,
-          str_pad(
-
+          stringr::str_pad(
             dc,
             width = 2,
             side = 'left',
             pad = '0'
-
           ),
           sep = ''
-
         ),
         id_area = paste(
-
           id_distri,
           as.character(area),
           sep = ''
-
         ),
         id_zona = paste(
-
           id_area,
-          str_pad(
-
+          stringr::str_pad(
             zc_loc,
             width = 3,
             side = 'left',
             pad = '0'
-
           ),
           sep = ''
-
         ),
         id_manzan = NA_character_,
         nviv = as.integer(nviv),
         nhogar = as.integer(nhogar),
         npers = as.integer(personan),
-        cant_hog = case_when(
-
+        cant_hog = dplyr::case_when(
           cant_hog %in% c(0 : 35) ~ as.integer(cant_hog),
           T ~ NA_integer_
-
         ),
         cant_per = as.integer(cant_per),
-        tipoviv = case_when(
-
+        tipoviv = dplyr::case_when(
           p01 == 1 ~ 'CASA',
           p01 == 2 ~ 'DPTO',
           p01 == 3 ~ 'INDIGENA',
@@ -101,19 +171,15 @@ literalize <- function (df, year) {
           p01 == 9 ~ 'TRANSITO',
           p01 == 10 ~ 'CALLE',
           T ~ NA_character_
-
         ),
-        ocup_viv = case_when(
-
+        ocup_viv = dplyr::case_when(
           p02 == 1 ~ 'PRESENTES',
           p02 == 2 ~ 'AUSENTES',
           p02 == 3 ~ 'DESOCUPADA',
           p02 == 4 ~ 'TEMPORADA',
           T ~ NA_character_
-
         ),
-        mat_muro = case_when(
-
+        mat_muro = dplyr::case_when(
           p03a == 1 ~ 'HORMIGON',
           p03a == 2 ~ 'ALBANILERIA',
           p03a == 3 ~ 'TABIQUE_FORRADO',
@@ -121,10 +187,8 @@ literalize <- function (df, year) {
           p03a == 5 ~ 'ARTESANAL',
           p03a == 6 ~ 'PRECARIOS',
           T ~ NA_character_
-
         ),
-        mat_techo = case_when(
-
+        mat_techo = dplyr::case_when(
           p03b == 1 ~ 'TEJAS',
           p03b == 2 ~ 'LOSA_HORMIGON',
           p03b == 3 ~ 'PLANCHAS',
@@ -133,35 +197,27 @@ literalize <- function (df, year) {
           p03b == 6 ~ 'PRECARIOS',
           p03b == 7 ~ 'SIN_TECHO',
           T ~ NA_character_
-
         ),
-        mat_piso = case_when(
-
+        mat_piso = dplyr::case_when(
           p03c == 1 ~ 'PARQUET',
           p03c == 2 ~ 'RADIER',
           p03c == 3 ~ 'BALDOSA_CEMENTO',
           p03c == 4 ~ 'CEMENTO_TIERRA',
           p03c == 5 ~ 'TIERRA',
           T ~ NA_character_
-
         ),
-        ndorms = case_when(
-
+        ndorms = dplyr::case_when(
           p04 %in% c(0 : 6) ~ as.integer(p04),
           T ~ NA_integer_
-
         ),
-        agua_orig = case_when(
-
+        agua_orig = dplyr::case_when(
           p05 == 1 ~ 'RED_PUBLICA',
           p05 == 2 ~ 'POZO',
           p05 == 3 ~ 'CAMION',
           p05 == 4 ~ 'RIO',
           T ~ NA_character_
-
         ),
-        tipo_hog = case_when(
-
+        tipo_hog = dplyr::case_when(
           tipo_hogar == 1 ~ 'UNIPERSONAL',
           tipo_hogar == 2 ~ 'MONOPARENTAL',
           tipo_hogar == 3 ~ 'BIPARENTAL_NH',
@@ -170,19 +226,15 @@ literalize <- function (df, year) {
           tipo_hogar == 6 ~ 'EXTENSO',
           tipo_hogar == 7 ~ 'SIN_NUCLEO',
           T ~ NA_character_
-
         ),
-        operativo = case_when(
-
+        operativo = dplyr::case_when(
           tipo_operativo == 1 ~ 'VIV_PARTICULAR',
           tipo_operativo == 8 ~ 'VIV_COLECTIVA',
           tipo_operativo == 9 ~ 'TRANSITO',
           tipo_operativo == 10 ~ 'CALLE',
           T ~ NA_character_
-
         ),
-        parentesco = case_when(
-
+        parentesco = dplyr::case_when(
           p07 == 1 ~ 'JEFE_HOGAR',
           p07 == 2 ~ 'CONYUGUE',
           p07 == 3 ~ 'UNION_CIVIL',
@@ -203,18 +255,14 @@ literalize <- function (df, year) {
           p07 == 18 ~ 'OP_TRANSITO',
           p07 == 19 ~ 'OP_CALLE',
           T ~ NA_character_
-
         ),
-        sexo = case_when(
-
+        sexo = dplyr::case_when(
           p08 == 1 ~ 'HOMBRE',
           p08 == 2 ~ 'MUJER',
           T ~ NA_character_
-
         ),
         edad = as.integer(p09),
-        res_5a = case_when(
-
+        res_5a = dplyr::case_when(
           p11 == 1 ~ 'NO_NACIDO',
           p11 == 2 ~ 'ESTA_COMUNA',
           p11 == 3 ~ 'OTRA_COMUNA',
@@ -226,10 +274,8 @@ literalize <- function (df, year) {
           p11 == 9 ~ 'OTRO',
           p11 %in% c(98, 99) ~ 'NO_APLICA',
           T ~ NA_character_
-
         ),
-        nacimiento = case_when(
-
+        nacimiento = dplyr::case_when(
           p12 == 1 ~ 'ESTA_COMUNA',
           p12 == 2 ~ 'OTRA_COMUNA',
           p12 == 3 ~ 'PERU',
@@ -240,24 +286,18 @@ literalize <- function (df, year) {
           p12 == 8 ~ 'OTRO',
           p12 %in% c(98, 99) ~ 'NO_APLICA',
           T ~ NA_character_
-
         ),
-        asiste_educ = case_when(
-
+        asiste_educ = dplyr::case_when(
           p13 == 1 ~ 'SI',
           p13 == 2 ~ 'NO_ACTUAL',
           p13 == 3 ~ 'NUNCA',
           T ~ NA_character_
-
         ),
-        curso_alto = case_when(
-
+        curso_alto = dplyr::case_when(
           p14 %in% c(0 : 8) ~ as.integer(p14),
           T ~ NA_integer_
-
         ),
-        nivel_educ = case_when(
-
+        nivel_educ = dplyr::case_when(
           p15 == 1 ~ 'JARDIN',
           p15 == 2 ~ 'PREKINDER',
           p15 == 3 ~ 'KINDER',
@@ -273,17 +313,13 @@ literalize <- function (df, year) {
           p15 == 13 ~ 'MAGISTER',
           p15 == 14 ~ 'DOCTORADO',
           T ~ NA_character_
-
         ),
-        pueblo_pert = case_when(
-
+        pueblo_pert = dplyr::case_when(
           p16 == 1 ~ 'SI',
           p16 == 2 ~ 'NO',
           T ~ NA_character_
-
         ),
-        pueblo_orig = case_when(
-
+        pueblo_orig = dplyr::case_when(
           p16a == 1 ~ 'MAPUCHE',
           p16a == 2 ~ 'AYMARA',
           p16a == 3 ~ 'RAPA_NUI',
@@ -307,10 +343,8 @@ literalize <- function (df, year) {
           p16a == 10 & p16a_otro == 37 ~ 'OTROS',
           p16a == 10 & p16a_otro == 97 ~ 'NO_DECLARA',
           T ~ NA_character_
-
         ),
-        trabajo = case_when(
-
+        trabajo = dplyr::case_when(
           p17 == 1 ~ 'PAGADO',
           p17 == 2 ~ 'SIN_PAGO_FAM',
           p17 == 3 ~ 'VACACIONES',
@@ -320,10 +354,8 @@ literalize <- function (df, year) {
           p17 == 7 ~ 'JUBILADO',
           p17 == 8 ~ 'OTRO',
           T ~ NA_character_
-
         ),
-        rama = case_when(
-
+        rama = dplyr::case_when(
           p18 == 'A' ~ 'AGRO',
           p18 == 'B' ~ 'MINERIA',
           p18 == 'C' ~ 'MANUFACTURA',
@@ -347,39 +379,27 @@ literalize <- function (df, year) {
           p18 == 'U' ~ 'EXTRATERRITORIO',
           p18 == 'Z' ~ 'NO_DECLARA',
           T ~ NA_character_
-
         ),
-        hijos_nacido = case_when(
-
+        hijos_nacido = dplyr::case_when(
           p19 %in% c(0 : 23) ~ as.integer(p19),
           T ~ NA_integer_
-
         ),
-        hijos_vivos = case_when(
-
+        hijos_vivos = dplyr::case_when(
           p20 %in% c(0 : 23) ~ as.integer(p20)
-
         ),
-        escolaridad = case_when(
-
+        escolaridad = dplyr::case_when(
           escolaridad %in% c(0 : 21) ~ as.integer(escolaridad),
           T ~ NA_integer_
-
         ),
         year = '2017',
-        tipo_area = case_when(
-
+        tipo_area = dplyr::case_when(
           area == 1 ~ 'URBANO',
           area == 2 ~ 'RURAL',
           T ~ NA_character_
-
         )
-
       ) |>
-      select(
-
+      dplyr::select(
         year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, tipo_area, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, tipo_hog, operativo, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, rama, hijos_nacido, hijos_vivos, escolaridad
-
       )
 
     return(df0)
@@ -388,23 +408,23 @@ literalize <- function (df, year) {
 
     nhogares2012 <- df |>
       dplyr::filter(dpar == 1) |>
-      group_by(folio, nviv) |>
-      summarise(
+      dplyr::group_by(folio, nviv) |>
+      dplyr::summarise(
         cant_hog = as.integer(n())
       ) |>
       ungroup()
 
     df0 <- df |>
-      left_join(
+      dplyr::left_join(
 
         nhogares2012,
         by = c('folio', 'nviv')
 
       ) |>
-      mutate(
+      dplyr::mutate(
 
         year = '2012',
-        id_region = str_pad(
+        id_region = stringr::str_pad(
 
           region,
           width = 2,
@@ -412,7 +432,7 @@ literalize <- function (df, year) {
           pad = '0'
 
         ),
-        id_provin = str_pad(
+        id_provin = stringr::str_pad(
 
           prov,
           width = 3,
@@ -420,7 +440,7 @@ literalize <- function (df, year) {
           pad = '0'
 
         ),
-        id_comuna = str_pad(
+        id_comuna = stringr::str_pad(
 
           comuna,
           width = 5,
@@ -431,7 +451,7 @@ literalize <- function (df, year) {
         id_distri = paste(
 
           id_comuna,
-          str_pad(
+          stringr::str_pad(
 
             dc,
             width = 2,
@@ -452,7 +472,7 @@ literalize <- function (df, year) {
         id_zona = paste(
 
           id_area,
-          str_pad(
+          stringr::str_pad(
 
             zona,
             width = 3,
@@ -466,7 +486,7 @@ literalize <- function (df, year) {
         id_manzan = paste(
 
           id_zona,
-          str_pad(
+          stringr::str_pad(
 
             manzana,
             width = 3,
@@ -482,13 +502,13 @@ literalize <- function (df, year) {
         nhogar = as.integer(nhog),
         npers = as.integer(nper),
         cant_hog = as.integer(cant_hog),
-        cant_per = case_when(
+        cant_per = dplyr::case_when(
 
           v09m < 98 ~ as.integer(v09m),
           T ~ NA_integer_
 
         ),
-        tipoviv = case_when(
+        tipoviv = dplyr::case_when(
 
           v02 %in% c(1, 2) ~ 'CASA',
           v02 %in% c(3, 4) ~ 'DPTO',
@@ -501,7 +521,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        ocup_viv = case_when(
+        ocup_viv = dplyr::case_when(
 
           v01 %in% c(1, 2) ~ 'PRESENTES',
           v01 == 3 ~ 'AUSENTES',
@@ -510,7 +530,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_muro = case_when(
+        mat_muro = dplyr::case_when(
 
           v03a == 1 ~ 'HORMIGON',
           v03a == 2 ~ 'ALBANILERIA',
@@ -521,7 +541,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_techo = case_when(
+        mat_techo = dplyr::case_when(
 
           v03b == 1 ~ 'TEJAS',
           v03b == 2 ~ 'LOSA_HORMIGON',
@@ -533,7 +553,7 @@ literalize <- function (df, year) {
           T ~  NA_character_
 
         ),
-        mat_piso = case_when(
+        mat_piso = dplyr::case_when(
 
           v03c %in% c(1 : 3) ~ 'PARQUET',
           v03c == 4 ~ 'BALDOSA_CEMENTO',
@@ -543,13 +563,13 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        ndorms = case_when(
+        ndorms = dplyr::case_when(
 
           v04 < 98 ~ as.integer(v04),
           T ~ NA_integer_
 
         ),
-        agua_orig = case_when(
+        agua_orig = dplyr::case_when(
 
           v05 == 1 ~ 'RED_PUBLICA',
           v05 == 2 ~ 'POZO',
@@ -558,7 +578,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        parentesco = case_when(
+        parentesco = dplyr::case_when(
 
           dpar == 1 ~ 'JEFE_HOGAR',
           dpar == 2 ~ 'CONYUGUE',
@@ -580,7 +600,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        sexo = case_when(
+        sexo = dplyr::case_when(
 
           p19 == 1 ~ 'HOMBRE',
           p19 == 2 ~ 'MUJER',
@@ -588,7 +608,7 @@ literalize <- function (df, year) {
 
         ),
         edad = as.integer(p20c),
-        res_5a = case_when(
+        res_5a = dplyr::case_when(
 
           p22a == 1 ~ 'NO_NACIDO',
           p22a == 2 ~ 'ESTA_COMUNA',
@@ -603,7 +623,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        nacimiento = case_when(
+        nacimiento = dplyr::case_when(
 
           p23a == 1 ~ 'ESTA_COMUNA',
           p23a == 2 ~ 'OTRA_COMUNA',
@@ -617,7 +637,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        asiste_educ = case_when(
+        asiste_educ = dplyr::case_when(
 
           p31 == 1 ~ 'SI',
           p31 == 2 & p28 != 0 ~ 'NO_ACTUAL',
@@ -625,13 +645,13 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        curso_alto = case_when(
+        curso_alto = dplyr::case_when(
 
           p30 %in% c(0 : 8) ~ as.integer(p30),
           T ~ NA_integer_
 
         ),
-        nivel_educ = case_when(
+        nivel_educ = dplyr::case_when(
 
           p28 == 2 ~ 'JARDIN',
           p28 %in% c(3, 4) ~ 'KINDER',
@@ -647,14 +667,14 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        pueblo_pert = case_when(
+        pueblo_pert = dplyr::case_when(
 
           p24 == 1 ~ 'SI',
           p24 == 2  ~ 'NO',
           T ~ NA_character_
 
         ),
-        pueblo_orig = case_when(
+        pueblo_orig = dplyr::case_when(
 
           p25a == 1 ~ 'MAPUCHE',
           p25a == 2 ~ 'AYMARA',
@@ -669,7 +689,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        trabajo = case_when(
+        trabajo = dplyr::case_when(
 
           p36 == 1 ~ 'PAGADO',
           p36 == 3 ~ 'SIN_PAGO_FAM',
@@ -684,7 +704,7 @@ literalize <- function (df, year) {
         ),
         hijos_nacido = as.integer(p40),
         hijos_vivos = as.integer(p41),
-        escolaridad = case_when(
+        escolaridad = dplyr::case_when(
 
           p28 == 1 ~ as.integer(0),
           p28 == 2 ~ as.integer(0),
@@ -702,7 +722,7 @@ literalize <- function (df, year) {
           TRUE ~ NA_integer_
 
         ),
-        tipo_area = case_when(
+        tipo_area = dplyr::case_when(
 
           area == 1 ~ 'URBANO',
           area == 2 ~ 'RURAL',
@@ -711,7 +731,7 @@ literalize <- function (df, year) {
         )
 
       ) |>
-      select(
+      dplyr::select(
 
         year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, tipo_area, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, hijos_nacido, hijos_vivos, escolaridad
 
@@ -723,8 +743,8 @@ literalize <- function (df, year) {
 
     nhogares2002 <- df |>
       dplyr::filter(p17 == 1) |>
-      group_by(portafolio, vn) |>
-      summarise(
+      dplyr::group_by(portafolio, vn) |>
+      dplyr::summarise(
         cant_hog = n(),
         cant_per = sum(tp, na.rm = TRUE)
       ) |>
@@ -732,17 +752,17 @@ literalize <- function (df, year) {
 
     hijos2002 <- df |>
       dplyr::filter(p17 %in% c(1 : 3)) |>
-      group_by(portafolio, vn, hn) |>
-      summarise(
+      dplyr::group_by(portafolio, vn, hn) |>
+      dplyr::summarise(
         hijos_nacido = max(p34, na.rm = T),
         hijos_vivos = max(p35, na.rm = T)
       ) |>
       ungroup()
 
     df0 <- df |>
-      left_join(nhogares2002, by = c("portafolio", "vn")) |>
-      left_join(hijos2002, by = c('portafolio', 'vn', 'hn')) |>
-      mutate(
+      dplyr::left_join(nhogares2002, by = c("portafolio", "vn")) |>
+      dplyr::left_join(hijos2002, by = c('portafolio', 'vn', 'hn')) |>
+      dplyr::mutate(
 
         year = '2002',
         id_region = str_sub(
@@ -763,7 +783,7 @@ literalize <- function (df, year) {
         id_distri = paste(
 
           id_comuna,
-          str_pad(
+          stringr::str_pad(
 
             distrito,
             width = 2,
@@ -784,7 +804,7 @@ literalize <- function (df, year) {
         id_zona = paste(
 
           id_area,
-          str_pad(
+          stringr::str_pad(
 
             zona,
             width = 3,
@@ -798,7 +818,7 @@ literalize <- function (df, year) {
         id_manzan = paste(
 
           id_zona,
-          str_pad(
+          stringr::str_pad(
 
             manzana,
             width = 3,
@@ -812,7 +832,7 @@ literalize <- function (df, year) {
         nviv = as.integer(vn),
         nhogar = as.integer(hn),
         npers = as.integer(pn),
-        tipoviv = case_when(
+        tipoviv = dplyr::case_when(
 
           v1 == 1 ~ 'CASA',
           v1 == 2 ~ 'DPTO',
@@ -825,7 +845,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        ocup_viv = case_when(
+        ocup_viv = dplyr::case_when(
 
           v2 == 1 ~ 'PRESENTES',
           v2 == 2 ~ 'AUSENTES',
@@ -833,7 +853,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_muro = case_when(
+        mat_muro = dplyr::case_when(
 
           v4a == 1 ~ 'HORMIGON',
           v4a %in% c(2, 3) ~ 'ALBANILERIA',
@@ -844,7 +864,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_techo = case_when(
+        mat_techo = dplyr::case_when(
 
           v4b %in% c(1, 2) ~ 'TEJAS',
           v4b == 3 ~ 'LOSA_HORMIGON',
@@ -855,7 +875,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_piso = case_when(
+        mat_piso = dplyr::case_when(
 
           v4c %in% c(1 : 4, 6, 7) ~ 'PARQUET',
           v4c == 8 ~ 'RADIER',
@@ -865,7 +885,7 @@ literalize <- function (df, year) {
 
         ),
         ndorms = as.integer(h13),
-        agua_orig = case_when(
+        agua_orig = dplyr::case_when(
 
           v6 == 1 ~ 'RED_PUBLICA',
           v6 == 2 ~ 'POZO',
@@ -873,7 +893,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        parentesco = case_when(
+        parentesco = dplyr::case_when(
 
           p17 == 1 ~ 'JEFE_HOGAR',
           p17 == 2 ~ 'CONYUGUE',
@@ -893,7 +913,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        sexo = case_when(
+        sexo = dplyr::case_when(
 
           p18 == 1 ~ 'HOMBRE',
           p18 == 2 ~ 'MUJER',
@@ -901,21 +921,21 @@ literalize <- function (df, year) {
 
         ),
         edad = as.integer(p19),
-        res_5a = case_when(
+        res_5a = dplyr::case_when(
 
           p24a == 1 ~ 'ESTA_COMUNA',
           p24a == 2 ~ 'OTRA_COMUNA',
           T ~ NA_character_
 
         ),
-        nacimiento = case_when(
+        nacimiento = dplyr::case_when(
 
           p22a == 1 ~ 'ESTA_COMUNA',
           p22a == 2 ~ 'OTRA_COMUNA',
           T ~ NA_character_
 
         ),
-        asiste_educ = case_when(
+        asiste_educ = dplyr::case_when(
 
           p26a == 1 ~ 'NUNCA',
           p29 == 7 ~ 'SI',
@@ -924,7 +944,7 @@ literalize <- function (df, year) {
 
         ),
         curso_alto = as.integer(p26b),
-        nivel_educ = case_when(
+        nivel_educ = dplyr::case_when(
 
           p26a == 2 ~ 'PREBASICA',
           p26a == 3 ~ 'DIFERENCIAL',
@@ -938,14 +958,14 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        pueblo_pert = case_when(
+        pueblo_pert = dplyr::case_when(
 
           p21 != 0 ~ 'SI',
           p21 == 0 ~ 'NO',
           T ~ NA_character_
 
         ),
-        pueblo_orig = case_when(
+        pueblo_orig = dplyr::case_when(
 
           p21 == 5 ~ 'MAPUCHE',
           p21 == 3 ~ 'AYMARA',
@@ -957,7 +977,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        trabajo = case_when(
+        trabajo = dplyr::case_when(
 
           p29 == 1 ~ 'PAGADO',
           p29 == 4 ~ 'SIN_PAGO_FAM',
@@ -971,7 +991,7 @@ literalize <- function (df, year) {
         ),
         hijos_nacido = as.integer(hijos_nacido),
         hijos_vivos = as.integer(hijos_vivos),
-        escolaridad = case_when(
+        escolaridad = dplyr::case_when(
 
           p26a == 1 ~ as.integer(0),
           p26a == 2 ~ as.integer(0),
@@ -991,7 +1011,7 @@ literalize <- function (df, year) {
           TRUE ~ NA_integer_
 
         ),
-        tipo_area = case_when(
+        tipo_area = dplyr::case_when(
 
           area == 1 ~ 'URBANO',
           area == 2 ~ 'RURAL',
@@ -1000,7 +1020,7 @@ literalize <- function (df, year) {
         )
 
       ) |>
-      select(
+      dplyr::select(
 
         year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, tipo_area, portafolio, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, hijos_nacido, hijos_vivos, escolaridad
 
@@ -1012,8 +1032,8 @@ literalize <- function (df, year) {
 
     npers1992 <- df |>
       dplyr::filter(parentesco == 1) |>
-      group_by(portafolio, vivienda) |>
-      summarise(
+      dplyr::group_by(portafolio, vivienda) |>
+      dplyr::summarise(
         cant_hog = max(hogar),
         cant_per = sum(tp),
         ndorms = sum(pieza_dormir)
@@ -1021,17 +1041,17 @@ literalize <- function (df, year) {
       ungroup()
 
     df0 <- df |>
-      left_join(npers1992, by = c("portafolio", "vivienda")) |>
-      mutate(
+      dplyr::left_join(npers1992, by = c("portafolio", "vivienda")) |>
+      dplyr::mutate(
 
-        tipo_area = case_when(
+        tipo_area = dplyr::case_when(
 
           area == 1 ~ 'URBANO',
           area == 2 ~ 'RURAL',
           T ~ NA_character_
 
         ),
-        tipoviv = case_when(
+        tipoviv = dplyr::case_when(
 
           tipo_vivienda == 1 ~ 'CASA',
           tipo_vivienda == 2 ~ 'DPTO',
@@ -1044,7 +1064,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_muro = case_when(
+        mat_muro = dplyr::case_when(
 
           paredes == 1 ~ 'HORMIGON',
           paredes == 2 ~ 'TABIQUE_FORRADO',
@@ -1054,7 +1074,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_techo = case_when(
+        mat_techo = dplyr::case_when(
 
           techo %in% c(4, 5) ~ 'TEJAS',
           techo == 2 ~ 'LOSA_HORMIGON',
@@ -1065,7 +1085,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_piso = case_when(
+        mat_piso = dplyr::case_when(
 
           piso == 5 ~ 'BALDOSA_CEMENTO',
           piso == 7 ~ 'TIERRA',
@@ -1075,7 +1095,7 @@ literalize <- function (df, year) {
 
         ),
         ndorms = as.integer(pieza_dormir),
-        agua_orig = case_when(
+        agua_orig = dplyr::case_when(
 
           origen_agua == 1 ~ 'RED_PUBLICA',
           origen_agua == 2 ~ 'POZO',
@@ -1084,7 +1104,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        ocup_viv = case_when(
+        ocup_viv = dplyr::case_when(
 
           cond_ocupacion == 1 ~ 'PRESENTES',
           cond_ocupacion == 2 ~ 'AUSENTES',
@@ -1094,7 +1114,7 @@ literalize <- function (df, year) {
         nviv = as.integer(vivienda),
         nhogar = as.integer(hogar),
         npers = as.integer(persona),
-        parentesco = case_when(
+        parentesco = dplyr::case_when(
 
           parentesco == 1 ~ 'JEFE_HOGAR',
           parentesco == 2 ~ 'CONYUGUE',
@@ -1112,7 +1132,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        sexo = case_when(
+        sexo = dplyr::case_when(
 
           sexo == 1 ~ 'HOMBRE',
           sexo == 2 ~ 'MUJER',
@@ -1121,7 +1141,7 @@ literalize <- function (df, year) {
         ),
         edad = as.integer(edad),
         curso_alto = as.integer(curso),
-        trabajo = case_when(
+        trabajo = dplyr::case_when(
 
           situacion_empleo == 1 ~ 'PAGADO',
           situacion_empleo == 2 ~ 'VACACIONES',
@@ -1134,13 +1154,13 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        com = case_when(
+        com = dplyr::case_when(
 
           str_sub(comuna, 1, 1) == 0 ~ as.integer(str_sub(comuna, 2)),
           T ~ as.integer(comuna)
 
         ),
-        res_5a = case_when(
+        res_5a = dplyr::case_when(
 
 
           comuna_1987_origen3 == com ~ 'ESTA_COMUNA',
@@ -1149,7 +1169,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        nacimiento = case_when(
+        nacimiento = dplyr::case_when(
 
 
           comuna_habitual_origen3 == com ~ 'ESTA_COMUNA',
@@ -1158,13 +1178,13 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        asiste_educ = case_when(
+        asiste_educ = dplyr::case_when(
 
           tipo_educacion == 0 ~ 'NUNCA',
           T ~ NA_character_
 
         ),
-        nivel_educ = case_when(
+        nivel_educ = dplyr::case_when(
 
           tipo_educacion == 1 ~ 'KINDER',
           tipo_educacion == 2 ~ 'BASICA',
@@ -1176,14 +1196,14 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        pueblo_pert = case_when(
+        pueblo_pert = dplyr::case_when(
 
           cultura %in% c(1 : 3) ~ 'SI',
           cultura == 4 ~ 'NO',
           T ~ NA_character_
 
         ),
-        pueblo_orig = case_when(
+        pueblo_orig = dplyr::case_when(
 
           cultura == 1 ~ 'MAPUCHE',
           cultura == 2 ~ 'AYMARA',
@@ -1193,7 +1213,7 @@ literalize <- function (df, year) {
         ),
         hijos_nacido = as.integer(hijos_nacidos_vivos),
         hijos_vivos = as.integer(hijos_vivos),
-        escolaridad = case_when(
+        escolaridad = dplyr::case_when(
 
           tipo_educacion == 0 ~ as.integer(0),
           tipo_educacion == 1 ~ as.integer(0),
@@ -1213,7 +1233,7 @@ literalize <- function (df, year) {
           T ~ NA_integer_
 
         ),
-        dc = str_pad(
+        dc = stringr::str_pad(
 
           dc,
           width = 2,
@@ -1222,7 +1242,7 @@ literalize <- function (df, year) {
 
         ),
         area = as.character(area),
-        zona = str_pad(
+        zona = stringr::str_pad(
 
           zona,
           width = 3,
@@ -1239,7 +1259,7 @@ literalize <- function (df, year) {
         year = '1992',
         id_region = region92,
         id_provin = provincia92,
-        id_comuna = str_pad(
+        id_comuna = stringr::str_pad(
 
           comuna92,
           width = 5,
@@ -1250,7 +1270,7 @@ literalize <- function (df, year) {
         id_distri = paste(
 
           id_comuna,
-          str_pad(
+          stringr::str_pad(
 
             dc,
             width = 2,
@@ -1271,7 +1291,7 @@ literalize <- function (df, year) {
         id_zona = paste(
 
           id_area,
-          str_pad(
+          stringr::str_pad(
 
             zc_loc,
             width = 3,
@@ -1285,7 +1305,7 @@ literalize <- function (df, year) {
         id_manzan = paste(
 
           id_zona,
-          str_pad(
+          stringr::str_pad(
 
             manzana,
             width = 3,
@@ -1300,7 +1320,7 @@ literalize <- function (df, year) {
         geocode92 = geocode92
 
       ) |>
-      select(
+      dplyr::select(
 
         year, id_region, id_provin, id_comuna, id_distri, id_area, id_zona, id_manzan, portafolio, tipo_area, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, res_5a, nacimiento, asiste_educ, curso_alto, nivel_educ, pueblo_pert, pueblo_orig, trabajo, hijos_nacido, hijos_vivos, escolaridad
 
@@ -1311,12 +1331,12 @@ literalize <- function (df, year) {
   } else if (year == 1982) {
 
     df <- df |>
-      mutate(
+      dplyr::mutate(
 
         c = as.character(comuna),
         d = as.character(distrito),
         z = as.character(zona),
-        s = str_pad(
+        s = stringr::str_pad(
 
           sector,
           width = 2,
@@ -1324,7 +1344,7 @@ literalize <- function (df, year) {
           pad = '0'
 
         ),
-        v = str_pad(
+        v = stringr::str_pad(
 
           vivienda,
           width = 3,
@@ -1332,7 +1352,7 @@ literalize <- function (df, year) {
           pad = '0'
 
         ),
-        h = str_pad(
+        h = stringr::str_pad(
 
           hogar,
           width = 3,
@@ -1357,12 +1377,12 @@ literalize <- function (df, year) {
 
     nhogs82 <- df |>
       dplyr::filter(parentesco == 1) |>
-      group_by(
+      dplyr::group_by(
 
         id_hog
 
       ) |>
-      summarise(
+      dplyr::summarise(
 
         cant_hog = n(),
         cant_per = max(persona)
@@ -1372,12 +1392,12 @@ literalize <- function (df, year) {
 
     hijos <- df |>
       dplyr::filter(parentesco %in% c(1 : 3)) |>
-      group_by(
+      dplyr::group_by(
 
         id_hog
 
       ) |>
-      summarise(
+      dplyr::summarise(
 
         hijos_nacido = max(hijos_nacidosvivos),
         hijos_vivo = max(hijos_sobrevivientes)
@@ -1386,13 +1406,13 @@ literalize <- function (df, year) {
       ungroup()
 
     df0 <- df |>
-      left_join(nhogs82, by = 'id_hog') |>
-      left_join(hijos, by = 'id_hog') |>
-      mutate(
+      dplyr::left_join(nhogs82, by = 'id_hog') |>
+      dplyr::left_join(hijos, by = 'id_hog') |>
+      dplyr::mutate(
 
         npers = as.integer(persona),
         tipo_area = if_else(area == 1, 'URBANO', 'RURAL'),
-        tipoviv = case_when(
+        tipoviv = dplyr::case_when(
 
           tipo_vivienda == 1 ~ 'CASA',
           tipo_vivienda == 2 ~ 'DPTO',
@@ -1405,7 +1425,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        ocup_viv = case_when(
+        ocup_viv = dplyr::case_when(
 
           cond_ocupacion == 1 ~ 'PRESENTES',
           cond_ocupacion == 2 ~ 'AUSENTES',
@@ -1414,7 +1434,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_muro = case_when(
+        mat_muro = dplyr::case_when(
 
           pared == 1 ~ 'HORMIGON',
           pared == 2 ~ 'TABIQUE_FORRADO',
@@ -1424,7 +1444,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_techo = case_when(
+        mat_techo = dplyr::case_when(
 
           techo %in% c(3, 4) ~ 'TEJAS',
           techo %in% c(1, 2) ~ 'PLANCHAS',
@@ -1434,7 +1454,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        mat_piso = case_when(
+        mat_piso = dplyr::case_when(
 
           piso %in% c(1 : 4) ~ 'PARQUET',
           piso == 5 ~ 'BALDOSA_CEMENTO',
@@ -1444,7 +1464,7 @@ literalize <- function (df, year) {
 
         ),
         ndorms = as.integer(dormitorio),
-        agua_orig = case_when(
+        agua_orig = dplyr::case_when(
 
           origen_agua == 1 ~ 'RED_PUBLICA',
           origen_agua == 2 ~ 'POZO',
@@ -1452,7 +1472,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        parentesco = case_when(
+        parentesco = dplyr::case_when(
 
           parentesco == 1 ~ 'JEFE_HOGAR',
           parentesco == 2 ~ 'CONYUGUE',
@@ -1467,7 +1487,7 @@ literalize <- function (df, year) {
           T ~ NA_character_
 
         ),
-        sexo = case_when(
+        sexo = dplyr::case_when(
 
           sexo == 1 ~ 'HOMBRE',
           sexo == 2 ~ 'MUJER',
@@ -1475,24 +1495,24 @@ literalize <- function (df, year) {
 
         ),
         edad = as.integer(edad),
-        # res_5a = case_when(
+        # res_5a = dplyr::case_when(
         #
         #
         #
         # ),
-        # nacimiento = case_when(
+        # nacimiento = dplyr::case_when(
         #
         #
         #
         # ),
-        asiste_educ = case_when(
+        asiste_educ = dplyr::case_when(
 
           asiste == 1 ~ 'SI',
           asiste == 2 ~ 'NO_ACTUAL',
           asiste == 3 ~ 'NUNCA'
 
         ),
-        nivel_educ = case_when(
+        nivel_educ = dplyr::case_when(
 
           tipo_educacion == 1 ~ 'BASICA',
           tipo_educacion == 2 ~ 'CIENTIFICO_HUMANISTA',
@@ -1504,7 +1524,7 @@ literalize <- function (df, year) {
 
         ),
         curso_alto = if_else(as.integer(curso) %in% c(1:8), as.integer(curso), 0),
-        trabajo = case_when(
+        trabajo = dplyr::case_when(
 
           as.integer(situacion_empleo) == 1 ~ 'PAGADO',
           as.integer(situacion_empleo) == 2 ~ 'SIN_PAGO_FAM',
@@ -1524,7 +1544,7 @@ literalize <- function (df, year) {
         year = '1982'
 
       ) |>
-      select(
+      dplyr::select(
 
         year, tipo_area, nviv, nhogar, npers, cant_hog, cant_per, tipoviv, ocup_viv, mat_muro, mat_techo, mat_piso, ndorms, agua_orig, parentesco, sexo, edad, asiste_educ, curso_alto, nivel_educ, trabajo, hijos_nacido, hijos_vivos
 
