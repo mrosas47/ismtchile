@@ -1,4 +1,4 @@
-#' Cálculos finales de ISMT -- ISMT final calculations
+#' @title Cálculos finales de ISMT -- ISMT final calculations
 #'
 #' @description Ejecuta los cálculos finales de ISMT. Define los grupos socioeconómicos por unidad territorial y los cuantifica en varias categorías. \cr \cr Executes the final ISMT calculations. Defines the socio-economic groups and quantifies them in several categories.
 #'

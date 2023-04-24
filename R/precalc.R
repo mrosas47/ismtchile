@@ -1,4 +1,4 @@
-#' Precálculos ISMT -- ISMT Precalculations
+#' @title Precálculos ISMT -- ISMT Precalculations
 #'
 #' @description Ejecuta precálculos necesarios para el resto del proceso del ISMT. \cr \cr Executes precalculations necessary for the rest of the ISMT process.
 #'

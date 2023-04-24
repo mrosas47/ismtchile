@@ -1,4 +1,4 @@
-#' Calcular análisis de componentes principales -- Calculate Principal Components Analysis
+#' @title Calcular análisis de componentes principales -- Calculate Principal Components Analysis
 #'
 #' @description Cálculo de análisis de componentes principales en base a las 4 vatriables principales del ISMT. La función asume que la base de datos ha pasado por \code{precalc()}, ya que requiere los puntajes normalizados por variable. \cr \cr Calculation of principal components analysis based on the 4 main variables of ISMT. Assumes the database has been through \code{precalc()}, as it rqeuires the normalized scores by variable.
 #'

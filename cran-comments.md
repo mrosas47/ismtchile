@@ -12,7 +12,7 @@ There were 0 WARNINGs.
 
 ## Downstream dependencies
 
-All packages passed (dplyr, stringr, utils).
+All packages passed (dplyr, stringr).
 
 ## R-Hub checks
 

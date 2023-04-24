@@ -55,28 +55,28 @@ cleanup <- function(df, year = 2017, vars.as.factors = F, level = 'zc', tipo_viv
     names(clone)[names(clone) == str_glue('{techo}')] <- 'mat_techo'
     names(clone)[names(clone) == str_glue('{piso}')] <- 'mat_piso'
 
-    if (
-
-      is.character(clone$tipoviv) == T |
-      is.character(clone$ocup_viv) == T |
-      is.character(clone$parentesco) == T |
-      is.character(clone$mat_muro) == T |
-      is.character(clone$mat_techo) == T |
-      is.character(clone$mat_techo) == T
-
-    ) {
-
-      message('
-Every specified column, except for ndorms, should be of class character. Consider running ismtchile::literalize() on your data.
-            ')
-
-      stop('Invalid field class', call. = F)
-
-    } else {
-
-      pass()
-
-    }
+#     if (
+#
+#       is.character(clone$tipoviv) == T |
+#       is.character(clone$ocup_viv) == T |
+#       is.character(clone$parentesco) == T |
+#       is.character(clone$mat_muro) == T |
+#       is.character(clone$mat_techo) == T |
+#       is.character(clone$mat_techo) == T
+#
+#     ) {
+#
+#       message('
+# Every specified column, except for ndorms, should be of class character. Consider running ismtchile::literalize() on your data.
+#             ')
+#
+#       stop('Invalid field class', call. = F)
+#
+#     } else {
+#
+#       pass()
+#
+#     }
 
     if (level == 'zc') {
 
