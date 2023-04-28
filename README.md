@@ -10,7 +10,7 @@
 
 ### General
 
-El paquete `ismtchile` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el  <a href='https://www.observatoriodeciudades.com/'> Observatorio de Ciudades UC</a>. </br> La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, el hacinamiento y el allegamiento.
+El paquete `ismtchile` fue creado con el fin de facilitar el cálculo y distribución del Índice Socio Material Territorial, indicador creado por el Observatorio de Ciudades UC. </br> La elaboración del ISMT se realizó tomando en cuenta 4 índices socio-materiales con especificidad territorial, rescatados del censo 2017 mediante RStudio. Estos son los índices de escolaridad del jefe de hogar, la materialidad de la vivienda, el hacinamiento y el allegamiento.
 
 #### Escolaridad del jefe de hogar
 
@@ -383,7 +383,7 @@ ismt2017 <- full_ismt(13, 1)
 
 ### General
 
-The R package `ismtchile` was created to fecilitate the calculation and distribution of the Socio Material Territorial Indicator (ISMT), an indicator created by <a href='https://www.observatoriodeciudades.com/'> Observatorio de Ciudades UC</a>. </br> The ISMT was created based on 4 socio-material indices with territorial specificity. These indices are the scholarity of the head of household, the materials of the dwelling, overcrowding and number of households within the same dwelling.
+The R package `ismtchile` was created to fecilitate the calculation and distribution of the Socio Material Territorial Indicator (ISMT), an indicator created by Observatorio de Ciudades UC. </br> The ISMT was created based on 4 socio-material indices with territorial specificity. These indices are the scholarity of the head of household, the materials of the dwelling, overcrowding and number of households within the same dwelling.
 
 #### Scholarity of the head of household
 
