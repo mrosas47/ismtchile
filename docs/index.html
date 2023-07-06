@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculating Socio Material Territorial Index • ismtchile</title>
+<title>"Calculating Socio Material Territorial Index"" • ismtchile</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Calculating Socio Material Territorial Index">
-<meta property="og:description" content="Paquete creado con el fin de facilitar el cálculo y distribución del índice Socio Material Territorial (ISMT), elaborado por el Observatorio de Ciudades UC ( \code{\link{www.observatoriodeciudades.com}} ). \cr La metodología completa está disponible en &lt;https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about&gt;. \cr \cr Package created to facilitate the calculation and distribution of the Socio-Material Territorial Index by Observatorio de Ciudades UC ( \code{\link{www.observatoriodeciudades.com}} ). \cr The full methodology is available at &lt;https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about&gt;.">
+<script src="pkgdown.js"></script><meta property="og:title" content="" calculating socio material territorial index>
+<meta property="og:description" content="Paquete creado con el fin de facilitar el cálculo y distribución del índice Socio Material Territorial (ISMT), elaborado por el Observatorio de Ciudades UC. \cr La metodología completa está disponible en &lt;https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about&gt;. \cr \cr Package created to facilitate the calculation and distribution of the Socio-Material Territorial Index by Observatorio de Ciudades UC . \cr The full methodology is available at &lt;https://ideocuc-ocuc.hub.arcgis.com/datasets/6ed956450cfc4293b7d90df3ce3474e4/about&gt;.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ismtchile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.1.5</span>
       </span>
     </div>
 
@@ -727,61 +727,49 @@ Chile
 <h3 id="flujo-de-trabajo">Flujo de trabajo<a class="anchor" aria-label="anchor" href="#flujo-de-trabajo"></a>
 </h3>
 <p>El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores pasos a seguir en el cálculo del indicador, en el siguiente orden: </p>
-<ol>
-<li>
-<code><a href="reference/cleanup.html">cleanup()</a></code> normaliza los nombres de los campos y elimina variables redundantes
-</li>
-<li>
-<code><a href="reference/precalc.html">precalc()</a></code> precálculos necesarios para el proceso
-</li>
-<li>
-<code><a href="reference/get_pca.html">get_pca()</a></code> análisis de componentes principales
-</li>
-<li>
-<code><a href="reference/ismt_scores.html">ismt_scores()</a></code> cálculo del índice
-</li>
-</ol>
 </div>
 <div class="section level3">
 <h3 id="instalación-y-uso">Instalación y uso<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-y-uso"></a>
 </h3>
 <pre><code><span><span class="co"># install.packages('remotes')</span></span>
-<span></span>
 <span><span class="co"># remotes::install_github('mrosas47/ismtchile')</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ismtchile</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">c17_example</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">ismt2017</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">'censo2017.rds'</span><span class="op">)</span></span>
+<span><span class="va">ismt</span> <span class="op">&lt;-</span> <span class="va">c17_example</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="reference/literalize.html">literalize</a></span><span class="op">(</span><span class="fl">2017</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="reference/cleanup.html">cleanup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="reference/precalc.html">precalc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="reference/get_pca.html">get_pca</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="reference/ismt_scores.html">ismt_scores</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ismt2017</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/full_ismt.html">full_ismt</a></span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu"><a href="reference/ismt_scores.html">ismt_scores</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">2017</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="reference/namify.html">namify</a></span><span class="op">(</span><span class="st">'ine17'</span>, <span class="st">'c'</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="va">ismt</span> <span class="op">&lt;-</span> <span class="va">c17_example</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/full_ismt.html">full_ismt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="autoría-y-crédito">Autoría y crédito<a class="anchor" aria-label="anchor" href="#autor%C3%ADa-y-cr%C3%A9dito"></a>
 </h3>
 <div id="authorsdiv">
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>p id<span class="ot">=</span><span class="st">"authors"</span><span class="sc">&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;</span>h4<span class="sc">&gt;</span>Creación, desarrollo y mantención del paquete<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Estudiante de Planificación Urbana UC, Certificado profesional en Front<span class="sc">-</span>End Web <span class="fu">Development</span> (W3C). Ayudante de investigación, Observatorio de Ciudades UC <span class="sc">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mrosas1690@gmail.com"</span><span class="sc">&gt;</span>mrosas1690<span class="sc">@</span>gmail.com<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> <span class="er">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mirosas@uc.cl"</span><span class="sc">&gt;</span>mirosas<span class="sc">@</span>uc.cl<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;/</span>div<span class="sc">&gt;</span> <span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;</span>h4<span class="sc">&gt;</span>Creación y desarrollo del índice<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Ricardo Truffello Robledo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo UC; Doctor en Ingeniería en Sistemas <span class="fu">Complejos</span> (Universidad Adolfo Ibáñez <span class="sc">-</span> UAI); Magíster en Geografía y Geomática UC. Director, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Mónica Flores Castillo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Arquitecta UC y Master of Urban Planning NYU<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Gabriela Ulloa Contador<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafa y Msc. en geografía, mención Justicia Ambiental; Estudiante de Doctorado en Territorio, Espacio y Sociedad de la Universidad de Chile<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Isidro Puig Vásquez<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo y Analista GIS, Universitat de València (España); Diplomado Programación GIS, Web Mapping y Tecnologías de la Información Geográfica, Asociación Geoinnova, <span class="fu">Valencia</span> (España); Diplomado de Especialización en Sostenibilidad, Ética Ecológica y Educación Ambiental, Universitat Politècnica de València (España)<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Natalia Ramírez González<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Asesora Ministerial de Género en el Ministerio de Transportes y Telecomunicaciones de Chile; Geógrafa y MA. en Geografía, mención organización urbano<span class="sc">-</span>territorial.<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Francisca Balbontin Puig<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Diseñadora integral UC; Diseño de plataformas de visualización de datos<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Estudiante de Planificación Urbana UC, Certificado profesional en Front<span class="sc">-</span>End Web <span class="fu">Development</span> (W3C). Ayudante de investigación, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;/</span>div<span class="sc">&gt;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>p<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="sc">&lt;</span>p id<span class="ot">=</span><span class="st">"authors"</span><span class="sc">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>    <span class="er">&lt;</span>h4<span class="sc">&gt;</span>Creación, desarrollo y mantención del paquete<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    <span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>                <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Estudiante de Planificación Urbana UC, Certificado profesional en Front<span class="sc">-</span>End Web <span class="fu">Development</span> (W3C). Ayudante de investigación, Observatorio de Ciudades UC <span class="sc">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mrosas1690@gmail.com"</span><span class="sc">&gt;</span>mrosas1690<span class="sc">@</span>gmail.com<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> <span class="er">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mirosas@uc.cl"</span><span class="sc">&gt;</span>mirosas<span class="sc">@</span>uc.cl<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>    <span class="er">&lt;/</span>div<span class="sc">&gt;</span> <span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>    <span class="er">&lt;</span>h4<span class="sc">&gt;</span>Creación y desarrollo del índice<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>    <span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Ricardo Truffello Robledo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo UC; Doctor en Ingeniería en Sistemas <span class="fu">Complejos</span> (Universidad Adolfo Ibáñez <span class="sc">-</span> UAI); Magíster en Geografía y Geomática UC. Director, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Mónica Flores Castillo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Arquitecta UC y Master of Urban Planning NYU<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Gabriela Ulloa Contador<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafa y Msc. en geografía, mención Justicia Ambiental; Estudiante de Doctorado en Territorio, Espacio y Sociedad de la Universidad de Chile<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Isidro Puig Vásquez<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo y Analista GIS, Universitat de València (España); Diplomado Programación GIS, Web Mapping y Tecnologías de la Información Geográfica, Asociación Geoinnova, <span class="fu">Valencia</span> (España); Diplomado de Especialización en Sostenibilidad, Ética Ecológica y Educación Ambiental, Universitat Politècnica de València (España)<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Natalia Ramírez González<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Asesora Ministerial de Género en el Ministerio de Transportes y Telecomunicaciones de Chile; Geógrafa y MA. en Geografía, mención organización urbano<span class="sc">-</span>territorial.<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Francisca Balbontin Puig<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Diseñadora integral UC; Diseño de plataformas de visualización de datos<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>        <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Estudiante de Planificación Urbana UC, Certificado profesional en Front<span class="sc">-</span>End Web <span class="fu">Development</span> (W3C). Ayudante de investigación, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>    <span class="er">&lt;/</span>div<span class="sc">&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="er">&lt;/</span>p<span class="sc">&gt;</span></span></code></pre></div>
 </div>
 <br><br><div class="logos">
-<p><a href="home.html"><img src="https://drive.google.com/uc?export=view&amp;id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a></p>
+<p><a><img src="https://drive.google.com/uc?export=view&amp;id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a></p>
 </div>
 <br><div id="hook">
 
@@ -1453,59 +1441,47 @@ Chile
 <h3 id="workflow">Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
 </h3>
 <p>The workflow has been though out show as many steps in the calculation as possible, in the following order:</p>
-<ol>
-<li>
-<code><a href="reference/cleanup.html">cleanup()</a></code> normalizes field names and eliminates redundant variables.
-</li>
-<li>
-<code><a href="reference/precalc.html">precalc()</a></code> nnecessary precalculations.
-</li>
-<li>
-<code><a href="reference/get_pca.html">get_pca()</a></code> Principal Components Analyisis
-</li>
-<li>
-<code><a href="reference/ismt_scores.html">ismt_scores()</a></code> index calculation
-</li>
-</ol>
 </div>
 <div class="section level3">
 <h3 id="installation-and-usage">Installation and usage<a class="anchor" aria-label="anchor" href="#installation-and-usage"></a>
 </h3>
 <pre><code><span><span class="co"># install.packages('remotes')</span></span>
-<span></span>
 <span><span class="co"># remotes::install_github('mrosas47/ismtchile')</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ismtchile</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">c17_example</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">ismt2017</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">'censo2017.rds'</span><span class="op">)</span></span>
+<span><span class="va">ismt</span> <span class="op">&lt;-</span> <span class="va">c17_example</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="reference/literalize.html">literalize</a></span><span class="op">(</span><span class="fl">2017</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="reference/cleanup.html">cleanup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="reference/precalc.html">precalc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="reference/get_pca.html">get_pca</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="reference/ismt_scores.html">ismt_scores</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ismt2017</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/full_ismt.html">full_ismt</a></span><span class="op">(</span><span class="fl">13</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu"><a href="reference/ismt_scores.html">ismt_scores</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">2017</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="reference/namify.html">namify</a></span><span class="op">(</span><span class="st">'ine17'</span>, <span class="st">'c'</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="va">ismt</span> <span class="op">&lt;-</span> <span class="va">c17_example</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/full_ismt.html">full_ismt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="authorship-and-credit">Authorship and credit<a class="anchor" aria-label="anchor" href="#authorship-and-credit"></a>
 </h3>
 <div id="authorsdiv">
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>h4<span class="sc">&gt;</span>Package creation, development and maintenance<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> City Planning Student, UC; Front<span class="sc">-</span>End Web Development Professional <span class="fu">Certificate</span> (W3C). Research Assistant, Observatorio de Ciudades UC <span class="sc">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mrosas1690@gmail.com"</span><span class="sc">&gt;</span>mrosas1690<span class="sc">@</span>gmail.com<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> <span class="er">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mirosas@uc.cl"</span><span class="sc">&gt;</span>mirosas<span class="sc">@</span>uc.cl<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>div<span class="sc">&gt;</span> <span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>h4<span class="sc">&gt;</span>Index creation and development<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Ricardo Truffello Robledo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo UC; Doctor en Ingeniería en Sistemas <span class="fu">Complejos</span> (Universidad Adolfo Ibáñez <span class="sc">-</span> UAI); Magíster en Geografía y Geomática UC. Director, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Mónica Flores Castillo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Arquitecta UC y Master of Urban Planning NYU<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Gabriela Ulloa Contador<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafa y Msc. en geografía, mención Justicia Ambiental; Estudiante de Doctorado en Territorio, Espacio y Sociedad de la Universidad de Chile<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Isidro Puig Vásquez<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo y Analista GIS, Universitat de València (España); Diplomado Programación GIS, Web Mapping y Tecnologías de la Información Geográfica, Asociación Geoinnova, <span class="fu">Valencia</span> (España); Diplomado de Especialización en Sostenibilidad, Ética Ecológica y Educación Ambiental, Universitat Politècnica de València (España)<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Natalia Ramírez González<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Asesora Ministerial de Género en el Ministerio de Transportes y Telecomunicaciones de Chile; Geógrafa y MA. en Geografía, mención organización urbano<span class="sc">-</span>territorial.<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Francisca Balbontin Puig<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Diseñadora integral UC; Diseño de plataformas de visualización de datos<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Estudiante de Planificación Urbana UC, Certificado profesional en Front<span class="sc">-</span>End Web <span class="fu">Development</span> (W3C). Ayudante de investigación, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>div<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="sc">&lt;</span>h4<span class="sc">&gt;</span>Package creation, development and maintenance<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> City Planning Student, UC; Front<span class="sc">-</span>End Web Development Professional <span class="fu">Certificate</span> (W3C). Research Assistant, Observatorio de Ciudades UC <span class="sc">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mrosas1690@gmail.com"</span><span class="sc">&gt;</span>mrosas1690<span class="sc">@</span>gmail.com<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> <span class="er">|</span> <span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">"mailto:mirosas@uc.cl"</span><span class="sc">&gt;</span>mirosas<span class="sc">@</span>uc.cl<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="er">&lt;/</span>div<span class="sc">&gt;</span> <span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="er">&lt;</span>h4<span class="sc">&gt;</span>Index creation and development<span class="sc">&lt;</span><span class="er">/</span>h4<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="er">&lt;</span>div class<span class="ot">=</span><span class="st">"people"</span><span class="sc">&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Ricardo Truffello Robledo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo UC; Doctor en Ingeniería en Sistemas <span class="fu">Complejos</span> (Universidad Adolfo Ibáñez <span class="sc">-</span> UAI); Magíster en Geografía y Geomática UC. Director, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Mónica Flores Castillo<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Arquitecta UC y Master of Urban Planning NYU<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Gabriela Ulloa Contador<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafa y Msc. en geografía, mención Justicia Ambiental; Estudiante de Doctorado en Territorio, Espacio y Sociedad de la Universidad de Chile<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Isidro Puig Vásquez<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Geógrafo y Analista GIS, Universitat de València (España); Diplomado Programación GIS, Web Mapping y Tecnologías de la Información Geográfica, Asociación Geoinnova, <span class="fu">Valencia</span> (España); Diplomado de Especialización en Sostenibilidad, Ética Ecológica y Educación Ambiental, Universitat Politècnica de València (España)<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Natalia Ramírez González<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Asesora Ministerial de Género en el Ministerio de Transportes y Telecomunicaciones de Chile; Geógrafa y MA. en Geografía, mención organización urbano<span class="sc">-</span>territorial.<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Francisca Balbontin Puig<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Diseñadora integral UC; Diseño de plataformas de visualización de datos<span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>  <span class="er">&lt;</span>b<span class="sc">&gt;</span>Martín Rosas Araya<span class="sc">&lt;</span><span class="er">/</span>b<span class="sc">&gt;</span> <span class="er">|</span> Estudiante de Planificación Urbana UC, Certificado profesional en Front<span class="sc">-</span>End Web <span class="fu">Development</span> (W3C). Ayudante de investigación, Observatorio de Ciudades UC <span class="sc">&lt;</span>br<span class="sc">&gt;</span><span class="er">&lt;</span>br<span class="sc">&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="er">&lt;/</span>div<span class="sc">&gt;</span></span></code></pre></div>
 </div>
 <a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a> <br><br><div class="logos">
-<p><a href="home.html"><img src="https://drive.google.com/uc?export=view&amp;id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a></p>
+<p><a><img src="https://drive.google.com/uc?export=view&amp;id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a></p>
 </div>
 <button onclick="topFunction()" id="backToTop" title="Go to top">
 Top
@@ -1641,7 +1617,7 @@ Top
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Martín Rosas Araya <br><small class="roles"> Maintainer </small>  </li>
+<li>Martín Developer Rosas Araya <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
@@ -1653,7 +1629,7 @@ Top
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Martín Rosas Araya.</p>
+<p>Developed by Martín Developer Rosas Araya.</p>
 </div>
 
 <div class="pkgdown">

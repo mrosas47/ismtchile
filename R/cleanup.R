@@ -1,27 +1,29 @@
 #' @title Limpieza de la base de datos censal -- Census database cleanup
 #'
-#' @description Limpia la base de datos de forma de normalizar los nombres de los campos y reducir la cantidad de variables, facilitando así la ejecución de las funciones que siguen en el flujo de cálculo. \cr \cr Cleans the database, normalizing the field names and reducing the number of variables, facilitiating the execution of the following functions down the workflow.
+#' @description Limpia la base de datos de forma de normalizar los nombres de los campos y reducir la cantidad de variables, facilitando así la ejecución de las funciones que siguen en el flujo de cálculo. || || Cleans the database, normalizing the field names and reducing the number of variables, facilitiating the execution of the following functions down the workflow.
 #'
-#' @param df objeto \code{data.frame}. Se recomienda usar la base original del Censo 2017, disponible a través de \code{load_data()}. \cr \cr \code{data.frame} object; recommendation is to use the original 2017 census database, available through \code{load_data()}.
-#' @param year integer. Default es \code{2017}. \cr \cr integer. Default is \code{2017}.
-#' @param vars.as.factors \code{boolean}. Si las variables están como factores (como en las bases censales originales), cambiar a \code{TRUE}. Default es \code{FALSE}, ya que se asume que la base pasá por la función \code{literalize()}. \cr \cr \code{boolean}. If variables are as factors (like in the original census databases), change to \code{TRUE}. Default is \code{FALSE}, as it is assumed the database has been through the \code{literalize()} function.
-#' @param level \code{string}. Nivel de agrupación de los datos finales. Acepta valores \code{zc} (zona censal) y \code{mzn} (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es \code{zc}. \cr \cr \code{string}. Grouping level for the final data. Values \code{zc} (census zone) and \code{mzn} (block). Block level is not available for 2017 due to statistical secret of original database. Default is \code{zc}.
-#' @param tipo_viv string. Nombre del campo de tipo de vivienda. Default es \code{tipoviv}. \cr \cr string. Name of the dwelling type field. Default is \code{tipoviv}.
-#' @param ocupacion string. Nombre del campo de ocupación de la vivienda. Default es \code{ocup_viv}. \cr \cr string. Name of the home occupation field. Default is \code{ocup_viv}.
-#' @param dormitorios string. Nombre del campo con el número de dormitorios del hogar. Default es \code{ndorms}. \cr \cr string. Name of the number of bedrooms field. Default is \code{ndorms}.
-#' @param parentesco string. Nombre del campo de parentesco. Default es \code{parentesco}. \cr \cr string. Name of the familial relationship field. Default is \code{parentesco}.
-#' @param muro string. Nombre del campo de condición del muro. Default es \code{mat_muro}. \cr \cr string. Name of the wall condition field. Default is \code{mat_muro}.
-#' @param techo string. Nombre del campo de condición del techo. Default es \code{mat_techo}. \cr \cr string. Name of the ceiling condition field. Default is \code{mat_techo}.
-#' @param piso string. Nombre del campo de condición del suelo. Default es \code{mat_piso}. \cr \cr string. Name of the floor condition field. Default is \code{mat_piso}.
+#' @param df objeto \code{data.frame}. Se recomienda usar la base original del Censo 2017, disponible a través de la página oficial del INE. || || \code{data.frame} object; recommendation is to use the original 2017 census database, available through INE's official website.
+#' @param year integer. Default es \code{2017}. || || integer. Default is \code{2017}.
+#' @param vars.as.factors \code{boolean}. Si las variables están como factores (como en las bases censales originales), cambiar a \code{TRUE}. Default es \code{FALSE}, ya que se asume que la base pasá por la función \code{literalize()}. || || \code{boolean}. If variables are as factors (like in the original census databases), change to \code{TRUE}. Default is \code{FALSE}, as it is assumed the database has been through the \code{literalize()} function.
+#' @param level \code{string}. Nivel de agrupación de los datos finales. Acepta valores \code{zc} (zona censal) y \code{mzn} (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es \code{zc}. || || \code{string}. Grouping level for the final data. Values \code{zc} (census zone) and \code{mzn} (block). Block level is not available for 2017 due to statistical secret of original database. Default is \code{zc}.
+#' @param tipo_viv string. Nombre del campo de tipo de vivienda. Default es \code{tipoviv}. || || string. Name of the dwelling type field. Default is \code{tipoviv}.
+#' @param ocupacion string. Nombre del campo de ocupación de la vivienda. Default es \code{ocup_viv}. || || string. Name of the home occupation field. Default is \code{ocup_viv}.
+#' @param dormitorios string. Nombre del campo con el número de dormitorios del hogar. Default es \code{ndorms}. || || string. Name of the number of bedrooms field. Default is \code{ndorms}.
+#' @param parentesco string. Nombre del campo de parentesco. Default es \code{parentesco}. || || string. Name of the familial relationship field. Default is \code{parentesco}.
+#' @param muro string. Nombre del campo de condición del muro. Default es \code{mat_muro}. || || string. Name of the wall condition field. Default is \code{mat_muro}.
+#' @param techo string. Nombre del campo de condición del techo. Default es \code{mat_techo}. || || string. Name of the ceiling condition field. Default is \code{mat_techo}.
+#' @param piso string. Nombre del campo de condición del suelo. Default es \code{mat_piso}. || || string. Name of the floor condition field. Default is \code{mat_piso}.
 #' @import dplyr
 #' @import stringr
 #'
-#' @return objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. \cr \cr \code{data.frame} object containing only the variables that are necessary for the following calculations.
+#' @return objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. || || \code{data.frame} object containing only the variables that are necessary for the following calculations.
 #' @export cleanup
 #'
-#' @examples # clean <- c17 |> cleanup()
+#' @examples
+#'  data(c17_example)
+#'  clean <- c17_example |> literalize(2017) |> cleanup()
 
-cleanup <- function(df, year = 2017, vars.as.factors = F, level = 'zc', tipo_viv = 'tipoviv', ocupacion = 'ocup_viv', parentesco = 'parentesco', dormitorios = 'ndorms', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso') {
+cleanup <- function(df, year = 2017, vars.as.factors = FALSE, level = 'zc', tipo_viv = 'tipoviv', ocupacion = 'ocup_viv', parentesco = 'parentesco', dormitorios = 'ndorms', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso') {
 
   cond_muro <- NULL
   cond_techo <- NULL
@@ -43,7 +45,7 @@ cleanup <- function(df, year = 2017, vars.as.factors = F, level = 'zc', tipo_viv
   pass <- function() {}
   `%notin%` <- Negate(`%in%`)
 
-  if (vars.as.factors == F) {
+  if (vars.as.factors == FALSE) {
 
     clone <- df
 
@@ -57,12 +59,12 @@ cleanup <- function(df, year = 2017, vars.as.factors = F, level = 'zc', tipo_viv
 
 #     if (
 #
-#       is.character(clone$tipoviv) == T |
-#       is.character(clone$ocup_viv) == T |
-#       is.character(clone$parentesco) == T |
-#       is.character(clone$mat_muro) == T |
-#       is.character(clone$mat_techo) == T |
-#       is.character(clone$mat_techo) == T
+#       is.character(clone$tipoviv) == TRUE |
+#       is.character(clone$ocup_viv) == TRUE |
+#       is.character(clone$parentesco) == TRUE |
+#       is.character(clone$mat_muro) == TRUE |
+#       is.character(clone$mat_techo) == TRUE |
+#       is.character(clone$mat_techo) == TRUE
 #
 #     ) {
 #
@@ -132,7 +134,7 @@ mzn level not supported for 2017
           mat_muro %in% muro_aceptable ~ as.integer(3),
           mat_muro %in% muro_recuperable ~ as.integer(2),
           mat_muro %in% muro_irrecuperable ~ as.integer(1),
-          T ~ NA_integer_
+          TRUE ~ NA_integer_
 
         ),
         cond_techo = dplyr::case_when(
@@ -140,7 +142,7 @@ mzn level not supported for 2017
           mat_techo %in% techo_aceptable ~ as.integer(3),
           mat_techo %in% techo_recuperable ~ as.integer(2),
           mat_techo %in% techo_irrecuperable ~ as.integer(1),
-          T ~ NA_integer_
+          TRUE ~ NA_integer_
 
         ),
         cond_piso = dplyr::case_when(
@@ -148,7 +150,7 @@ mzn level not supported for 2017
           mat_piso %in% piso_aceptable ~ as.integer(3),
           mat_piso %in% piso_recuperable ~ as.integer(2),
           mat_piso %in% piso_irrecuperable ~ as.integer(1),
-          T ~ NA_integer_
+          TRUE ~ NA_integer_
 
         ),
         mat_aceptable = dplyr::if_else(
@@ -177,7 +179,7 @@ mzn level not supported for 2017
 
           ndorms >= 1 ~ cant_per / ndorms,
           ndorms == 0 ~ cant_per * 2,
-          T ~ NA_real_
+          TRUE ~ NA_real_
 
         ),
         sin_hacin = dplyr::if_else(
@@ -206,7 +208,7 @@ mzn level not supported for 2017
           escolaridad == NA ~ NA_integer_,
           escolaridad == 99 ~ NA_integer_,
           escolaridad == 27 ~ NA_integer_,
-          T ~ escolaridad
+          TRUE ~ escolaridad
 
         )
 
@@ -229,7 +231,7 @@ mzn level not supported for 2017
 
     return(cleanclone)
 
-  } else if (vars.as.factors == T) {
+  } else if (vars.as.factors == TRUE) {
 
     message('
 vars.as.factors parameter is not yet available.

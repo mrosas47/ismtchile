@@ -7,7 +7,7 @@
 cleanup(
   df,
   year = 2017,
-  vars.as.factors = F,
+  vars.as.factors = FALSE,
   level = "zc",
   tipo_viv = "tipoviv",
   ocupacion = "ocup_viv",
@@ -19,34 +19,35 @@ cleanup(
 )
 }
 \arguments{
-\item{df}{objeto \code{data.frame}. Se recomienda usar la base original del Censo 2017, disponible a través de \code{load_data()}. \cr \cr \code{data.frame} object; recommendation is to use the original 2017 census database, available through \code{load_data()}.}
+\item{df}{objeto \code{data.frame}. Se recomienda usar la base original del Censo 2017, disponible a través de \code{load_data()}. || || \code{data.frame} object; recommendation is to use the original 2017 census database, available through \code{load_data()}.}
 
-\item{year}{integer. Default es \code{2017}. \cr \cr integer. Default is \code{2017}.}
+\item{year}{integer. Default es \code{2017}. || || integer. Default is \code{2017}.}
 
-\item{vars.as.factors}{\code{boolean}. Si las variables están como factores (como en las bases censales originales), cambiar a \code{TRUE}. Default es \code{FALSE}, ya que se asume que la base pasá por la función \code{literalize()}. \cr \cr \code{boolean}. If variables are as factors (like in the original census databases), change to \code{TRUE}. Default is \code{FALSE}, as it is assumed the database has been through the \code{literalize()} function.}
+\item{vars.as.factors}{\code{boolean}. Si las variables están como factores (como en las bases censales originales), cambiar a \code{TRUE}. Default es \code{FALSE}, ya que se asume que la base pasá por la función \code{literalize()}. || || \code{boolean}. If variables are as factors (like in the original census databases), change to \code{TRUE}. Default is \code{FALSE}, as it is assumed the database has been through the \code{literalize()} function.}
 
-\item{level}{\code{string}. Nivel de agrupación de los datos finales. Acepta valores \code{zc} (zona censal) y \code{mzn} (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es \code{zc}. \cr \cr \code{string}. Grouping level for the final data. Values \code{zc} (census zone) and \code{mzn} (block). Block level is not available for 2017 due to statistical secret of original database. Default is \code{zc}.}
+\item{level}{\code{string}. Nivel de agrupación de los datos finales. Acepta valores \code{zc} (zona censal) y \code{mzn} (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es \code{zc}. || || \code{string}. Grouping level for the final data. Values \code{zc} (census zone) and \code{mzn} (block). Block level is not available for 2017 due to statistical secret of original database. Default is \code{zc}.}
 
-\item{tipo_viv}{string. Nombre del campo de tipo de vivienda. Default es \code{tipoviv}. \cr \cr string. Name of the dwelling type field. Default is \code{tipoviv}.}
+\item{tipo_viv}{string. Nombre del campo de tipo de vivienda. Default es \code{tipoviv}. || || string. Name of the dwelling type field. Default is \code{tipoviv}.}
 
-\item{ocupacion}{string. Nombre del campo de ocupación de la vivienda. Default es \code{ocup_viv}. \cr \cr string. Name of the home occupation field. Default is \code{ocup_viv}.}
+\item{ocupacion}{string. Nombre del campo de ocupación de la vivienda. Default es \code{ocup_viv}. || || string. Name of the home occupation field. Default is \code{ocup_viv}.}
 
-\item{parentesco}{string. Nombre del campo de parentesco. Default es \code{parentesco}. \cr \cr string. Name of the familial relationship field. Default is \code{parentesco}.}
+\item{parentesco}{string. Nombre del campo de parentesco. Default es \code{parentesco}. || || string. Name of the familial relationship field. Default is \code{parentesco}.}
 
-\item{dormitorios}{string. Nombre del campo con el número de dormitorios del hogar. Default es \code{ndorms}. \cr \cr string. Name of the number of bedrooms field. Default is \code{ndorms}.}
+\item{dormitorios}{string. Nombre del campo con el número de dormitorios del hogar. Default es \code{ndorms}. || || string. Name of the number of bedrooms field. Default is \code{ndorms}.}
 
-\item{muro}{string. Nombre del campo de condición del muro. Default es \code{mat_muro}. \cr \cr string. Name of the wall condition field. Default is \code{mat_muro}.}
+\item{muro}{string. Nombre del campo de condición del muro. Default es \code{mat_muro}. || || string. Name of the wall condition field. Default is \code{mat_muro}.}
 
-\item{techo}{string. Nombre del campo de condición del techo. Default es \code{mat_techo}. \cr \cr string. Name of the ceiling condition field. Default is \code{mat_techo}.}
+\item{techo}{string. Nombre del campo de condición del techo. Default es \code{mat_techo}. || || string. Name of the ceiling condition field. Default is \code{mat_techo}.}
 
-\item{piso}{string. Nombre del campo de condición del suelo. Default es \code{mat_piso}. \cr \cr string. Name of the floor condition field. Default is \code{mat_piso}.}
+\item{piso}{string. Nombre del campo de condición del suelo. Default es \code{mat_piso}. || || string. Name of the floor condition field. Default is \code{mat_piso}.}
 }
 \value{
-objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. \cr \cr \code{data.frame} object containing only the variables that are necessary for the following calculations.
+objeto \code{data.frame} conteniendo solo las variables necesarias para los cálculos siguientes. || || \code{data.frame} object containing only the variables that are necessary for the following calculations.
 }
 \description{
-Limpia la base de datos de forma de normalizar los nombres de los campos y reducir la cantidad de variables, facilitando así la ejecución de las funciones que siguen en el flujo de cálculo. \cr \cr Cleans the database, normalizing the field names and reducing the number of variables, facilitiating the execution of the following functions down the workflow.
+Limpia la base de datos de forma de normalizar los nombres de los campos y reducir la cantidad de variables, facilitando así la ejecución de las funciones que siguen en el flujo de cálculo. || || Cleans the database, normalizing the field names and reducing the number of variables, facilitiating the execution of the following functions down the workflow.
 }
 \examples{
-# clean <- c17 |> cleanup()
+ data(c17_example)
+ clean <- c17_example |> literalize(2017) |> cleanup()
 }

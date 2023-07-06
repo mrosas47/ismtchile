@@ -20,5 +20,8 @@ df con nombres de divisiones geográficas
 Asigna nombres de divisones geográficas en base a una variable de referencia.
 }
 \examples{
-#''
+ \donttest{
+   data(c17_example)
+   ismt <- full_ismt(c17_example, 10, 1) |> namify('ine17', 'c')
+ }
 }

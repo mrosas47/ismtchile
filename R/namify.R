@@ -12,11 +12,19 @@
 #' @return df con nombres de divisiones geográficas
 #' @export namify
 #'
-#' @examples #''
+#' @examples
+#'  \donttest{
+#'    data(c17_example)
+#'    ismt <- full_ismt(c17_example, 10, 1) |> namify('ine17', 'c')
+#'  }
+
 
 namify <- function(df, common_var, level) {
 
   clone <- df
+  id_region <- NULL
+  id_provin <- NULL
+  zona <- NULL
 
   # ---- Regiones ----
 

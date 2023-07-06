@@ -316,29 +316,23 @@ Las variables descritas anteriormente corresponden a las variables del censo 201
 
 El flujo de trabajo del paquete está pensado de forma de evidenciar los mayores pasos a seguir en el cálculo del indicador, en el siguiente orden: </br>
 
-<ol>
-  <li><code>cleanup()</code> normaliza los nombres de los campos y elimina variables redundantes</li>
-  <li><code>precalc()</code> precálculos necesarios para el proceso</li>
-  <li><code>get_pca()</code> análisis de componentes principales</li>
-  <li><code>ismt_scores()</code> cálculo del índice</li>
-</ol>
-
 ### Instalación y uso
 
 ```
-# install.packages('remotes')
-
-# remotes::install_github('mrosas47/ismtchile')
+# install.packages('ismtchile')
 
 library(ismtchile)
+data(c17_example)
 
-ismt2017 <- readRDS('censo2017.rds')
+ismt <- c17_example |> 
+  literalize(2017) |> 
   cleanup() |> 
   precalc() |> 
   get_pca() |> 
-  ismt_scores(13)
-
-ismt2017 <- full_ismt(13, 1)
+  ismt_scores(10, 2017) |> 
+  namify('ine17', 'c')
+  
+ismt <- c17_example |> full_ismt()
 ```
 
 ### Autoría y crédito
@@ -363,7 +357,7 @@ ismt2017 <- full_ismt(13, 1)
 </div>
 <br><br>
 <div class="logos">
-  <a href="home.html"><img src="https://drive.google.com/uc?export=view&id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a>
+  <a><img src="https://drive.google.com/uc?export=view&id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a>
 </div>
 
 <br>
@@ -675,33 +669,31 @@ Once the continuous score is obtained, the ISMT is classified through its percen
 
 ### Adaptation and homologation
 
+Las variables descritas anteriormente corresponden a las variables del censo 2017. Para las versiones `2.x.x` y superiores, se realizó una homologación de las variables censales de 1982, 1992, 2002, 2012 y 2017 a través de la literalización de los factores. Si bien ralentiza ligeramente el proceso de cálculo, provee la posibilidad de trabajar de forma transversal con los distintos años. La descarga de la data del 2017 está disponible en la página del ISMT, así como la metadata de la literalización.
+
+The previously described variables come from the 2017 Chilean census. For versions `2.x.x` and later, variables from the 1982, 1992, 2002, 2012 and 2017 are homologated through factor literalization. It does make the process slightly slower, but it does provide the possibility of working seamlessly with the different datasets. Data download and metadata are available in the ISMT website.
+
 ### Workflow
 
 The workflow has been though out show as many steps in the calculation as possible, in the following order:
 
-<ol>
-  <li><code>cleanup()</code> normalizes field names and eliminates redundant variables.</li>
-  <li><code>precalc()</code> nnecessary precalculations.</li>
-  <li><code>get_pca()</code> Principal Components Analyisis</li>
-  <li><code>ismt_scores()</code> index calculation</li>
-</ol>
-
 ### Installation and usage
 
 ```
-# install.packages('remotes')
-
-# remotes::install_github('mrosas47/ismtchile')
+# install.packages('ismtchile')
 
 library(ismtchile)
+data(c17_example)
 
-ismt2017 <- readRDS('censo2017.rds')
+ismt <- c17_example |> 
+  literalize(2017) |> 
   cleanup() |> 
   precalc() |> 
   get_pca() |> 
-  ismt_scores(13)
-
-ismt2017 <- full_ismt(13, 1)
+  ismt_scores(10, 2017) |> 
+  namify('ine17', 'c')
+  
+ismt <- c17_example |> full_ismt()
 ```
 
 ### Authorship and credit
@@ -725,7 +717,7 @@ ismt2017 <- full_ismt(13, 1)
 <a href="mailto:hola@observatoriodeciudades.com">hola@observatoriodeciudades.com</a>
 <br><br>
 <div class="logos">
-  <a href="home.html"><img src="https://drive.google.com/uc?export=view&id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a>
+  <a><img src="https://drive.google.com/uc?export=view&id=14Z67_ZlIVG8KcCJXSzW271EYbILOAX6s" alt="logos" id="Logo OCUC, logo DIMES y logo paquete ismtchile::"></a>
 </div>
 
 <button onclick="topFunction()" id="backToTop" title="Go to top">Top</button>

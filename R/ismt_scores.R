@@ -1,26 +1,22 @@
 #' @title Cálculos finales de ISMT -- ISMT final calculations
 #'
-#' @description Ejecuta los cálculos finales de ISMT. Define los grupos socioeconómicos por unidad territorial y los cuantifica en varias categorías. \cr \cr Executes the final ISMT calculations. Defines the socio-economic groups and quantifies them in several categories.
+#' @description Ejecuta los cálculos finales de ISMT. Define los grupos socioeconómicos por unidad territorial y los cuantifica en varias categorías. || || Executes the final ISMT calculations. Defines the socio-economic groups and quantifies them in several categories.
 #'
-#' @param df objeto \code{data.frame}. Asume que la base de datos ha pasado por \code{cleanup()}, \code{precalc()}, y \code{get_pca()}. \cr \cr \code{data.frame} object. Assumes the database has been through \code{cleanup()}, \code{precalc()}, and \code{get_pca()}.
-#' @param r integer. Número de la región de trabajo. Acepta valores entre 1 y 16; si \code{r = 99}, se utilizan valores a nivel nacional. \cr \cr integer. Number of the working region. Accepts values between 1 and 16; if \code{r = 99}, national-level values will be used.
-#' @param ismt_score string. Nombre del campo del puntaje ISMT, calculado desde \code{get_pca()}. Default es \code{ismt_pn}. \cr \cr string. Name of the ISMT sscore field, as calculated from \code{get_pca()]}. Default is \code{ismt_pn}.
-#' @param grouping string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es \code{geocode}. \cr \cr string. Name of the field with the spacial grouping unit variable. Default is \code{geocode}.
+#' @param df objeto \code{data.frame}. Asume que la base de datos ha pasado por \code{cleanup()}, \code{precalc()}, y \code{get_pca()}. || || \code{data.frame} object. Assumes the database has been through \code{cleanup()}, \code{precalc()}, and \code{get_pca()}.
+#' @param r integer. Número de la región de trabajo. Acepta valores entre 1 y 16; si \code{r = 99}, se utilizan valores a nivel nacional. || || integer. Number of the working region. Accepts values between 1 and 16; if \code{r = 99}, national-level values will be used.
+#' @param ismt_score string. Nombre del campo del puntaje ISMT, calculado desde \code{get_pca()}. Default es \code{ismt_pn}. || || string. Name of the ISMT sscore field, as calculated from \code{get_pca()]}. Default is \code{ismt_pn}.
+#' @param grouping string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es \code{geocode}. || || string. Name of the field with the spacial grouping unit variable. Default is \code{geocode}.
 #'
 #' @import dplyr
 #' @import stringr
 #' @importFrom stats quantile
 #'
-#' @return objeto \code{data.frame} agrupado por la unidad espacial especificada con información de ISMT. \cr \cr \code{data.frame} object grouped by the specified spatial unit with ISMT information.
+#' @return objeto \code{data.frame} agrupado por la unidad espacial especificada con información de ISMT. || || \code{data.frame} object grouped by the specified spatial unit with ISMT information.
 #' @export ismt_scores
 #'
-#' @examples # ismt <- c17 |>
-#' #literalize(2017) |>
-#' #dplyr::filter(id_region == 13, tipo_area == 2) |>
-#' #cleanup() |>
-#' #precalc() |>
-#' #get_pca() |>
-#' #ismt_scores(13, 2017)
+#' @examples
+#'  data(c17_example)
+#'  clean <- c17_example |> literalize(2017) |> cleanup() |> precalc() |> get_pca() |> ismt_scores(10)
 
 ismt_scores <- function(df, r, ismt_score = 'ismt_pn', grouping = 'geocode') {
 
