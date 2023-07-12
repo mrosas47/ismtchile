@@ -1,5 +1,9 @@
 # News for ismtchile::
 
+## ismtchile 2.1.6
+
+* Added option to skip names in `full_ismt()`
+
 ## ismtchile 2.1.5
 
 * Second attempt to release.

@@ -1,7 +1,7 @@
 Package: ismtchile
 Type: Package
 Title: Calculating Socio Material Territorial Index
-Version: 2.1.5
+Version: 2.1.6
 Authors@R: c(
   person(
     'Martín', 'Rosas Araya',

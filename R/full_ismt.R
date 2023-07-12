@@ -30,7 +30,7 @@
 #'    ismt <- full_ismt(c17_example, 10, 1)
 #'  }
 
-full_ismt <- function (df, r, ur, rfield = 'id_region', urfield = 'tipo_area', year = 2017, tipo_vivienda = 'tipoviv', ocupacion = 'ocup_viv', ndorms = 'ndorms', parentesco = 'parentesco', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso', grouping = 'id_zona', level = 'zc') {
+full_ismt <- function (df, r, ur, rfield = 'id_region', urfield = 'tipo_area', year = 2017, tipo_vivienda = 'tipoviv', ocupacion = 'ocup_viv', ndorms = 'ndorms', parentesco = 'parentesco', muro = 'mat_muro', techo = 'mat_techo', piso = 'mat_piso', grouping = 'id_zona', level = 'zc', names = T) {
 
   id_region <- NULL
   tipo_area <- NULL
@@ -40,27 +40,53 @@ full_ismt <- function (df, r, ur, rfield = 'id_region', urfield = 'tipo_area', y
 
   if (r %in% c(1:16)) {
 
-    df0 <- df |>
+    if (names) {
 
-      ismtchile::literalize(year = year) |>
-      dplyr::filter(id_region == stringy, tipo_area == key) |>
-      ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) |>
-      ismtchile::precalc() |>
-      ismtchile::get_pca() |>
-      ismtchile::ismt_scores(r = r, grouping = grouping) |>
-      ismtchile::namify(common_var = 'zona', level = level)
+      df0 <- df |>
+        ismtchile::literalize(year = year) |>
+        dplyr::filter(id_region == stringy, tipo_area == key) |>
+        ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) |>
+        ismtchile::precalc() |>
+        ismtchile::get_pca() |>
+        ismtchile::ismt_scores(r = r, grouping = grouping) |>
+        ismtchile::namify(common_var = 'zona', level = level)
+
+    } else {
+
+      df0 <- df |>
+        ismtchile::literalize(year = year) |>
+        dplyr::filter(id_region == stringy, tipo_area == key) |>
+        ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) |>
+        ismtchile::precalc() |>
+        ismtchile::get_pca() |>
+        ismtchile::ismt_scores(r = r, grouping = grouping)
+
+    }
 
   } else if (r == 99) {
 
-    df0 <- df |>
+    if (names) {
 
-      ismtchile::literalize(year = year) |>
-      dplyr::filter(tipo_area == key) |>
-      ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) |>
-      ismtchile::precalc() |>
-      ismtchile::get_pca() |>
-      ismtchile::ismt_scores(r = r, grouping = grouping) |>
-      ismtchile::namify(common_var = 'zona', level = level)
+      df0 <- df |>
+        ismtchile::literalize(year = year) |>
+        dplyr::filter(tipo_area == key) |>
+        ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) |>
+        ismtchile::precalc() |>
+        ismtchile::get_pca() |>
+        ismtchile::ismt_scores(r = r, grouping = grouping) |>
+        ismtchile::namify(common_var = 'zona', level = level)
+
+    } else {
+
+      df0 <- df |>
+        ismtchile::literalize(year = year) |>
+        dplyr::filter(tipo_area == key) |>
+        ismtchile::cleanup(year = year, tipo_viv = tipo_vivienda, ocupacion = ocupacion, dormitorios = ndorms, parentesco = parentesco, muro = muro, techo = techo, piso = piso, level = level) |>
+        ismtchile::precalc() |>
+        ismtchile::get_pca() |>
+        ismtchile::ismt_scores(r = r, grouping = grouping)
+
+    }
 
   }
 

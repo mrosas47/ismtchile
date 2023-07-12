@@ -19,7 +19,8 @@ full_ismt(
   techo = "mat_techo",
   piso = "mat_piso",
   grouping = "id_zona",
-  level = "zc"
+  level = "zc",
+  names = T
 )
 }
 \arguments{
@@ -57,7 +58,7 @@ full_ismt(
 objeto data.frame conteniendo el cálculo completo del ISMT.
 }
 \description{
-Ejecuta el cálculo completo del ISMT. Agrupa las funciones `literalize()`, `geofilter()`, `cleanup()`, `precalc()`, `get_pca()` e `ismt_scores()`. La tabla obtenida debería ser idéntica al resultado de concatenar estas funciones una a una.
+Ejecuta el cálculo completo del ISMT. Agrupa las funciones `literalize()`, `cleanup()`, `precalc()`, `get_pca()`, `ismt_scores()`, `namify()`. La tabla obtenida debería ser idéntica al resultado de concatenar estas funciones una a una.
 }
 \examples{
  \donttest{

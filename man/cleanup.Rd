@@ -19,7 +19,7 @@ cleanup(
 )
 }
 \arguments{
-\item{df}{objeto \code{data.frame}. Se recomienda usar la base original del Censo 2017, disponible a través de \code{load_data()}. || || \code{data.frame} object; recommendation is to use the original 2017 census database, available through \code{load_data()}.}
+\item{df}{objeto \code{data.frame}. Se recomienda usar la base original del Censo 2017, disponible a través de la página oficial del INE. || || \code{data.frame} object; recommendation is to use the original 2017 census database, available through INE's official website.}
 
 \item{year}{integer. Default es \code{2017}. || || integer. Default is \code{2017}.}
 
