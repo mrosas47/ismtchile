@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ismtchile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.1.6</span>
       </span>
     </div>
 
@@ -127,6 +127,10 @@
 
 <dt>level</dt>
 <dd><p><code>string</code>. Nivel de agrupación de los datos finales. Acepta valores <code>zc</code> (zona censal) y <code>mzn</code> (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es <code>zc</code>. || || <code>string</code>. Grouping level for the final data. Values <code>zc</code> (census zone) and <code>mzn</code> (block). Block level is not available for 2017 due to statistical secret of original database. Default is <code>zc</code>.</p></dd>
+
+
+<dt>names</dt>
+<dd><p><code>boolean</code>. Si incluir la ejecución de <code><a href="namify.html">namify()</a></code> en el proceso. Para censos anteriores se recomienda cambiar a FALSE. Default es TRUE. || || <code>boolean</code>. Whether to include execution of <code><a href="namify.html">namify()</a></code> in the process. For older census it is recommended to set to FALSE. Default is TRUE.</p></dd>
 
 </dl></div>
     <div id="value">

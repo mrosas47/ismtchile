@@ -17,6 +17,7 @@
 #' @param piso string. Nombre del campo de condición del suelo. Default es \code{mat_piso}. || || string. Name of the floor condition field. Default is \code{mat_piso}.
 #' @param grouping string. Nombre del campo con la variable de la unidad espacial agrupadora. Default es \code{id_zona}. || || string. Name of the field with the spacial grouping unit variable. Default is \code{id_zona}.
 #' @param level \code{string}. Nivel de agrupación de los datos finales. Acepta valores \code{zc} (zona censal) y \code{mzn} (manzana). El nivel de manzana no está disponible para el 2017 debido al secreto estadístico de la base de datos de origen. Default es \code{zc}. || || \code{string}. Grouping level for the final data. Values \code{zc} (census zone) and \code{mzn} (block). Block level is not available for 2017 due to statistical secret of original database. Default is \code{zc}.
+#' @param names \code{boolean}. Si incluir la ejecución de \code{namify()} en el proceso. Para censos anteriores se recomienda cambiar a FALSE. Default es TRUE. || || \code{boolean}. Whether to include execution of \code{namify()} in the process. For older census it is recommended to set to FALSE. Default is TRUE.
 #'
 #' @import dplyr
 #' @import stringr
