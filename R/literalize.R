@@ -1260,10 +1260,10 @@ literalize <- function (df, year) {
         ),
         year = '1992',
         id_region = region92,
-        id_provin = provincia92,
+        id_provin = provincia,
         id_comuna = stringr::str_pad(
 
-          comuna92,
+          comuna,
           width = 5,
           side = 'left',
           pad = '0'
